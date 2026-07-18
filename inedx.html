@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KING Services & Transport | Fleet Financing Dashboard</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, Arial, sans-serif;
+}
+
+
+body{
+    background:#f4f6f9;
+}
+
+
+.container{
+
+    display:flex;
+    height:100vh;
+
+}
+
+
+
+/* Sidebar */
+
+
+.sidebar{
+
+    width:260px;
+    background:#0f172a;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+
+}
+
+
+
+/* Logo */
+
+
+.logo{
+
+    padding:30px 20px;
+    text-align:center;
+    border-bottom:
+    1px solid rgba(255,255,255,0.1);
+
+}
+
+
+.logo h1{
+
+    font-size:22px;
+    color:#38bdf8;
+
+}
+
+
+.logo h3{
+
+    color:#38bdf8;
+    font-size:22px;
+
+}
+
+
+.logo p{
+
+    font-size:13px;
+    color:#cbd5e1;
+    margin-top:6px;
+
+}
+
+
+
+
+/* Navigation */
+
+
+.menu{
+
+    margin-top:20px;
+
+}
+
+
+.menu a{
+
+    display:block;
+    padding:16px 24px;
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    transition:.3s;
+
+}
+
+
+.menu a:hover{
+
+    background:#1e293b;
+
+}
+
+
+.menu a.active{
+
+    background:#2563eb;
+
+}
+
+
+
+
+
+
+
+/* Main Content */
+
+
+.content{
+
+    flex:1;
+    background:#f8fafc;
+    padding:35px;
+    overflow:auto;
+
+}
+
+
+
+
+
+/* Welcome Banner */
+
+
+.welcome-banner{
+
+
+    background:
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #0f172a
+    );
+
+
+    color:white;
+
+    padding:40px;
+
+    border-radius:16px;
+
+    box-shadow:
+    0 8px 25px
+    rgba(0,0,0,.15);
+
+    margin-bottom:30px;
+
+}
+
+
+
+
+
+.welcome-banner h2{
+
+    font-size:30px;
+    margin-bottom:15px;
+
+}
+
+
+
+.welcome-banner p{
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    color:#e2e8f0;
+
+    max-width:900px;
+
+}
+
+
+
+
+
+
+/* Feature Cards */
+
+
+.features{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+
+
+.feature-card{
+
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:12px;
+
+    box-shadow:
+    0 5px 20px
+    rgba(0,0,0,.08);
+
+}
+
+
+
+.feature-card h3{
+
+    color:#2563eb;
+
+    margin-bottom:10px;
+
+}
+
+
+.feature-card p{
+
+    color:#64748b;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+}
+
+
+
+
+
+
+
+/* Dashboard Placeholder */
+
+
+.dashboard-box{
+
+
+    background:white;
+
+    margin-top:30px;
+
+    padding:30px;
+
+    border-radius:12px;
+
+    box-shadow:
+    0 5px 20px
+    rgba(0,0,0,.08);
+
+
+}
+
+
+
+.dashboard-box h2{
+
+    color:#0f172a;
+
+}
+
+
+.dashboard-box p{
+
+    color:#64748b;
+
+    margin-top:10px;
+
+}
+
+
+
+
+
+@media(max-width:1000px){
+
+
+.features{
+
+grid-template-columns:1fr;
+
+}
+
+
+}
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="container">
+
+
+
+<!-- ================= LEFT SIDEBAR ================= -->
+
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+<h3>Management App v1.0</h3>
+
+<p>
+Vehicle Management System
+</p>
+
+</div>
+
+
+
+
+<nav class="menu">
+
+
+<a href="dashboard.html" class="active">
+
+🏠 Dashboard
+
+</a>
+
+
+
+<a href="borrowers.html">
+
+👤 Borrowers
+
+</a>
+
+
+
+<a href="assets.html">
+
+🚚 Assets
+
+</a>
+
+
+<a href="loans.html">
+
+💳 Loans
+
+</a>
+
+
+
+<a href="payments.html">
+
+💰 Payments
+
+</a>
+
+
+
+<a href="reports.html">
+
+📊 Reports
+
+</a>
+
+
+
+<a href="api-docs.html">
+
+📘 API Docs
+
+</a>
+
+
+
+<a href="admin.html">
+
+⚙ Admin
+
+</a>
+
+
+
+</nav>
+
+
+</aside>
+
+
+
+
+
+
+
+
+
+<!-- ================= RIGHT DASHBOARD ================= -->
+
+
+<main class="content">
+
+
+
+
+
+<section class="welcome-banner">
+
+
+<h2>
+
+👋 Welcome to KING Services & Transport
+
+</h2>
+
+
+<p>
+
+Your complete fleet financing and investment management platform.
+Manage drivers, monitor vehicles, track loan repayments,
+analyze investor returns, and grow your transport business
+through smart data-driven decisions.
+
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+
+<section class="features">
+
+
+
+<div class="feature-card">
+
+<h3>
+🚚 Fleet Management
+</h3>
+
+
+<p>
+
+Manage vehicles, registration details,
+GPS tracking, ownership and operational status.
+
+</p>
+
+</div>
+
+
+
+
+
+
+<div class="feature-card">
+
+<h3>
+💳 Smart Financing
+</h3>
+
+
+<p>
+
+Create vehicle financing plans,
+manage loans, weekly repayments and balances.
+
+</p>
+
+</div>
+
+
+
+
+
+
+<div class="feature-card">
+
+<h3>
+📊 Business Analytics
+</h3>
+
+
+<p>
+
+Monitor revenue, portfolio value,
+collections and fleet performance.
+
+</p>
+
+</div>
+
+
+
+
+
+
+<div class="feature-card">
+
+<h3>
+📈 Investor Growth
+</h3>
+
+
+<p>
+
+Track investor contribution,
+ROI, profit sharing and break-even periods.
+
+</p>
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<section class="dashboard-box">
+
+
+<h2>
+
+📌 Dashboard Overview
+
+</h2>
+
+
+<p>
+
+Your financing calculator, KPIs, cash flow charts,
+investor returns and company profitability analytics
+will appear here.
+
+</p>
+
+
+
+</section>
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+</div>
+
+
+</body>
+
+
+</html>
