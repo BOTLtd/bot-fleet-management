@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin | Fleet Finance Management System</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Arial,sans-serif;
+}
+
+
+body{
+    background:#f4f6f9;
+}
+
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+
+
+/* ================= LEFT SIDEBAR ================= */
+
+
+.sidebar{
+
+    width:260px;
+    background:#0f172a;
+    color:white;
+
+}
+
+
+.logo{
+
+    text-align:center;
+    padding:30px 20px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+
+}
+
+
+.logo h2{
+
+    color:#38bdf8;
+
+}
+
+
+.logo p{
+
+    color:#cbd5e1;
+    font-size:13px;
+
+}
+
+
+
+.menu a{
+
+    display:block;
+    padding:16px 25px;
+    color:white;
+    text-decoration:none;
+
+}
+
+
+.menu a:hover{
+
+    background:#1e293b;
+
+}
+
+
+.menu .active{
+
+    background:#2563eb;
+
+}
+
+
+
+
+
+/* ================= CONTENT ================= */
+
+
+.content{
+
+    flex:1;
+    padding:35px;
+
+}
+
+
+.content h1{
+
+    color:#1e293b;
+
+}
+
+
+.content p{
+
+    color:#64748b;
+    margin:10px 0 25px;
+
+}
+
+
+
+
+
+/* CARDS */
+
+
+.cards{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+
+}
+
+
+
+.card{
+
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+.card h3{
+
+    color:#64748b;
+
+}
+
+
+.card h2{
+
+    color:#2563eb;
+    margin-top:10px;
+
+}
+
+
+
+
+
+/* PANELS */
+
+
+.panel{
+
+    background:white;
+    margin-top:30px;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.section-title{
+
+    color:#2563eb;
+    margin-bottom:20px;
+
+}
+
+
+
+
+
+.form-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+
+}
+
+
+
+label{
+
+    display:block;
+    font-weight:600;
+    margin-bottom:7px;
+
+}
+
+
+
+input,
+select,
+textarea{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+
+}
+
+
+
+button{
+
+    padding:12px 25px;
+    border:none;
+    border-radius:6px;
+    margin-top:20px;
+    cursor:pointer;
+
+}
+
+
+.save{
+
+    background:#2563eb;
+    color:white;
+
+}
+
+
+.reset{
+
+    background:#64748b;
+    color:white;
+
+}
+
+
+
+
+/* TABLE */
+
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+
+}
+
+
+th{
+
+    background:#2563eb;
+    color:white;
+    padding:12px;
+    text-align:left;
+
+}
+
+
+td{
+
+    padding:12px;
+    border-bottom:1px solid #ddd;
+
+}
+
+
+
+
+
+@media(max-width:1000px){
+
+.cards{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+
+.form-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+
+<!-- ================= SIDEBAR ================= -->
+
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+<h2>Management App v1.0</h2>
+
+<p>Vehicle Management System</p>
+
+</div>
+
+
+
+
+<nav class="menu">
+
+
+<a href="index.html">
+🏠 Dashboard
+</a>
+
+
+<a href="borrowers.html">
+👤 Borrowers
+</a>
+
+
+<a href="assets.html">
+🚚 Assets
+</a>
+
+
+<a href="loans.html">
+💳 Loans
+</a>
+
+
+<a href="payments.html">
+💰 Payments
+</a>
+
+
+<a href="reports.html">
+📊 Reports
+</a>
+
+
+<a href="admin.html" class="active">
+⚙️ Admin
+</a>
+
+
+<a href="api-docs.html">
+📘 API Docs
+</a>
+
+
+</nav>
+
+
+</aside>
+
+
+
+
+
+
+
+
+<!-- ================= CONTENT ================= -->
+
+
+<main class="content">
+
+
+<h1>⚙️ Administration</h1>
+
+<p>
+Manage users, permissions, security and system configuration
+</p>
+
+
+
+
+
+
+
+
+<!-- SUMMARY -->
+
+
+<section class="cards">
+
+
+<div class="card">
+
+<h3>👥 Total Users</h3>
+
+<h2>25</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>🔐 Roles</h3>
+
+<h2>6</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>📋 Audit Logs</h3>
+
+<h2>1,250</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>🔔 Notifications</h3>
+
+<h2>45</h2>
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- USER MANAGEMENT -->
+
+
+<section class="panel">
+
+
+<h2 class="section-title">
+
+👥 User Management
+
+</h2>
+
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Full Name</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Email</label>
+
+<input type="email">
+
+</div>
+
+
+
+<div>
+
+<label>Phone Number</label>
+
+<input type="tel">
+
+</div>
+
+
+
+<div>
+
+<label>User Role</label>
+
+<select>
+
+
+<option>Administrator</option>
+
+<option>Loan Officer</option>
+
+<option>Accountant</option>
+
+<option>Driver Manager</option>
+
+<option>Viewer</option>
+
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>Password</label>
+
+<input type="password">
+
+</div>
+
+
+
+<div>
+
+<label>Status</label>
+
+
+<select>
+
+<option>Active</option>
+
+<option>Disabled</option>
+
+</select>
+
+
+</div>
+
+
+</div>
+
+
+
+<button class="save">
+
+💾 Create User
+
+</button>
+
+
+<button class="reset">
+
+🔄 Reset
+
+</button>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ROLES -->
+
+
+<section class="panel">
+
+
+<h2 class="section-title">
+
+🔐 Roles & Permissions
+
+</h2>
+
+
+
+<table>
+
+
+<tr>
+
+<th>Role</th>
+
+<th>Borrowers</th>
+
+<th>Loans</th>
+
+<th>Payments</th>
+
+<th>Admin</th>
+
+</tr>
+
+
+<tr>
+
+<td>Administrator</td>
+
+<td>Full</td>
+
+<td>Full</td>
+
+<td>Full</td>
+
+<td>Full</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Loan Officer</td>
+
+<td>View/Edit</td>
+
+<td>Manage</td>
+
+<td>View</td>
+
+<td>No</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Accountant</td>
+
+<td>View</td>
+
+<td>View</td>
+
+<td>Manage</td>
+
+<td>No</td>
+
+</tr>
+
+
+</table>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- COMPANY SETTINGS -->
+
+
+<section class="panel">
+
+
+<h2 class="section-title">
+
+🏢 Company Settings
+
+</h2>
+
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Company Name</label>
+
+<input type="text"
+placeholder="Fleet Finance Ltd">
+
+</div>
+
+
+
+<div>
+
+<label>Registration Number</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Address</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Phone</label>
+
+<input type="tel">
+
+</div>
+
+
+
+<div>
+
+<label>Email</label>
+
+<input type="email">
+
+</div>
+
+
+
+<div>
+
+<label>Currency</label>
+
+<select>
+
+<option>RWF</option>
+
+<option>USD</option>
+
+</select>
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- SECURITY -->
+
+
+<section class="panel">
+
+
+<h2 class="section-title">
+
+🛡 Security Settings
+
+</h2>
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Two Factor Authentication</label>
+
+<select>
+
+<option>Enabled</option>
+
+<option>Disabled</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>Password Expiry Days</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Session Timeout</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Login Attempts Limit</label>
+
+<input type="number">
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- AUDIT LOG -->
+
+
+<section class="panel">
+
+
+<h2 class="section-title">
+
+📋 Audit Logs
+
+</h2>
+
+
+
+<table>
+
+
+<tr>
+
+<th>User</th>
+
+<th>Action</th>
+
+<th>Date</th>
+
+<th>Status</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>Admin</td>
+
+<td>Created Loan LN-0001</td>
+
+<td>2026-07-18</td>
+
+<td>Success</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Accountant</td>
+
+<td>Updated Payment</td>
+
+<td>2026-07-18</td>
+
+<td>Success</td>
+
+</tr>
+
+
+
+</table>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- NOTIFICATIONS -->
+
+
+<section class="panel">
+
+
+<h2 class="section-title">
+
+🔔 Notification Settings
+
+</h2>
+
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>SMS Notifications</label>
+
+<select>
+
+<option>Enabled</option>
+
+<option>Disabled</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>Email Notifications</label>
+
+<select>
+
+<option>Enabled</option>
+
+<option>Disabled</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>Payment Reminder Days</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Overdue Alert Days</label>
+
+<input type="number">
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+</main>
+
+
+
+</div>
+
+
+
+</body>
+
+
+</html>
