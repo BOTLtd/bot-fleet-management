@@ -1,210 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleet Financing System</title>
 
-    <title>Fleet Financing Management System</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
 
-    <link rel="stylesheet" href="css/style.css">
+        body{
+            background:#f4f6f9;
+        }
 
+        .container{
+            display:flex;
+            height:100vh;
+        }
+
+        /* Left Sidebar */
+
+        .sidebar{
+            width:250px;
+            background:#0f172a;
+            color:white;
+            padding-top:30px;
+        }
+
+        .sidebar a{
+            display:block;
+            color:white;
+            text-decoration:none;
+            padding:18px 25px;
+            font-size:16px;
+            transition:.3s;
+        }
+
+        .sidebar a:hover{
+            background:#1e40af;
+        }
+
+        .sidebar a.active{
+            background:#2563eb;
+        }
+
+        /* Empty Content Area */
+
+        .content{
+            flex:1;
+            background:#ffffff;
+        }
+
+    </style>
 </head>
 
 <body>
 
-<div class="wrapper">
+<div class="container">
 
-    <!-- ===================== -->
-    <!-- LEFT SIDEBAR -->
-    <!-- ===================== -->
+    <div class="sidebar">
 
-    <aside class="sidebar">
+        <a href="index.html" class="active">🏠 Dashboard</a>
 
-        <div class="logo">
+        <a href="borrowers.html">👤 Borrowers</a>
 
-            <h2>🚚 Fleet Finance</h2>
+        <a href="assets.html">🚚 Assets</a>
 
-            <p>Management System</p>
+        <a href="admin.html">⚙ Admin</a>
 
-        </div>
+        <a href="api-docs.html">📘 API Docs</a>
 
-        <nav class="menu">
+    </div>
 
-            <a href="index.html" class="active">
-                <span>🏠</span>
-                Dashboard
-            </a>
-
-            <a href="borrowers.html">
-                <span>👤</span>
-                Borrowers
-            </a>
-
-            <a href="assets.html">
-                <span>🚚</span>
-                Assets
-            </a>
-
-            <a href="admin.html">
-                <span>⚙</span>
-                Admin
-            </a>
-
-            <a href="api-docs.html">
-                <span>📘</span>
-                API Docs
-            </a>
-
-        </nav>
-
-        <div class="sidebar-footer">
-
-            Version 1.0
-
-        </div>
-
-    </aside>
-
-    <!-- ===================== -->
-    <!-- MAIN CONTENT -->
-    <!-- ===================== -->
-
-    <main class="main-content">
-
-        <!-- Header -->
-
-        <header class="header">
-
-            <div>
-
-                <h1>Dashboard</h1>
-
-                <p>Fleet Financing Management Overview</p>
-
-            </div>
-
-            <div class="user">
-
-                Administrator
-
-            </div>
-
-        </header>
-
-        <!-- Statistics -->
-
-        <section class="cards">
-
-            <div class="card">
-
-                <h3>Total Borrowers</h3>
-
-                <h2>245</h2>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Fleet Assets</h3>
-
-                <h2>154</h2>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Active Loans</h3>
-
-                <h2>87</h2>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Monthly Revenue</h3>
-
-                <h2>$245,000</h2>
-
-            </div>
-
-        </section>
-
-        <!-- Recent Loans -->
-
-        <section class="panel">
-
-            <h2>Recent Loans</h2>
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Borrower</th>
-
-                        <th>Vehicle</th>
-
-                        <th>Loan Amount</th>
-
-                        <th>Status</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>ABC Logistics</td>
-
-                        <td>Mercedes Actros</td>
-
-                        <td>$82,000</td>
-
-                        <td>Active</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>East Africa Cargo</td>
-
-                        <td>Volvo FH16</td>
-
-                        <td>$104,000</td>
-
-                        <td>Pending</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Fast Movers Ltd</td>
-
-                        <td>Scania R500</td>
-
-                        <td>$75,500</td>
-
-                        <td>Overdue</td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </section>
-
-    </main>
+    <div class="content">
+        <!-- Leave blank -->
+    </div>
 
 </div>
 
-<script src="js/app.js"></script>
-
 </body>
-
 </html>
