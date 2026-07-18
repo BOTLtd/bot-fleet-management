@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reports | Vehicle Management System</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Arial,sans-serif;
+}
+
+
+body{
+    background:#f4f6f9;
+}
+
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+
+
+/* ================= SIDEBAR ================= */
+
+
+.sidebar{
+
+    width:260px;
+    background:#0f172a;
+    color:white;
+
+}
+
+
+.logo{
+
+    text-align:center;
+    padding:30px 20px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+
+}
+
+
+.logo h2{
+    color:#38bdf8;
+}
+
+
+.logo p{
+
+    color:#cbd5e1;
+    font-size:13px;
+
+}
+
+
+
+.menu a{
+
+    display:block;
+    padding:16px 25px;
+    color:white;
+    text-decoration:none;
+
+}
+
+
+.menu a:hover{
+
+    background:#1e293b;
+
+}
+
+
+.menu .active{
+
+    background:#2563eb;
+
+}
+
+
+
+
+
+/* ================= CONTENT ================= */
+
+
+.content{
+
+    flex:1;
+    padding:35px;
+
+}
+
+
+.content h1{
+
+    color:#1e293b;
+
+}
+
+
+.content p{
+
+    color:#64748b;
+    margin:10px 0 25px;
+
+}
+
+
+
+
+
+/* CARDS */
+
+
+.cards{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+
+}
+
+
+.card{
+
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+.card h3{
+
+    color:#64748b;
+    font-size:15px;
+
+}
+
+
+.card h2{
+
+    margin-top:10px;
+    color:#2563eb;
+
+}
+
+
+
+
+
+/* REPORT PANEL */
+
+
+.panel{
+
+    margin-top:30px;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.section-title{
+
+    color:#2563eb;
+    margin-bottom:20px;
+
+}
+
+
+
+
+
+/* FILTER */
+
+
+.form-grid{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+
+}
+
+
+
+label{
+
+    display:block;
+    font-weight:600;
+    margin-bottom:7px;
+
+}
+
+
+
+input,
+select{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+
+}
+
+
+
+
+
+button{
+
+    padding:12px 25px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    margin-top:20px;
+
+}
+
+
+
+.generate{
+
+    background:#2563eb;
+    color:white;
+
+}
+
+
+.export{
+
+    background:#16a34a;
+    color:white;
+
+}
+
+
+
+
+
+/* TABLE */
+
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+
+}
+
+
+th{
+
+    background:#2563eb;
+    color:white;
+    padding:14px;
+    text-align:left;
+
+}
+
+
+
+td{
+
+    padding:14px;
+    border-bottom:1px solid #ddd;
+
+}
+
+
+
+
+
+@media(max-width:1000px){
+
+.cards{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+
+.form-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="container">
+
+
+
+<!-- ================= LEFT SIDEBAR ================= -->
+
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+<h2>Management App v1.0</h2>
+
+<p>Vehicle Management System</p>
+
+</div>
+
+
+
+<nav class="menu">
+
+
+<a href="index.html">
+🏠 Dashboard
+</a>
+
+
+<a href="borrowers.html">
+👤 Borrowers
+</a>
+
+
+<a href="assets.html">
+🚚 Assets
+</a>
+
+
+<a href="loans.html">
+💳 Loans
+</a>
+
+
+<a href="payments.html">
+💰 Payments
+</a>
+
+
+<a href="reports.html" class="active">
+📊 Reports
+</a>
+
+
+<a href="admin.html">
+⚙️ Admin
+</a>
+
+
+<a href="api-docs.html">
+📘 API Docs
+</a>
+
+
+</nav>
+
+
+</aside>
+
+
+
+
+
+
+
+<!-- ================= RIGHT CONTENT ================= -->
+
+
+<main class="content">
+
+
+<h1>📊 Vehicle Management Reports</h1>
+
+
+<p>
+Analyze loans, payments, assets and business performance
+</p>
+
+
+
+
+
+<!-- SUMMARY CARDS -->
+
+
+<section class="cards">
+
+
+<div class="card">
+
+<h3>Total Portfolio</h3>
+
+<h2>$2.5M</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Active Loans</h3>
+
+<h2>245</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Total Collections</h3>
+
+<h2>$850K</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Overdue Loans</h3>
+
+<h2>18</h2>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- FILTER -->
+
+
+<section class="panel">
+
+
+<h2 class="section-title">
+🔎 Generate Report
+</h2>
+
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Report Type</label>
+
+<select>
+
+<option>Loan Portfolio</option>
+
+<option>Payment Collection</option>
+
+<option>Borrower Performance</option>
+
+<option>Asset Performance</option>
+
+<option>Overdue Loans</option>
+
+<option>Profitability Report</option>
+
+</select>
+
+</div>
+
+
+
+
+<div>
+
+<label>Start Date</label>
+
+<input type="date">
+
+</div>
+
+
+
+
+<div>
+
+<label>End Date</label>
+
+<input type="date">
+
+</div>
+
+
+</div>
+
+
+
+<button class="generate">
+
+📊 Generate Report
+
+</button>
+
+
+
+<button class="export">
+
+📥 Export Excel/PDF
+
+</button>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- LOAN REPORT -->
+
+
+<section class="panel">
+
+
+<h2 class="section-title">
+
+💳 Loan Portfolio Report
+
+</h2>
+
+
+
+<table>
+
+
+<tr>
+
+<th>Borrower</th>
+
+<th>Vehicle</th>
+
+<th>Principal</th>
+
+<th>Balance</th>
+
+<th>Status</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>ABC Transport</td>
+
+<td>Mercedes Actros</td>
+
+<td>$80,000</td>
+
+<td>$45,000</td>
+
+<td>Active</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Fast Logistics</td>
+
+<td>Volvo FH16</td>
+
+<td>$100,000</td>
+
+<td>$20,000</td>
+
+<td>Active</td>
+
+</tr>
+
+
+</table>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- PAYMENT REPORT -->
+
+
+<section class="panel">
+
+
+<h2 class="section-title">
+
+💰 Payment Collection Report
+
+</h2>
+
+
+
+<table>
+
+
+<tr>
+
+<th>Date</th>
+
+<th>Borrower</th>
+
+<th>Amount Paid</th>
+
+<th>Status</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-07-01</td>
+
+<td>John Doe</td>
+
+<td>$500</td>
+
+<td>Paid</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>2026-07-08</td>
+
+<td>ABC Transport</td>
+
+<td>$500</td>
+
+<td>Late</td>
+
+</tr>
+
+
+</table>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- ASSET REPORT -->
+
+
+<section class="panel">
+
+
+<h2 class="section-title">
+
+🚚 Asset Performance Report
+
+</h2>
+
+
+
+<table>
+
+
+<tr>
+
+<th>Vehicle</th>
+
+<th>Driver</th>
+
+<th>Status</th>
+
+<th>Loan</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>Volvo FH16</td>
+
+<td>John Doe</td>
+
+<td>Active</td>
+
+<td>LN-0001</td>
+
+</tr>
+
+
+</table>
+
+
+</section>
+
+
+
+
+
+</main>
+
+
+</div>
+
+
+</body>
+
+
+</html>
