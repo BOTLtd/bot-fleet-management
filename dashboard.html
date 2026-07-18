@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KING Services & Transport | Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, Arial, sans-serif;
+}
+
+
+body{
+    background:#f4f6f9;
+}
+
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+
+
+/* SIDEBAR */
+
+.sidebar{
+
+    width:260px;
+    background:#0f172a;
+    color:white;
+}
+
+
+.logo{
+
+    text-align:center;
+    padding:30px 15px;
+    border-bottom:1px solid #334155;
+
+}
+
+
+.logo h2{
+
+    color:#38bdf8;
+
+}
+
+
+.logo p{
+
+    font-size:13px;
+    color:#cbd5e1;
+
+}
+
+
+.menu a{
+
+    display:block;
+    padding:16px 25px;
+    color:white;
+    text-decoration:none;
+
+}
+
+
+.menu a:hover,
+.menu .active{
+
+    background:#2563eb;
+
+}
+
+
+
+
+
+/* CONTENT */
+
+
+.content{
+
+    flex:1;
+    padding:30px;
+
+}
+
+
+h1{
+
+    color:#0f172a;
+
+}
+
+
+.subtitle{
+
+    color:#64748b;
+    margin:10px 0 25px;
+
+}
+
+
+
+
+
+/* CALCULATOR */
+
+
+.calculator{
+
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.grid{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+
+}
+
+
+label{
+
+    font-weight:600;
+    display:block;
+    margin-bottom:7px;
+
+}
+
+
+input{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+
+}
+
+
+
+
+
+/* CARDS */
+
+
+.cards{
+
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+
+}
+
+
+
+.card{
+
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+
+
+.card h3{
+
+    color:#64748b;
+    font-size:14px;
+
+}
+
+
+
+.card h2{
+
+    color:#2563eb;
+    margin-top:10px;
+
+}
+
+
+
+
+
+/* CHARTS */
+
+
+.charts{
+
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+
+}
+
+
+
+.chart-box{
+
+    background:white;
+    padding:25px;
+    border-radius:12px;
+
+}
+
+
+
+canvas{
+
+    max-height:300px;
+
+}
+
+
+
+@media(max-width:1000px){
+
+.grid,
+.cards,
+.charts{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+
+<!-- LEFT MENU -->
+
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+<h3>Management App v1.0</h3>
+
+<p>Vehicle Management System</p>
+
+</div>
+
+
+<nav class="menu">
+
+
+<a href="#" class="active">
+🏠 Dashboard
+</a>
+
+
+<a href="borrowers.html">
+👤 Borrowers
+</a>
+
+
+<a href="assets.html">
+🚚 Assets
+</a>
+
+
+<a href="loans.html">
+💳 Loans
+</a>
+
+
+<a href="payments.html">
+💰 Payments
+</a>
+
+
+<a href="reports.html">
+📊 Reports
+</a>
+
+
+<a href="admin.html">
+⚙️ Admin
+</a>
+
+
+<a href="api-docs.html">
+📘 API Docs
+</a>
+
+
+</nav>
+
+
+</aside>
+
+
+
+
+
+<!-- MAIN -->
+
+
+<main class="content">
+
+
+<h1>🏠 KING Services & Transport Financing Dashboard</h1>
+
+<p class="subtitle">
+Fleet investment calculator and profitability analysis
+</p>
+
+
+
+
+<section class="calculator">
+
+
+<h2>💰 Financing Calculator</h2>
+
+
+<br>
+
+
+<div class="grid">
+
+
+<div>
+
+<label>Number of Bikes</label>
+
+<input id="bikes" value="100">
+
+</div>
+
+
+
+<div>
+
+<label>Cost per Bike (RWF)</label>
+
+<input id="cost" value="1200000">
+
+</div>
+
+
+
+<div>
+
+<label>Down Payment (RWF)</label>
+
+<input id="down" value="20000000">
+
+</div>
+
+
+
+<div>
+
+<label>Financed Amount (RWF)</label>
+
+<input id="finance" value="100000000">
+
+</div>
+
+
+
+<div>
+
+<label>Interest Rate (%)</label>
+
+<input id="interest" value="15">
+
+</div>
+
+
+
+<div>
+
+<label>Loan Term (Months)</label>
+
+<input id="months" value="36">
+
+</div>
+
+
+
+<div>
+
+<label>Investor Profit Share (%)</label>
+
+<input id="investorShare" value="60">
+
+</div>
+
+
+
+<div>
+
+<label>Company Profit Share (%)</label>
+
+<input id="companyShare" value="40">
+
+</div>
+
+
+
+<div>
+
+<label>Weekly Revenue per Bike (RWF)</label>
+
+<input id="weeklyRevenue" value="50000">
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- RESULTS -->
+
+
+<section class="cards">
+
+
+<div class="card">
+
+<h3>APR</h3>
+
+<h2 id="apr">0%</h2>
+
+</div>
+
+
+<div class="card">
+
+<h3>Weekly Payment</h3>
+
+<h2 id="weeklyPayment">0</h2>
+
+</div>
+
+
+<div class="card">
+
+<h3>Total Repayment</h3>
+
+<h2 id="repayment">0</h2>
+
+</div>
+
+
+<div class="card">
+
+<h3>Total Interest</h3>
+
+<h2 id="interestPaid">0</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Investor ROI</h3>
+
+<h2 id="roi">0%</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Investor Profit</h3>
+
+<h2 id="investorProfit">0</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Company Profit</h3>
+
+<h2 id="companyProfit">0</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Break-even Weeks</h3>
+
+<h2 id="breakEven">0</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Total Portfolio Value</h3>
+
+<h2 id="portfolio">0</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Weekly Revenue</h3>
+
+<h2 id="weeklyCash">0</h2>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Monthly Revenue</h3>
+
+<h2 id="monthlyCash">0</h2>
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<section class="charts">
+
+
+<div class="chart-box">
+
+<h3>📈 Weekly Cash Flow</h3>
+
+<canvas id="cashChart"></canvas>
+
+</div>
+
+
+
+<div class="chart-box">
+
+<h3>💰 Investor Returns</h3>
+
+<canvas id="investorChart"></canvas>
+
+</div>
+
+
+
+<div class="chart-box">
+
+<h3>🏢 Company Returns</h3>
+
+<canvas id="companyChart"></canvas>
+
+</div>
+
+
+
+<div class="chart-box">
+
+<h3>⏳ Break-even Analysis</h3>
+
+<canvas id="breakChart"></canvas>
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+</main>
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+
+const ids=[
+
+"bikes",
+"cost",
+"down",
+"finance",
+"interest",
+"months",
+"investorShare",
+"companyShare",
+"weeklyRevenue"
+
+];
+
+
+ids.forEach(id=>{
+
+document.getElementById(id)
+.addEventListener("input",calculate);
+
+});
+
+
+
+function money(value){
+
+return new Intl.NumberFormat(
+"en-RW",
+{
+style:"currency",
+currency:"RWF",
+maximumFractionDigits:0
+}
+).format(value);
+
+}
+
+
+
+function percent(value){
+
+return value.toFixed(2)+"%";
+
+}
+
+
+
+
+
+function calculate(){
+
+
+let bikes=Number(bikesInput.value);
+
+
+
+let bikesInput=document.getElementById("bikes");
+
+bikes=Number(bikesInput.value);
+
+let cost=Number(document.getElementById("cost").value);
+
+let down=Number(document.getElementById("down").value);
+
+let financed=Number(document.getElementById("finance").value);
+
+let rate=Number(document.getElementById("interest").value);
+
+let months=Number(document.getElementById("months").value);
+
+let investorShare=Number(document.getElementById("investorShare").value);
+
+let companyShare=Number(document.getElementById("companyShare").value);
+
+let weeklyBikeRevenue=Number(document.getElementById("weeklyRevenue").value);
+
+
+
+let weeks=months*4.345;
+
+
+let totalInterest=financed*(rate/100)*(months/12);
+
+
+let repayment=financed+totalInterest;
+
+
+let weeklyPayment=repayment/weeks;
+
+
+let totalProfit=totalInterest;
+
+
+let investorProfit=totalProfit*(investorShare/100);
+
+
+let companyProfit=totalProfit*(companyShare/100);
+
+
+let roi=(investorProfit/down)*100;
+
+
+let weeklyRevenue=bikes*weeklyBikeRevenue;
+
+
+let monthlyRevenue=weeklyRevenue*4.345;
+
+
+let weeklyNetProfit=weeklyRevenue-weeklyPayment;
+
+
+let breakEven=down/weeklyNetProfit;
+
+
+let portfolio=bikes*cost;
+
+
+
+
+document.getElementById("apr").innerHTML=percent(rate);
+
+document.getElementById("weeklyPayment").innerHTML=money(weeklyPayment);
+
+document.getElementById("repayment").innerHTML=money(repayment);
+
+document.getElementById("interestPaid").innerHTML=money(totalInterest);
+
+document.getElementById("roi").innerHTML=percent(roi);
+
+document.getElementById("investorProfit").innerHTML=money(investorProfit);
+
+document.getElementById("companyProfit").innerHTML=money(companyProfit);
+
+document.getElementById("breakEven").innerHTML=breakEven.toFixed(1);
+
+document.getElementById("portfolio").innerHTML=money(portfolio);
+
+document.getElementById("weeklyCash").innerHTML=money(weeklyRevenue);
+
+document.getElementById("monthlyCash").innerHTML=money(monthlyRevenue);
+
+
+
+updateCharts(
+weeklyRevenue,
+investorProfit,
+companyProfit,
+breakEven
+);
+
+
+}
+
+
+
+
+
+
+let charts={};
+
+
+function updateCharts(
+cash,
+investor,
+company,
+breakEven
+){
+
+
+let data=[
+
+cash,
+cash*2,
+cash*3,
+cash*4
+
+];
+
+
+
+if(!charts.cash){
+
+
+charts.cash=new Chart(
+document.getElementById("cashChart"),
+{
+type:"line",
+data:{
+labels:["Week 1","Week 2","Week 3","Week 4"],
+datasets:[{
+label:"Revenue",
+data:data
+}]
+}
+});
+
+
+charts.investor=new Chart(
+document.getElementById("investorChart"),
+{
+type:"bar",
+data:{
+labels:["Investor"],
+datasets:[{
+label:"Profit",
+data:[investor]
+}]
+}
+});
+
+
+charts.company=new Chart(
+document.getElementById("companyChart"),
+{
+type:"bar",
+data:{
+labels:["Company"],
+datasets:[{
+label:"Profit",
+data:[company]
+}]
+}
+});
+
+
+charts.break=new Chart(
+document.getElementById("breakChart"),
+{
+type:"line",
+data:{
+labels:["Investment","Recovery"],
+datasets:[{
+label:"Weeks",
+data:[0,breakEven]
+}]
+}
+});
+
+
+}
+
+else{
+
+
+charts.cash.data.datasets[0].data=data;
+charts.cash.update();
+
+
+charts.investor.data.datasets[0].data=[investor];
+charts.investor.update();
+
+
+charts.company.data.datasets[0].data=[company];
+charts.company.update();
+
+
+charts.break.data.datasets[0].data=[0,breakEven];
+charts.break.update();
+
+
+}
+
+
+}
+
+
+
+calculate();
+
+
+</script>
+
+
+</body>
+
+</html>
