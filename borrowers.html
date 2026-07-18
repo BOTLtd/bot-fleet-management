@@ -8,234 +8,791 @@
 
 <title>Borrowers | Bike Management System</title>
 
-<link rel="stylesheet" href="css/style.css">
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, Arial, sans-serif;
+}
+
+
+body{
+    background:#f4f6f9;
+}
+
+
+/* MAIN LAYOUT */
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+
+
+/* LEFT SIDEBAR */
+
+.sidebar{
+
+    width:260px;
+    background:#0f172a;
+    color:white;
+    min-height:100vh;
+
+}
+
+
+
+.logo{
+
+    text-align:center;
+    padding:30px 20px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+
+}
+
+
+.logo h2{
+
+    color:#38bdf8;
+    font-size:22px;
+
+}
+
+
+.logo p{
+
+    color:#cbd5e1;
+    font-size:13px;
+    margin-top:5px;
+
+}
+
+
+
+.menu{
+
+    margin-top:20px;
+
+}
+
+
+
+.menu a{
+
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:16px 25px;
+    font-size:16px;
+    transition:.3s;
+
+}
+
+
+
+.menu a:hover{
+
+    background:#1e293b;
+
+}
+
+
+
+.menu a.active{
+
+    background:#2563eb;
+
+}
+
+
+
+
+
+/* RIGHT CONTENT */
+
+.content{
+
+    flex:1;
+    padding:35px;
+
+}
+
+
+
+.content h1{
+
+    color:#1e293b;
+    margin-bottom:8px;
+
+}
+
+
+
+.content p{
+
+    color:#64748b;
+    margin-bottom:25px;
+
+}
+
+
+
+
+
+/* FORM */
+
+.form-container{
+
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.form-container h2{
+
+    margin:25px 0 20px;
+    color:#2563eb;
+    font-size:20px;
+
+}
+
+
+
+.form-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+
+}
+
+
+
+label{
+
+    display:block;
+    margin-bottom:7px;
+    font-weight:600;
+    color:#334155;
+
+}
+
+
+
+input,
+select,
+textarea{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    outline:none;
+
+}
+
+
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    border-color:#2563eb;
+
+}
+
+
+
+
+.buttons{
+
+    margin-top:30px;
+
+}
+
+
+
+button{
+
+    padding:12px 25px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:15px;
+    margin-right:10px;
+
+}
+
+
+
+button[type="submit"]{
+
+    background:#2563eb;
+    color:white;
+
+}
+
+
+
+button[type="reset"]{
+
+    background:#64748b;
+    color:white;
+
+}
+
+
+
+
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.container{
+
+    flex-direction:column;
+
+}
+
+
+.sidebar{
+
+    width:100%;
+    min-height:auto;
+
+}
+
+
+.form-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
 
 </head>
 
+
 <body>
+
 
 <div class="container">
 
-    <!-- LEFT SIDEBAR -->
 
-    <aside class="sidebar">
 
-        <div class="logo">
-            <h3>Management App v1.0</h3>
-            <p>Bike Management System</p>
-        </div>
+<!-- ================= LEFT SIDE MENU ================= -->
 
-        <nav class="menu">
 
-            <a href="index.html">🏠 Dashboard</a>
+<aside class="sidebar">
 
-            <a href="borrowers.html" class="active">
-                👤 Borrowers
-            </a>
 
-            <a href="assets.html">🚚 Assets</a>
+<div class="logo">
 
-            <a href="loans.html">💳 Loans</a>
+<h3>Management App v1.0</h3>
 
-            <a href="payments.html">💰 Payments</a>
-
-            <a href="reports.html">📊 Reports</a>
-
-            <a href="admin.html">⚙️ Admin</a>
-
-            <a href="api-docs.html">📘 API Docs</a>
-
-        </nav>
-
-    </aside>
-
-    <!-- RIGHT CONTENT -->
-
-    <main class="content">
-
-        <h1>👤 Driver / Borrower Registration</h1>
-
-        <form>
-
-            <h2>Personal Information</h2>
-
-            <div class="grid">
-
-                <div>
-                    <label>Full Name</label>
-                    <input type="text">
-                </div>
-
-                <div>
-                    <label>National ID / Passport</label>
-                    <input type="text">
-                </div>
-
-                <div>
-                    <label>Age</label>
-                    <input type="number">
-                </div>
-
-                <div>
-                    <label>Date of Birth</label>
-                    <input type="date">
-                </div>
-
-                <div>
-                    <label>Gender</label>
-
-                    <select>
-
-                        <option>Male</option>
-                        <option>Female</option>
-
-                    </select>
-
-                </div>
-
-                <div>
-                    <label>Phone Number</label>
-                    <input type="tel">
-                </div>
-
-                <div>
-                    <label>Email Address</label>
-                    <input type="email">
-                </div>
-
-                <div>
-                    <label>District / City</label>
-                    <input type="text">
-                </div>
-
-                <div>
-                    <label>Village / Address</label>
-                    <input type="text">
-                </div>
-
-            </div>
-
-            <h2>Driver Details</h2>
-
-            <div class="grid">
-
-                <div>
-                    <label>Driving Permit Number</label>
-                    <input type="text">
-                </div>
-
-                <div>
-                    <label>License Class</label>
-
-                    <select>
-
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
-                        <option>D</option>
-                        <option>E</option>
-
-                    </select>
-
-                </div>
-
-                <div>
-                    <label>Permit Issue Date</label>
-                    <input type="date">
-                </div>
-
-                <div>
-                    <label>Permit Expiry Date</label>
-                    <input type="date">
-                </div>
-
-                <div>
-                    <label>Driving Experience (Years)</label>
-                    <input type="number">
-                </div>
-
-            </div>
-
-            <h2>Employment</h2>
-
-            <div class="grid">
-
-                <div>
-                    <label>Employer</label>
-                    <input type="text">
-                </div>
-
-                <div>
-                    <label>Occupation</label>
-                    <input type="text">
-                </div>
-
-                <div>
-                    <label>Monthly Income</label>
-                    <input type="number">
-                </div>
-
-            </div>
-
-            <h2>Uploads</h2>
-
-            <div class="grid">
-
-                <div>
-                    <label>Profile Picture</label>
-                    <input type="file">
-                </div>
-
-                <div>
-                    <label>Driving Permit</label>
-                    <input type="file">
-                </div>
-
-                <div>
-                    <label>National ID Copy</label>
-                    <input type="file">
-                </div>
-
-                <div>
-                    <label>Proof of Residence</label>
-                    <input type="file">
-                </div>
-
-            </div>
-
-            <h2>Fleet Financing</h2>
-
-            <div class="grid">
-
-                <div>
-                    <label>Requested Loan Amount</label>
-                    <input type="number">
-                </div>
-
-                <div>
-                    <label>Purpose</label>
-                    <input type="text">
-                </div>
-
-                <div>
-                    <label>Notes</label>
-                    <textarea rows="5"></textarea>
-                </div>
-
-            </div>
-
-            <br>
-
-            <button type="submit">💾 Save Borrower</button>
-
-            <button type="reset">🔄 Reset</button>
-
-        </form>
-
-    </main>
+<p>Vehicle Management System</p>
 
 </div>
 
+
+
+<nav class="menu">
+
+
+<a href="index.html">
+🏠 Dashboard
+</a>
+
+
+<a href="borrowers.html" class="active">
+👤 Borrowers
+</a>
+
+
+<a href="assets.html">
+🚚 Assets
+</a>
+
+
+<a href="loans.html">
+💳 Loans
+</a>
+
+
+<a href="payments.html">
+💰 Payments
+</a>
+
+
+<a href="reports.html">
+📊 Reports
+</a>
+
+
+<a href="admin.html">
+⚙️ Admin
+</a>
+
+
+<a href="api-docs.html">
+📘 API Docs
+</a>
+
+
+
+</nav>
+
+
+</aside>
+
+
+
+
+
+<!-- ================= RIGHT SIDE CONTENT ================= -->
+
+
+<main class="content">
+
+
+<h1>👤 Driver Registration</h1>
+
+<p>
+Register drivers using this form
+</p>
+
+
+
+
+
+<form class="form-container">
+
+
+
+<!-- PERSONAL INFORMATION -->
+
+
+<h2>👤 Personal Information</h2>
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Full Name</label>
+
+<input type="text" placeholder="Enter full name">
+
+</div>
+
+
+
+<div>
+
+<label>Profile Picture</label>
+
+<input type="file">
+
+</div>
+
+
+
+<div>
+
+<label>Date of Birth</label>
+
+<input type="date">
+
+</div>
+
+
+
+<div>
+
+<label>Age</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Gender</label>
+
+<select>
+
+<option>Male</option>
+
+<option>Female</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>Phone Number</label>
+
+<input type="tel">
+
+</div>
+
+
+
+<div>
+
+<label>Email Address</label>
+
+<input type="email">
+
+</div>
+
+
+
+<div>
+
+<label>National ID Number</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Location</label>
+
+<input type="text" placeholder="District / City">
+
+</div>
+
+
+
+<div>
+
+<label>Residential Address</label>
+
+<input type="text">
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<!-- DRIVER INFORMATION -->
+
+
+<h2>🚗 Driving Information</h2>
+
+
+<div class="form-grid">
+
+
+
+<div>
+
+<label>Driving Permit Number</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Driving Permit Category</label>
+
+<select>
+
+<option>A</option>
+
+<option>B</option>
+
+<option>C</option>
+
+<option>D</option>
+
+<option>E</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>Permit Issue Date</label>
+
+<input type="date">
+
+</div>
+
+
+
+<div>
+
+<label>Permit Expiry Date</label>
+
+<input type="date">
+
+</div>
+
+
+
+<div>
+
+<label>Years of Driving Experience</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Driver Status</label>
+
+<select>
+
+<option>Active</option>
+
+<option>Inactive</option>
+
+<option>Suspended</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>Driving Permit Upload</label>
+
+<input type="file">
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- EMPLOYMENT -->
+
+
+<h2>🏢 Employment Details</h2>
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Employer / Company</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Occupation</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Monthly Income</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Employment Date</label>
+
+<input type="date">
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- FINANCE -->
+
+
+<h2>💳 Financing Profile</h2>
+
+
+<div class="form-grid">
+
+
+
+<div>
+
+<label>Requested Loan Amount</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Preferred Vehicle</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Guarantor Name</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Guarantor Phone</label>
+
+<input type="tel">
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- DOCUMENTS -->
+
+
+<h2>📂 Documents</h2>
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>National ID Copy</label>
+
+<input type="file">
+
+</div>
+
+
+
+<div>
+
+<label>Proof of Residence</label>
+
+<input type="file">
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="buttons">
+
+
+<button type="submit">
+
+💾 Add Driver
+
+</button>
+
+
+
+<button type="reset">
+
+🔄 Reset
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+</form>
+
+
+
+
+</main>
+
+
+
+</div>
+
+
+
 </body>
+
 
 </html>
