@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>API Docs | Vehicle Management System</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Arial,sans-serif;
+}
+
+
+body{
+    background:#f4f6f9;
+}
+
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+
+
+/* SIDEBAR */
+
+.sidebar{
+
+    width:260px;
+    background:#0f172a;
+    color:white;
+
+}
+
+
+.logo{
+
+    text-align:center;
+    padding:30px 20px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+
+}
+
+
+.logo h2{
+    color:#38bdf8;
+}
+
+
+.logo p{
+
+    color:#cbd5e1;
+    font-size:13px;
+
+}
+
+
+
+.menu a{
+
+    display:block;
+    padding:16px 25px;
+    color:white;
+    text-decoration:none;
+
+}
+
+
+.menu a:hover{
+
+    background:#1e293b;
+
+}
+
+
+.menu .active{
+
+    background:#2563eb;
+
+}
+
+
+
+
+
+/* CONTENT */
+
+
+.content{
+
+    flex:1;
+    padding:35px;
+
+}
+
+
+
+.content h1{
+
+    color:#1e293b;
+
+}
+
+
+
+.content p{
+
+    color:#64748b;
+    margin:10px 0 25px;
+
+}
+
+
+
+
+/* API CARDS */
+
+
+.api-card{
+
+    background:white;
+    padding:25px;
+    margin-bottom:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.api-card h2{
+
+    color:#2563eb;
+    margin-bottom:15px;
+
+}
+
+
+
+.endpoint{
+
+    background:#0f172a;
+    color:white;
+    padding:15px;
+    border-radius:8px;
+    margin:10px 0;
+    font-family:monospace;
+
+}
+
+
+
+.method{
+
+    padding:5px 10px;
+    border-radius:5px;
+    background:#16a34a;
+    color:white;
+
+}
+
+
+
+.method.post{
+
+    background:#2563eb;
+
+}
+
+
+
+.method.delete{
+
+    background:#dc2626;
+
+}
+
+
+
+pre{
+
+    background:#f1f5f9;
+    padding:15px;
+    border-radius:8px;
+    overflow:auto;
+
+}
+
+
+
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+
+}
+
+
+
+th{
+
+    background:#2563eb;
+    color:white;
+    padding:12px;
+    text-align:left;
+
+}
+
+
+
+td{
+
+    padding:12px;
+    border-bottom:1px solid #ddd;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+
+<!-- ================= SIDEBAR ================= -->
+
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+<h3>Management App v1.0</h3>
+
+<p>Vehicle Management System</p>
+
+</div>
+
+
+
+<nav class="menu">
+
+
+<a href="index.html">
+🏠 Dashboard
+</a>
+
+
+<a href="borrowers.html">
+👤 Borrowers
+</a>
+
+
+<a href="assets.html">
+🚚 Assets
+</a>
+
+
+<a href="loans.html">
+💳 Loans
+</a>
+
+
+<a href="payments.html">
+💰 Payments
+</a>
+
+
+<a href="reports.html">
+📊 Reports
+</a>
+
+
+<a href="admin.html">
+⚙️ Admin
+</a>
+
+
+<a href="api-docs.html" class="active">
+📘 API Docs
+</a>
+
+
+</nav>
+
+
+</aside>
+
+
+
+
+
+
+
+<!-- ================= CONTENT ================= -->
+
+
+<main class="content">
+
+
+<h1>📘 Fleet Finance API Documentation</h1>
+
+<p>
+REST API endpoints for fleet financing operations
+</p>
+
+
+
+
+
+
+
+<!-- AUTH -->
+
+
+<div class="api-card">
+
+
+<h2>🔐 Authentication API</h2>
+
+
+<div class="endpoint">
+
+<span class="method post">
+POST
+</span>
+
+/api/auth/login
+
+</div>
+
+
+
+<p>
+Authenticate users and generate access token.
+</p>
+
+
+
+<pre>
+
+{
+ "email":"admin@fleet.com",
+ "password":"password123"
+}
+
+</pre>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- BORROWERS -->
+
+
+<div class="api-card">
+
+
+<h2>👤 Borrowers API</h2>
+
+
+<div class="endpoint">
+
+<span class="method post">
+POST
+</span>
+
+/api/borrowers
+
+</div>
+
+
+
+<p>
+Create new driver borrower profile.
+</p>
+
+
+<pre>
+
+{
+"name":"John Doe",
+"phone":"+250700000000",
+"permit":"A123456",
+"location":"Kigali"
+}
+
+</pre>
+
+
+
+
+
+<div class="endpoint">
+
+<span class="method">
+GET
+</span>
+
+/api/borrowers
+
+</div>
+
+
+<p>
+Retrieve all borrowers.
+</p>
+
+
+
+<div class="endpoint">
+
+<span class="method delete">
+DELETE
+</span>
+
+/api/borrowers/{id}
+
+</div>
+
+
+<p>
+Remove borrower record.
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ASSETS -->
+
+
+<div class="api-card">
+
+
+<h2>🚚 Assets API</h2>
+
+
+
+<div class="endpoint">
+
+<span class="method post">
+POST
+</span>
+
+/api/assets
+
+</div>
+
+
+
+<p>
+Register vehicle asset.
+</p>
+
+
+
+<pre>
+
+{
+"type":"Truck",
+"plate":"RAB123A",
+"chassis":"VIN123456",
+"driver_id":1
+}
+
+</pre>
+
+
+
+
+<div class="endpoint">
+
+<span class="method">
+GET
+</span>
+
+/api/assets
+
+</div>
+
+
+
+<p>
+Get fleet vehicles.
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- LOANS -->
+
+
+<div class="api-card">
+
+
+<h2>💳 Loans API</h2>
+
+
+<div class="endpoint">
+
+<span class="method post">
+POST
+</span>
+
+/api/loans
+
+</div>
+
+
+<p>
+Create financing loan.
+</p>
+
+
+
+<pre>
+
+{
+"borrower_id":1,
+"principal":5000000,
+"period_months":36,
+"weekly_payment":50000
+}
+
+</pre>
+
+
+
+
+<div class="endpoint">
+
+<span class="method">
+GET
+</span>
+
+/api/loans/{id}
+
+</div>
+
+
+<p>
+Retrieve loan details.
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- PAYMENTS -->
+
+
+<div class="api-card">
+
+
+<h2>💰 Payments API</h2>
+
+
+
+<div class="endpoint">
+
+<span class="method post">
+POST
+</span>
+
+/api/payments
+
+</div>
+
+
+<p>
+Record repayment.
+</p>
+
+
+
+<pre>
+
+{
+"loan_id":1,
+"amount":50000,
+"method":"Mobile Money",
+"status":"Paid"
+}
+
+</pre>
+
+
+
+
+
+<div class="endpoint">
+
+<span class="method">
+GET
+</span>
+
+/api/payments/history/{loan_id}
+
+</div>
+
+
+<p>
+Get payment history.
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- REPORTS -->
+
+
+<div class="api-card">
+
+
+<h2>📊 Reports API</h2>
+
+
+
+<div class="endpoint">
+
+<span class="method">
+GET
+</span>
+
+/api/reports/portfolio
+
+</div>
+
+
+
+<p>
+Get total loan portfolio statistics.
+</p>
+
+
+
+
+<div class="endpoint">
+
+<span class="method">
+GET
+</span>
+
+/api/reports/collections
+
+</div>
+
+
+<p>
+Get payment collection reports.
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- USERS -->
+
+
+<div class="api-card">
+
+
+<h2>👥 Users API</h2>
+
+
+
+<table>
+
+
+<tr>
+
+<th>Method</th>
+
+<th>Endpoint</th>
+
+<th>Description</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>GET</td>
+
+<td>/api/users</td>
+
+<td>List users</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>POST</td>
+
+<td>/api/users</td>
+
+<td>Create user</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>PUT</td>
+
+<td>/api/users/{id}</td>
+
+<td>Update user</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- RESPONSE -->
+
+
+<div class="api-card">
+
+
+<h2>📦 Standard Response</h2>
+
+
+<pre>
+
+{
+ "success":true,
+ "message":"Operation completed",
+ "data":{}
+}
+
+</pre>
+
+
+</div>
+
+
+
+
+
+
+</main>
+
+
+
+</div>
+
+
+
+</body>
+
+
+</html>
