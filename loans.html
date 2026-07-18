@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Loans | Fleet Finance Management System</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Arial,sans-serif;
+}
+
+
+body{
+    background:#f4f6f9;
+}
+
+
+.container{
+
+    display:flex;
+    min-height:100vh;
+
+}
+
+
+/* LEFT SIDEBAR */
+
+.sidebar{
+
+    width:260px;
+    background:#0f172a;
+    color:white;
+
+}
+
+
+
+.logo{
+
+    text-align:center;
+    padding:30px 20px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+
+}
+
+
+
+.logo h2{
+
+    color:#38bdf8;
+
+}
+
+
+
+.logo p{
+
+    color:#cbd5e1;
+    font-size:13px;
+
+}
+
+
+
+.menu a{
+
+    display:block;
+    padding:16px 25px;
+    color:white;
+    text-decoration:none;
+
+}
+
+
+
+.menu a:hover{
+
+    background:#1e293b;
+
+}
+
+
+
+.menu .active{
+
+    background:#2563eb;
+
+}
+
+
+
+
+
+/* CONTENT */
+
+.content{
+
+    flex:1;
+    padding:35px;
+
+}
+
+
+
+.content h1{
+
+    color:#1e293b;
+
+}
+
+
+.content p{
+
+    color:#64748b;
+    margin:10px 0 25px;
+
+}
+
+
+
+
+
+/* FORM */
+
+.form-container{
+
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.section-title{
+
+    margin:25px 0 20px;
+    color:#2563eb;
+
+}
+
+
+
+.form-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+
+}
+
+
+
+label{
+
+    display:block;
+    font-weight:600;
+    margin-bottom:7px;
+
+}
+
+
+
+input,
+select,
+textarea{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+
+}
+
+
+
+.buttons{
+
+    margin-top:30px;
+
+}
+
+
+
+button{
+
+    padding:12px 25px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    margin-right:10px;
+
+}
+
+
+
+.save{
+
+    background:#2563eb;
+    color:white;
+
+}
+
+
+
+.reset{
+
+    background:#64748b;
+    color:white;
+
+}
+
+
+
+
+@media(max-width:900px){
+
+.form-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+
+<!-- ================= LEFT SIDEBAR ================= -->
+
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+<h2>🚚 Fleet Finance</h2>
+
+<p>Management System</p>
+
+</div>
+
+
+
+<nav class="menu">
+
+
+<a href="index.html">
+🏠 Dashboard
+</a>
+
+
+<a href="borrowers.html">
+👤 Borrowers
+</a>
+
+
+<a href="assets.html">
+🚚 Assets
+</a>
+
+
+<a href="loans.html" class="active">
+💳 Loans
+</a>
+
+
+<a href="payments.html">
+💰 Payments
+</a>
+
+
+<a href="reports.html">
+📊 Reports
+</a>
+
+
+<a href="admin.html">
+⚙️ Admin
+</a>
+
+
+<a href="api-docs.html">
+📘 API Docs
+</a>
+
+
+</nav>
+
+
+</aside>
+
+
+
+
+
+
+<!-- ================= RIGHT CONTENT ================= -->
+
+
+<main class="content">
+
+
+<h1>💳 Loan Management</h1>
+
+<p>
+Create and manage fleet financing loans
+</p>
+
+
+
+
+<form class="form-container">
+
+
+
+
+
+<!-- LOAN DETAILS -->
+
+
+<h2 class="section-title">
+💳 Loan Information
+</h2>
+
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Loan Reference Number</label>
+
+<input type="text" placeholder="LN-000001">
+
+</div>
+
+
+
+<div>
+
+<label>Loan Status</label>
+
+<select>
+
+<option>Pending Approval</option>
+
+<option>Approved</option>
+
+<option>Active</option>
+
+<option>Completed</option>
+
+<option>Defaulted</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>Borrower / Driver</label>
+
+<select>
+
+<option>Select Borrower</option>
+
+<option>John Doe</option>
+
+<option>ABC Transport</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>Vehicle Asset</label>
+
+<select>
+
+<option>Select Vehicle</option>
+
+<option>Mercedes Actros</option>
+
+<option>Volvo FH16</option>
+
+</select>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- CAPITAL -->
+
+
+<h2 class="section-title">
+💰 Capital / Principal Loan
+</h2>
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Principal Loan Amount</label>
+
+<input type="number" placeholder="Amount">
+
+</div>
+
+
+
+<div>
+
+<label>Currency</label>
+
+<select>
+
+<option>RWF</option>
+
+<option>USD</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>Down Payment</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Financed Amount</label>
+
+<input type="number">
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- TERMS -->
+
+
+<h2 class="section-title">
+⏳ Loan Term & Repayment Period
+</h2>
+
+
+
+<div class="form-grid">
+
+
+
+<div>
+
+<label>Loan Start Date</label>
+
+<input type="date">
+
+</div>
+
+
+
+<div>
+
+<label>Loan Completion Date</label>
+
+<input type="date">
+
+</div>
+
+
+
+<div>
+
+<label>Loan Period (Months)</label>
+
+<input type="number" placeholder="Example: 36">
+
+</div>
+
+
+
+<div>
+
+<label>Total Repayment Weeks</label>
+
+<input type="number" placeholder="Example: 156">
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- REPAYMENT -->
+
+
+<h2 class="section-title">
+📅 Weekly Repayment Schedule
+</h2>
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Weekly Repayment Amount</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Number of Weekly Installments</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>First Payment Date</label>
+
+<input type="date">
+
+</div>
+
+
+
+<div>
+
+<label>Payment Frequency</label>
+
+<select>
+
+<option>Weekly</option>
+
+<option>Bi-weekly</option>
+
+<option>Monthly</option>
+
+</select>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- INTEREST -->
+
+
+<h2 class="section-title">
+📈 Interest & Charges
+</h2>
+
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Interest Rate (%)</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Total Interest Amount</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Processing Fee</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Penalty Rate</label>
+
+<input type="number">
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- APPROVAL -->
+
+
+<h2 class="section-title">
+👨‍💼 Approval Information
+</h2>
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Approved By</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Approval Date</label>
+
+<input type="date">
+
+</div>
+
+
+
+<div>
+
+<label>Credit Officer</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Risk Category</label>
+
+
+<select>
+
+<option>Low</option>
+
+<option>Medium</option>
+
+<option>High</option>
+
+</select>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- DOCUMENTS -->
+
+
+<h2 class="section-title">
+📂 Loan Documents
+</h2>
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Signed Loan Agreement</label>
+
+<input type="file">
+
+</div>
+
+
+
+<div>
+
+<label>Guarantee Document</label>
+
+<input type="file">
+
+</div>
+
+
+
+<div>
+
+<label>Vehicle Valuation Report</label>
+
+<input type="file">
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- NOTES -->
+
+
+<h2 class="section-title">
+📝 Notes
+</h2>
+
+
+<textarea rows="5"
+placeholder="Additional loan information">
+</textarea>
+
+
+
+
+
+<div class="buttons">
+
+
+<button class="save">
+
+💾 Save Loan Details
+
+</button>
+
+
+<button class="reset">
+
+🔄 Reset
+
+</button>
+
+
+</div>
+
+
+
+</form>
+
+
+
+</main>
+
+
+
+</div>
+
+
+
+</body>
+
+
+</html>
