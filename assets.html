@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Assets | Vehicle Management System</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, Arial, sans-serif;
+}
+
+
+body{
+    background:#f4f6f9;
+}
+
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+
+
+/* LEFT SIDEBAR */
+
+.sidebar{
+
+    width:260px;
+    background:#0f172a;
+    color:white;
+
+}
+
+
+.logo{
+
+    text-align:center;
+    padding:30px 20px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+
+}
+
+
+.logo h2{
+
+    color:#38bdf8;
+
+}
+
+
+.logo p{
+
+    color:#cbd5e1;
+    font-size:13px;
+
+}
+
+
+
+.menu a{
+
+    display:block;
+    padding:16px 25px;
+    color:white;
+    text-decoration:none;
+
+}
+
+
+
+.menu a:hover{
+
+    background:#1e293b;
+
+}
+
+
+
+.menu .active{
+
+    background:#2563eb;
+
+}
+
+
+
+
+
+/* CONTENT */
+
+
+.content{
+
+    flex:1;
+    padding:35px;
+
+}
+
+
+.content h1{
+
+    color:#1e293b;
+
+}
+
+
+
+.content p{
+
+    color:#64748b;
+    margin:10px 0 25px;
+
+}
+
+
+
+
+
+/* FORM */
+
+
+.form-container{
+
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+h2.section-title{
+
+    margin:25px 0;
+    color:#2563eb;
+
+}
+
+
+
+.form-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+
+}
+
+
+
+label{
+
+    display:block;
+    font-weight:600;
+    margin-bottom:7px;
+
+}
+
+
+
+input,
+select,
+textarea{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+
+}
+
+
+
+button{
+
+    margin-top:25px;
+    padding:12px 25px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+
+}
+
+
+
+.save{
+
+    background:#2563eb;
+    color:white;
+
+}
+
+
+
+.reset{
+
+    background:#64748b;
+    color:white;
+
+}
+
+
+
+@media(max-width:900px){
+
+.form-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="container">
+
+
+
+<!-- LEFT SIDEBAR -->
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+<h3>Management App v1.0</h3>
+
+<p>Vehicle Management System</p>
+
+</div>
+
+
+
+<nav class="menu">
+
+
+<a href="index.html">
+🏠 Dashboard
+</a>
+
+
+<a href="borrowers.html">
+👤 Borrowers
+</a>
+
+
+<a href="assets.html" class="active">
+🚚 Assets
+</a>
+
+
+<a href="loans.html">
+💳 Loans
+</a>
+
+
+<a href="payments.html">
+💰 Payments
+</a>
+
+
+<a href="reports.html">
+📊 Reports
+</a>
+
+
+<a href="admin.html">
+⚙️ Admin
+</a>
+
+
+<a href="api-docs.html">
+📘 API Docs
+</a>
+
+
+</nav>
+
+
+</aside>
+
+
+
+
+
+
+<!-- RIGHT CONTENT -->
+
+
+
+<main class="content">
+
+
+<h1>🚚 Vehicle Registration</h1>
+
+<p>
+Register vehicles using this form
+</p>
+
+
+
+<form class="form-container">
+
+
+
+
+
+<h2 class="section-title">
+🚛 Vehicle Information
+</h2>
+
+
+
+<div class="form-grid">
+
+
+
+<div>
+
+<label>Vehicle Type</label>
+
+<select>
+
+<option>Truck</option>
+<option>Bus</option>
+<option>Taxi</option>
+<option>Motorcycle</option>
+<option>Trailer</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>Vehicle Make</label>
+
+<input type="text" placeholder="Toyota, Volvo, Scania">
+
+</div>
+
+
+
+<div>
+
+<label>Vehicle Model</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Manufacturing Year</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Color</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Fuel Type</label>
+
+<select>
+
+<option>Diesel</option>
+<option>Petrol</option>
+<option>Electric</option>
+
+</select>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<h2 class="section-title">
+🔢 Identification Details
+</h2>
+
+
+<div class="form-grid">
+
+
+
+<div>
+
+<label>Registration Number</label>
+
+<input type="text" placeholder="RAB 123 A">
+
+</div>
+
+
+
+<div>
+
+<label>Chassis Number / VIN</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Engine Number</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Engine Capacity</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Number of Seats</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Load Capacity (Tonnes)</label>
+
+<input type="number">
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<h2 class="section-title">
+🟨 Yellow Card / Registration
+</h2>
+
+
+<div class="form-grid">
+
+
+
+<div>
+
+<label>Yellow Card Number</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Issue Date</label>
+
+<input type="date">
+
+</div>
+
+
+
+<div>
+
+<label>Expiry Date</label>
+
+<input type="date">
+
+</div>
+
+
+
+<div>
+
+<label>Issuing Authority</label>
+
+<input type="text">
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<h2 class="section-title">
+👤 Driver Assignment
+</h2>
+
+
+<div class="form-grid">
+
+
+
+<div>
+
+<label>Assigned Driver</label>
+
+<select>
+
+<option>Select Driver</option>
+
+<option>John Doe</option>
+
+<option>Peter Smith</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>Driver Permit Number</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Driver Phone</label>
+
+<input type="tel">
+
+</div>
+
+
+
+<div>
+
+<label>Assignment Date</label>
+
+<input type="date">
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<h2 class="section-title">
+🛡 Insurance Information
+</h2>
+
+
+<div class="form-grid">
+
+
+
+<div>
+
+<label>Insurance Company</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Policy Number</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Insurance Start Date</label>
+
+<input type="date">
+
+</div>
+
+
+
+<div>
+
+<label>Insurance Expiry Date</label>
+
+<input type="date">
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<h2 class="section-title">
+📍 Location & Tracking
+</h2>
+
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Current Location</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>GPS Device ID</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Operating Route</label>
+
+<input type="text">
+
+</div>
+
+
+
+<div>
+
+<label>Fleet Status</label>
+
+<select>
+
+<option>Active</option>
+
+<option>Maintenance</option>
+
+<option>Inactive</option>
+
+</select>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<h2 class="section-title">
+💰 Financial Information
+</h2>
+
+
+<div class="form-grid">
+
+
+
+<div>
+
+<label>Purchase Value</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Current Market Value</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Financed Amount</label>
+
+<input type="number">
+
+</div>
+
+
+
+<div>
+
+<label>Loan Reference</label>
+
+<input type="text">
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<h2 class="section-title">
+📂 Documents Upload
+</h2>
+
+
+
+<div class="form-grid">
+
+
+
+<div>
+
+<label>Vehicle Photo</label>
+
+<input type="file">
+
+</div>
+
+
+
+<div>
+
+<label>Yellow Card Copy</label>
+
+<input type="file">
+
+</div>
+
+
+
+<div>
+
+<label>Insurance Certificate</label>
+
+<input type="file">
+
+</div>
+
+
+
+<div>
+
+<label>Inspection Certificate</label>
+
+<input type="file">
+
+</div>
+
+
+</div>
+
+
+
+
+
+<button class="save">
+
+💾 Add Vehicle
+
+</button>
+
+
+
+<button class="reset">
+
+🔄 Reset
+
+</button>
+
+
+
+
+</form>
+
+
+
+</main>
+
+
+
+</div>
+
+
+
+</body>
+
+
+</html>
