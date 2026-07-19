@@ -43,25 +43,55 @@ body{
 }
 
 
+/* ================= LOGO ================= */
+
 .logo{
-
     text-align:center;
-    padding:30px 20px;
-    border-bottom:1px solid rgba(255,255,255,.1);
-
+    padding:30px 15px;
+    border-bottom:1px solid #334155;
 }
 
+/* Make the whole logo clickable */
 
-.logo h2{
+.logo-link{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    cursor:pointer;
+}
+
+.logo-link:link,
+.logo-link:visited,
+.logo-link:hover,
+.logo-link:active{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* Title */
+
+.logo-link h3{
+    margin:0;
     color:#38bdf8;
+    font-size:22px;
+    font-weight:700;
+    text-decoration:none;
+    transition:color .3s ease;
 }
 
+/* Subtitle */
 
-.logo p{
-
+.logo-link p{
+    margin-top:6px;
     color:#cbd5e1;
     font-size:13px;
+    text-decoration:none;
+}
 
+/* Hover effect */
+
+.logo-link:hover h3{
+    color:#60a5fa;
 }
 
 
@@ -330,11 +360,10 @@ grid-template-columns:1fr;
 
 
 <div class="logo">
-
-<h2>Management App v1.0</h2>
-
-<p>Vehicle Management System</p>
-
+    <a href="index.html" class="logo-link">
+        <h3>Mobility App</h3>
+        <p>Vehicle Management Tool v1.0</p>
+    </a>
 </div>
 
 
@@ -399,14 +428,12 @@ grid-template-columns:1fr;
 <main class="content">
 
 
-<h1>📊 Vehicle Management Reports</h1>
+<h1>📊 Reports</h1>
 
 
 <p>
 Analyze loans, payments, assets and business performance
 </p>
-
-
 
 
 
@@ -572,7 +599,7 @@ Analyze loans, payments, assets and business performance
 
 <tr>
 
-<th>Borrower</th>
+<th>Driver</th>
 
 <th>Vehicle</th>
 
@@ -588,13 +615,13 @@ Analyze loans, payments, assets and business performance
 
 <tr>
 
-<td>ABC Transport</td>
+<td>Bin Karim</td>
 
-<td>Mercedes Actros</td>
+<td>Wylex</td>
 
-<td>$80,000</td>
+<td>RWF 800,000</td>
 
-<td>$45,000</td>
+<td>RWF 400,000</td>
 
 <td>Active</td>
 
@@ -604,15 +631,15 @@ Analyze loans, payments, assets and business performance
 
 <tr>
 
-<td>Fast Logistics</td>
+<td>Green Person</td>
 
-<td>Volvo FH16</td>
+<td>Spiro</td>
 
-<td>$100,000</td>
+<td>RWF 1,000,000</td>
 
-<td>$20,000</td>
+<td>RWF 200,000</td>
 
-<td>Active</td>
+<td>Defaulted</td>
 
 </tr>
 
@@ -621,11 +648,6 @@ Analyze loans, payments, assets and business performance
 
 
 </section>
-
-
-
-
-
 
 
 
@@ -650,7 +672,7 @@ Analyze loans, payments, assets and business performance
 
 <th>Date</th>
 
-<th>Borrower</th>
+<th>Driver</th>
 
 <th>Amount Paid</th>
 
@@ -664,9 +686,9 @@ Analyze loans, payments, assets and business performance
 
 <td>2026-07-01</td>
 
-<td>John Doe</td>
+<td>Keke Bandeko</td>
 
-<td>$500</td>
+<td>RWF 30,000</td>
 
 <td>Paid</td>
 
@@ -678,9 +700,9 @@ Analyze loans, payments, assets and business performance
 
 <td>2026-07-08</td>
 
-<td>ABC Transport</td>
+<td>Bruce Guy</td>
 
-<td>$500</td>
+<td>RWF 30,000</td>
 
 <td>Late</td>
 
@@ -691,8 +713,6 @@ Analyze loans, payments, assets and business performance
 
 
 </section>
-
-
 
 
 
@@ -723,7 +743,7 @@ Analyze loans, payments, assets and business performance
 
 <th>Status</th>
 
-<th>Loan</th>
+<th>Loan Id</th>
 
 </tr>
 
@@ -731,9 +751,9 @@ Analyze loans, payments, assets and business performance
 
 <tr>
 
-<td>Volvo FH16</td>
+<td>Wylex</td>
 
-<td>John Doe</td>
+<td>Jojo Owena</td>
 
 <td>Active</td>
 
