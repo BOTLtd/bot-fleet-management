@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Loans | Vehicle Management System</title>
+<title>Loans | Vehicle Management Tool v1.0</title>
 
 
 <style>
@@ -43,32 +43,56 @@ body{
 }
 
 
+/* ================= LOGO ================= */
 
 .logo{
-
     text-align:center;
-    padding:30px 20px;
-    border-bottom:1px solid rgba(255,255,255,.1);
-
+    padding:30px 15px;
+    border-bottom:1px solid #334155;
 }
 
+/* Make the whole logo clickable */
 
+.logo-link{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    cursor:pointer;
+}
 
-.logo h2{
+.logo-link:link,
+.logo-link:visited,
+.logo-link:hover,
+.logo-link:active{
+    text-decoration:none;
+    color:inherit;
+}
 
+/* Title */
+
+.logo-link h3{
+    margin:0;
     color:#38bdf8;
-
+    font-size:22px;
+    font-weight:700;
+    text-decoration:none;
+    transition:color .3s ease;
 }
 
+/* Subtitle */
 
-
-.logo p{
-
+.logo-link p{
+    margin-top:6px;
     color:#cbd5e1;
     font-size:13px;
-
+    text-decoration:none;
 }
 
+/* Hover effect */
+
+.logo-link:hover h3{
+    color:#60a5fa;
+}
 
 
 .menu a{
@@ -254,11 +278,10 @@ grid-template-columns:1fr;
 
 
 <div class="logo">
-
-<h2>Management App v1.0</h2>
-
-<p>Vehicle Management System</p>
-
+    <a href="index.html" class="logo-link">
+        <h3>Mobility App</h3>
+        <p>Vehicle Management Tool v1.0</p>
+    </a>
 </div>
 
 
@@ -314,20 +337,17 @@ grid-template-columns:1fr;
 
 
 
-
-
 <!-- ================= RIGHT CONTENT ================= -->
 
 
 <main class="content">
 
 
-<h1>💳 Loan Management</h1>
+<h1>💳 Loans</h1>
 
 <p>
-Create and manage fleet financing loans
+Create and manage driver / vehicle loans
 </p>
-
 
 
 
@@ -383,9 +403,11 @@ Create and manage fleet financing loans
 
 <div>
 
-<label>Borrower / Driver</label>
+<label>Driver Name</label>
 
-<select>
+<input type="text" placeholder="Enter full name">
+
+<!-- <select>
 
 <option>Select Borrower</option>
 
@@ -393,7 +415,7 @@ Create and manage fleet financing loans
 
 <option>ABC Transport</option>
 
-</select>
+</select> -->
 
 </div>
 
@@ -401,28 +423,22 @@ Create and manage fleet financing loans
 
 <div>
 
-<label>Vehicle Asset</label>
+<label>Vehicle Brand</label>
 
 <select>
 
 <option>Select Vehicle</option>
 
-<option>Mercedes Actros</option>
-
-<option>Volvo FH16</option>
+<option>Wylex</option>
+<option>Spiro</option>
+<!-- <option>Other</option> -->
 
 </select>
 
 </div>
 
 
-
 </div>
-
-
-
-
-
 
 
 
@@ -463,93 +479,25 @@ Create and manage fleet financing loans
 
 
 
-<div>
+<!-- <div>
 
 <label>Down Payment</label>
 
 <input type="number">
 
-</div>
+</div> -->
 
 
 
-<div>
+<!-- <div>
 
 <label>Financed Amount</label>
 
 <input type="number">
 
-</div>
-
-
+</div> -->
 
 </div>
-
-
-
-
-
-
-
-
-<!-- TERMS -->
-
-
-<h2 class="section-title">
-⏳ Loan Term & Repayment Period
-</h2>
-
-
-
-<div class="form-grid">
-
-
-
-<div>
-
-<label>Loan Start Date</label>
-
-<input type="date">
-
-</div>
-
-
-
-<div>
-
-<label>Loan Completion Date</label>
-
-<input type="date">
-
-</div>
-
-
-
-<div>
-
-<label>Loan Period (Months)</label>
-
-<input type="number" placeholder="Example: 36">
-
-</div>
-
-
-
-<div>
-
-<label>Total Repayment Weeks</label>
-
-<input type="number" placeholder="Example: 156">
-
-</div>
-
-
-</div>
-
-
-
-
-
 
 
 
@@ -611,21 +559,67 @@ Create and manage fleet financing loans
 </div>
 
 
+</div>
+
+
+<!-- TERMS -->
+
+
+<h2 class="section-title">
+⏳ Loan Term & Repayment Period
+</h2>
+
+<div class="form-grid">
+
+
+<div>
+
+<label>Loan Start Date</label>
+
+<input type="date">
 
 </div>
 
 
 
+<div>
+
+<label>Loan Completion Date</label>
+
+<input type="date">
+
+</div>
 
 
+
+<div>
+
+<label>Loan Period (Months)</label>
+
+<input type="number" placeholder="Example: 36">
+
+</div>
+
+
+
+<div>
+
+<label>Total Repayment Weeks</label>
+
+<input type="number" placeholder="Example: 156">
+
+</div>
+
+
+</div>
 
 
 
 <!-- INTEREST -->
 
-
 <h2 class="section-title">
-📈 Interest & Charges
+📈 Interest 
+<!-- Interest & Charges -->
 </h2>
 
 
@@ -653,31 +647,26 @@ Create and manage fleet financing loans
 
 
 
-<div>
+<!-- <div>
 
 <label>Processing Fee</label>
 
 <input type="number">
 
-</div>
+</div> -->
 
 
 
-<div>
+<!-- <div>
 
 <label>Penalty Rate</label>
 
 <input type="number">
 
-</div>
+</div> -->
 
 
 </div>
-
-
-
-
-
 
 
 
@@ -712,17 +701,17 @@ Create and manage fleet financing loans
 
 
 
-<div>
+<!-- <div>
 
 <label>Credit Officer</label>
 
 <input type="text">
 
-</div>
+</div> -->
 
 
 
-<div>
+<!-- <div>
 
 <label>Risk Category</label>
 
@@ -738,15 +727,10 @@ Create and manage fleet financing loans
 </select>
 
 
-</div>
+</div> -->
 
 
 </div>
-
-
-
-
-
 
 
 
@@ -781,22 +765,16 @@ Create and manage fleet financing loans
 
 
 
-<div>
+<!-- <div>
 
 <label>Vehicle Valuation Report</label>
 
 <input type="file">
 
-</div>
+</div> -->
 
 
 </div>
-
-
-
-
-
-
 
 
 <!-- NOTES -->
