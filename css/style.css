@@ -1,6 +1,6 @@
 /* =====================================
-KING SERVICES & TRANSPORT
-Fleet Finance Shared Styles
+Mobility App
+Vehicle Management Tool Shared Styles
 ===================================== */
 
 
@@ -43,31 +43,56 @@ body{
 
 }
 
+/* ================= LOGO ================= */
 
 .logo{
-
     text-align:center;
     padding:30px 15px;
     border-bottom:1px solid #334155;
-
 }
 
+/* Make the whole logo clickable */
 
-.logo h2{
+.logo-link{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    cursor:pointer;
+}
 
+.logo-link:link,
+.logo-link:visited,
+.logo-link:hover,
+.logo-link:active{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* Title */
+
+.logo-link h3{
+    margin:0;
     color:#38bdf8;
-
+    font-size:22px;
+    font-weight:700;
+    text-decoration:none;
+    transition:color .3s ease;
 }
 
+/* Subtitle */
 
-.logo p{
-
+.logo-link p{
+    margin-top:6px;
     color:#cbd5e1;
     font-size:13px;
-
+    text-decoration:none;
 }
 
+/* Hover effect */
 
+.logo-link:hover h3{
+    color:#60a5fa;
+}
 
 .menu a{
 
