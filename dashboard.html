@@ -1044,6 +1044,194 @@ charts.break.update();
 calculate();
 
 
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+// ================================
+// Weekly Cash Flow
+// ================================
+
+new Chart(document.getElementById("cashChart"), {
+
+    type: "line",
+
+    data: {
+
+        labels: [
+            "Week 1",
+            "Week 2",
+            "Week 3",
+            "Week 4",
+            "Week 5",
+            "Week 6",
+            "Week 7",
+            "Week 8"
+        ],
+
+        datasets: [{
+            label: "Cash Flow (RWF)",
+            data: [
+                1500000,
+                1750000,
+                2100000,
+                2350000,
+                2600000,
+                2850000,
+                3200000,
+                3500000
+            ],
+            borderColor: "#2563eb",
+            backgroundColor: "rgba(37,99,235,0.15)",
+            fill: true,
+            tension: 0.4
+        }]
+
+    }
+
+});
+
+
+// ================================
+// Investor Returns
+// ================================
+
+new Chart(document.getElementById("investorChart"), {
+
+    type: "bar",
+
+    data: {
+
+        labels: [
+            "Investor A",
+            "Investor B",
+            "Investor C",
+            "Investor D"
+        ],
+
+        datasets: [{
+
+            label: "Profit (RWF)",
+
+            data: [
+                2500000,
+                1800000,
+                3200000,
+                2100000
+            ],
+
+            backgroundColor: [
+                "#2563eb",
+                "#3b82f6",
+                "#60a5fa",
+                "#93c5fd"
+            ]
+
+        }]
+
+    }
+
+});
+
+
+// ================================
+// Company Returns
+// ================================
+
+new Chart(document.getElementById("companyChart"), {
+
+    type: "doughnut",
+
+    data: {
+
+        labels: [
+            "Operations",
+            "Profit",
+            "Maintenance",
+            "Reserve"
+        ],
+
+        datasets: [{
+
+            data: [
+                40,
+                30,
+                20,
+                10
+            ],
+
+            backgroundColor: [
+                "#2563eb",
+                "#16a34a",
+                "#f59e0b",
+                "#dc2626"
+            ]
+
+        }]
+
+    }
+
+});
+
+
+// ================================
+// Break-even Analysis
+// ================================
+
+new Chart(document.getElementById("breakChart"), {
+
+    type: "line",
+
+    data: {
+
+        labels: [
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40"
+        ],
+
+        datasets: [
+
+            {
+                label: "Investment Recovery",
+
+                data: [
+                    0,
+                    15,
+                    28,
+                    42,
+                    58,
+                    72,
+                    86,
+                    95,
+                    100
+                ],
+
+                borderColor: "#16a34a",
+
+                backgroundColor: "rgba(22,163,74,.15)",
+
+                fill: true,
+
+                tension: 0.4
+            }
+
+        ]
+
+    }
+
+});
+
+</script>
+    
+
 </script>
 
 
