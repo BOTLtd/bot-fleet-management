@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KING Services & Transport | Fleet Financing Dashboard</title>
+<title> Home | Vehicle Management Tool v1.0</title>
 
 
 <style>
@@ -48,40 +48,55 @@ body{
 
 
 /* Logo */
-
+/* ================= LOGO ================= */
 
 .logo{
-
-    padding:30px 20px;
     text-align:center;
-    border-bottom:
-    1px solid rgba(255,255,255,0.1);
-
+    padding:30px 15px;
+    border-bottom:1px solid #334155;
 }
 
+/* Make the whole logo clickable */
 
-.logo h1{
+.logo-link{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    cursor:pointer;
+}
 
-    font-size:22px;
+.logo-link:link,
+.logo-link:visited,
+.logo-link:hover,
+.logo-link:active{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* Title */
+
+.logo-link h3{
+    margin:0;
     color:#38bdf8;
-
-}
-
-
-.logo h3{
-
-    color:#38bdf8;
     font-size:22px;
-
+    font-weight:700;
+    text-decoration:none;
+    transition:color .3s ease;
 }
 
+/* Subtitle */
 
-.logo p{
-
-    font-size:13px;
-    color:#cbd5e1;
+.logo-link p{
     margin-top:6px;
+    color:#cbd5e1;
+    font-size:13px;
+    text-decoration:none;
+}
 
+/* Hover effect */
+
+.logo-link:hover h3{
+    color:#60a5fa;
 }
 
 
@@ -334,24 +349,19 @@ grid-template-columns:1fr;
 
 <aside class="sidebar">
 
-
 <div class="logo">
-
-<h3>Management App v1.0</h3>
-
-<p>
-Vehicle Management System
-</p>
-
+    <a href="index.html" class="logo-link">
+        <h3>Mobility App</h3>
+        <p>Vehicle Management Tool v1.0</p>
+    </a>
 </div>
-
-
 
 
 <nav class="menu">
 
 
-<a href="dashboard.html" class="active">
+<!-- <a href="dashboard.html" class="active"> -->
+<a href="dashboard.html">
 
 🏠 Dashboard
 
@@ -398,13 +408,6 @@ Vehicle Management System
 
 
 
-<a href="api-docs.html">
-
-📘 API Docs
-
-</a>
-
-
 
 <a href="admin.html">
 
@@ -413,19 +416,16 @@ Vehicle Management System
 </a>
 
 
+<a href="api-docs.html">
+
+📘 API Docs
+
+</a>
 
 </nav>
 
 
 </aside>
-
-
-
-
-
-
-
-
 
 <!-- ================= RIGHT DASHBOARD ================= -->
 
@@ -439,16 +439,16 @@ Vehicle Management System
 <section class="welcome-banner">
 
 
-<h2>
+<h1>
 
-👋 Welcome to KING Services & Transport
+👋 Welcome to Mobility App
 
-</h2>
+</h1>
 
 
 <p>
 
-Your complete fleet financing and investment management platform.
+Your complete vehicle management platform.
 Manage drivers, monitor vehicles, track loan repayments,
 analyze investor returns, and grow your transport business
 through smart data-driven decisions.
@@ -479,7 +479,7 @@ through smart data-driven decisions.
 <p>
 
 Manage vehicles, registration details,
-GPS tracking, ownership and operational status.
+ownership and operational status.
 
 </p>
 
