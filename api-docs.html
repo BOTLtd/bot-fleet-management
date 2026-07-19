@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>API Docs | Vehicle Management System</title>
+<title>API Docs | Vehicle Management Tool v1.0</title>
 
 
 <style>
@@ -42,27 +42,56 @@ body{
 }
 
 
+/* ================= LOGO ================= */
+
 .logo{
-
     text-align:center;
-    padding:30px 20px;
-    border-bottom:1px solid rgba(255,255,255,.1);
-
+    padding:30px 15px;
+    border-bottom:1px solid #334155;
 }
 
+/* Make the whole logo clickable */
 
-.logo h2{
+.logo-link{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    cursor:pointer;
+}
+
+.logo-link:link,
+.logo-link:visited,
+.logo-link:hover,
+.logo-link:active{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* Title */
+
+.logo-link h3{
+    margin:0;
     color:#38bdf8;
+    font-size:22px;
+    font-weight:700;
+    text-decoration:none;
+    transition:color .3s ease;
 }
 
+/* Subtitle */
 
-.logo p{
-
+.logo-link p{
+    margin-top:6px;
     color:#cbd5e1;
     font-size:13px;
-
+    text-decoration:none;
 }
 
+/* Hover effect */
+
+.logo-link:hover h3{
+    color:#60a5fa;
+}
 
 
 .menu a{
@@ -247,13 +276,11 @@ td{
 
 
 <div class="logo">
-
-<h3>Management App v1.0</h3>
-
-<p>Vehicle Management System</p>
-
+    <a href="index.html" class="logo-link">
+        <h3>Mobility App</h3>
+        <p>Vehicle Management Tool v1.0</p>
+    </a>
 </div>
-
 
 
 <nav class="menu">
@@ -316,10 +343,10 @@ td{
 <main class="content">
 
 
-<h1>📘 Fleet Finance API Documentation</h1>
+<h1>📘 API Documentation</h1>
 
 <p>
-REST API endpoints for fleet financing operations
+REST API endpoints for vehicle management operations
 </p>
 
 
@@ -358,7 +385,7 @@ Authenticate users and generate access token.
 <pre>
 
 {
- "email":"admin@fleet.com",
+ "email":"admin@mobilityapp.com",
  "password":"password123"
 }
 
@@ -366,11 +393,6 @@ Authenticate users and generate access token.
 
 
 </div>
-
-
-
-
-
 
 
 
@@ -405,7 +427,7 @@ Create new driver borrower profile.
 <pre>
 
 {
-"name":"John Doe",
+"name":"Jaja Luku",
 "phone":"+250700000000",
 "permit":"A123456",
 "location":"Kigali"
@@ -455,12 +477,6 @@ Remove borrower record.
 
 
 
-
-
-
-
-
-
 <!-- ASSETS -->
 
 
@@ -492,8 +508,8 @@ Register vehicle asset.
 <pre>
 
 {
-"type":"Truck",
-"plate":"RAB123A",
+"type":"Wylex",
+"plate":"RB123A",
 "chassis":"VIN123456",
 "driver_id":1
 }
@@ -516,7 +532,7 @@ GET
 
 
 <p>
-Get fleet vehicles.
+Get vehicles.
 </p>
 
 
@@ -552,7 +568,7 @@ POST
 
 
 <p>
-Create financing loan.
+Create loan.
 </p>
 
 
@@ -713,10 +729,6 @@ Get payment collection reports.
 
 
 </div>
-
-
-
-
 
 
 
