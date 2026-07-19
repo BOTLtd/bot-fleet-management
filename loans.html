@@ -121,7 +121,160 @@ body{
 }
 
 
+/* =============================
+   RESPONSIVE DESIGN
+============================= */
 
+/* Tablets */
+
+@media (max-width: 992px){
+
+    .sidebar{
+        width:220px;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+    .features{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+
+/* Phones */
+
+@media (max-width:768px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+
+        width:100%;
+        height:auto;
+
+    }
+
+    .logo{
+
+        padding:20px;
+
+    }
+
+    .logo-link h3{
+
+        font-size:20px;
+
+    }
+
+    .logo-link p{
+
+        font-size:12px;
+
+    }
+
+    .menu{
+
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        margin:0;
+    }
+
+    .menu a{
+
+        flex:1 1 45%;
+        text-align:center;
+        padding:15px;
+        font-size:15px;
+
+    }
+
+    .content{
+
+        padding:15px;
+
+    }
+
+    .welcome-banner{
+
+        padding:25px;
+
+    }
+
+    .welcome-banner h2{
+
+        font-size:22px;
+
+    }
+
+    .welcome-banner p{
+
+        font-size:14px;
+
+    }
+
+    .features{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .cards{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+/* Small Phones */
+
+@media (max-width:480px){
+
+    .menu{
+
+        display:block;
+
+    }
+
+    .menu a{
+
+        width:100%;
+        text-align:left;
+        padding:15px 20px;
+        font-size:14px;
+
+    }
+
+    .logo-link h3{
+
+        font-size:18px;
+
+    }
+
+    .welcome-banner h2{
+
+        font-size:20px;
+
+    }
+
+}
 
 
 /* CONTENT */
