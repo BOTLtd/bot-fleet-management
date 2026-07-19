@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Borrowers | Vehicle Management System</title>
+<title>Borrowers | Vehicle Management Tool v1.0</title>
 
 <style>
 
@@ -45,29 +45,55 @@ body{
 
 
 
+/* ================= LOGO ================= */
+
 .logo{
-
     text-align:center;
-    padding:30px 20px;
-    border-bottom:1px solid rgba(255,255,255,0.1);
-
+    padding:30px 15px;
+    border-bottom:1px solid #334155;
 }
 
+/* Make the whole logo clickable */
 
-.logo h2{
+.logo-link{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    cursor:pointer;
+}
 
+.logo-link:link,
+.logo-link:visited,
+.logo-link:hover,
+.logo-link:active{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* Title */
+
+.logo-link h3{
+    margin:0;
     color:#38bdf8;
     font-size:22px;
-
+    font-weight:700;
+    text-decoration:none;
+    transition:color .3s ease;
 }
 
+/* Subtitle */
 
-.logo p{
-
+.logo-link p{
+    margin-top:6px;
     color:#cbd5e1;
     font-size:13px;
-    margin-top:5px;
+    text-decoration:none;
+}
 
+/* Hover effect */
+
+.logo-link:hover h3{
+    color:#60a5fa;
 }
 
 
@@ -300,10 +326,11 @@ button[type="reset"]{
 
 <div class="logo">
 
-<h3>Management App v1.0</h3>
-
-<p>Vehicle Management System</p>
-
+<div class="logo">
+    <a href="index.html" class="logo-link">
+        <h3>Mobility App</h3>
+        <p>Vehicle Management Tool v1.0</p>
+    </a>
 </div>
 
 
@@ -474,7 +501,13 @@ Register drivers using this form
 
 </div>
 
+<!-- <div>
 
+<label>National Id Upload</label>
+
+<input type="file">
+
+</div> -->
 
 <div>
 
@@ -574,21 +607,18 @@ Register drivers using this form
 
 
 
-<div>
+<!-- <div>
 
 <label>Driver Status</label>
 
 <select>
-
+<option>Pending</option>
 <option>Active</option>
-
 <option>Inactive</option>
-
 <option>Suspended</option>
-
 </select>
 
-</div>
+</div> -->
 
 
 
@@ -609,7 +639,7 @@ Register drivers using this form
 
 
 
-<!-- EMPLOYMENT -->
+<!-- EMPLOYMENT
 
 
 <h2>🏢 Employment Details</h2>
@@ -658,7 +688,7 @@ Register drivers using this form
 
 
 
-</div>
+</div> -->
 
 
 
@@ -668,7 +698,7 @@ Register drivers using this form
 <!-- FINANCE -->
 
 
-<h2>💳 Financing Profile</h2>
+<h2>💳 Financing Details</h2>
 
 
 <div class="form-grid">
@@ -687,7 +717,7 @@ Register drivers using this form
 
 <div>
 
-<label>Preferred Vehicle</label>
+<label>Preferred Vehicle Brand</label>
 
 <input type="text">
 
