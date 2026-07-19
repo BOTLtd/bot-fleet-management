@@ -768,469 +768,236 @@ Investment calculator and profitability analysis
 
 
 
-
-
-
 <script>
 
+// =============================
+// Fleet Finance Dashboard
+// =============================
 
-const ids=[
-
-"bikes",
-"cost",
-"down",
-"finance",
-"interest",
-"months",
-"investorShare",
-"companyShare",
-"weeklyRevenue"
-
+const inputs = [
+    "bikes",
+    "cost",
+    "down",
+    "finance",
+    "interest",
+    "months",
+    "investorShare",
+    "companyShare",
+    "weeklyRevenue"
 ];
 
+inputs.forEach(id => {
+    document.getElementById(id).addEventListener("input", calculate);
+});
 
-ids.forEach(id=>{
+function money(value){
+    return new Intl.NumberFormat("en-RW",{
+        style:"currency",
+        currency:"RWF",
+        maximumFractionDigits:0
+    }).format(value);
+}
 
-document.getElementById(id)
-.addEventListener("input",calculate);
+function percent(value){
+    return Number(value).toFixed(2) + "%";
+}
+
+
+// =====================================
+// Create Charts (Only Once)
+// =====================================
+
+const cashChart = new Chart(document.getElementById("cashChart"),{
+
+    type:"line",
+
+    data:{
+        labels:["Week 1","Week 2","Week 3","Week 4"],
+        datasets:[{
+            label:"Weekly Cash Flow",
+            data:[0,0,0,0],
+            borderColor:"#2563eb",
+            backgroundColor:"rgba(37,99,235,.15)",
+            fill:true,
+            tension:.4
+        }]
+    }
+
+});
+
+
+const investorChart = new Chart(document.getElementById("investorChart"),{
+
+    type:"bar",
+
+    data:{
+        labels:["Investor"],
+        datasets:[{
+            label:"Profit",
+            data:[0],
+            backgroundColor:"#16a34a"
+        }]
+    }
+
+});
+
+
+const companyChart = new Chart(document.getElementById("companyChart"),{
+
+    type:"bar",
+
+    data:{
+        labels:["Company"],
+        datasets:[{
+            label:"Profit",
+            data:[0],
+            backgroundColor:"#2563eb"
+        }]
+    }
+
+});
+
+
+const breakChart = new Chart(document.getElementById("breakChart"),{
+
+    type:"line",
+
+    data:{
+        labels:["0","25%","50%","75%","100%"],
+        datasets:[{
+            label:"Break-even",
+            data:[0,25,50,75,100],
+            borderColor:"#f59e0b",
+            backgroundColor:"rgba(245,158,11,.15)",
+            fill:true,
+            tension:.4
+        }]
+    }
 
 });
 
 
 
-function money(value){
-
-return new Intl.NumberFormat(
-"en-RW",
-{
-style:"currency",
-currency:"RWF",
-maximumFractionDigits:0
-}
-).format(value);
-
-}
-
-
-
-function percent(value){
-
-return value.toFixed(2)+"%";
-
-}
-
-
-
-
+// =====================================
+// Calculator
+// =====================================
 
 function calculate(){
 
+    const bikes = Number(document.getElementById("bikes").value);
 
-let bikes=Number(bikesInput.value);
+    const cost = Number(document.getElementById("cost").value);
 
+    const down = Number(document.getElementById("down").value);
 
+    const financed = Number(document.getElementById("finance").value);
 
-let bikesInput=document.getElementById("bikes");
+    const rate = Number(document.getElementById("interest").value);
 
-bikes=Number(bikesInput.value);
+    const months = Number(document.getElementById("months").value);
 
-let cost=Number(document.getElementById("cost").value);
+    const investorShare = Number(document.getElementById("investorShare").value);
 
-let down=Number(document.getElementById("down").value);
+    const companyShare = Number(document.getElementById("companyShare").value);
 
-let financed=Number(document.getElementById("finance").value);
-
-let rate=Number(document.getElementById("interest").value);
-
-let months=Number(document.getElementById("months").value);
-
-let investorShare=Number(document.getElementById("investorShare").value);
-
-let companyShare=Number(document.getElementById("companyShare").value);
-
-let weeklyBikeRevenue=Number(document.getElementById("weeklyRevenue").value);
+    const weeklyBikeRevenue = Number(document.getElementById("weeklyRevenue").value);
 
 
 
-let weeks=months*4.345;
+    const weeks = months * 4.345;
 
+    const totalInterest = financed * (rate/100) * (months/12);
 
-let totalInterest=financed*(rate/100)*(months/12);
+    const repayment = financed + totalInterest;
 
+    const weeklyPayment = repayment / weeks;
 
-let repayment=financed+totalInterest;
+    const totalProfit = totalInterest;
 
+    const investorProfit = totalProfit * investorShare / 100;
 
-let weeklyPayment=repayment/weeks;
+    const companyProfit = totalProfit * companyShare / 100;
 
+    const roi = (investorProfit / down) * 100;
 
-let totalProfit=totalInterest;
+    const weeklyRevenue = bikes * weeklyBikeRevenue;
 
+    const monthlyRevenue = weeklyRevenue * 4.345;
 
-let investorProfit=totalProfit*(investorShare/100);
+    const weeklyNet = weeklyRevenue - weeklyPayment;
 
+    const breakEven = weeklyNet > 0 ? down / weeklyNet : 0;
 
-let companyProfit=totalProfit*(companyShare/100);
-
-
-let roi=(investorProfit/down)*100;
-
-
-let weeklyRevenue=bikes*weeklyBikeRevenue;
-
-
-let monthlyRevenue=weeklyRevenue*4.345;
-
-
-let weeklyNetProfit=weeklyRevenue-weeklyPayment;
-
-
-let breakEven=down/weeklyNetProfit;
-
-
-let portfolio=bikes*cost;
+    const portfolio = bikes * cost;
 
 
 
+    document.getElementById("apr").textContent = percent(rate);
 
-document.getElementById("apr").innerHTML=percent(rate);
+    document.getElementById("weeklyPayment").textContent = money(weeklyPayment);
 
-document.getElementById("weeklyPayment").innerHTML=money(weeklyPayment);
+    document.getElementById("repayment").textContent = money(repayment);
 
-document.getElementById("repayment").innerHTML=money(repayment);
+    document.getElementById("interestPaid").textContent = money(totalInterest);
 
-document.getElementById("interestPaid").innerHTML=money(totalInterest);
+    document.getElementById("roi").textContent = percent(roi);
 
-document.getElementById("roi").innerHTML=percent(roi);
+    document.getElementById("investorProfit").textContent = money(investorProfit);
 
-document.getElementById("investorProfit").innerHTML=money(investorProfit);
+    document.getElementById("companyProfit").textContent = money(companyProfit);
 
-document.getElementById("companyProfit").innerHTML=money(companyProfit);
+    document.getElementById("breakEven").textContent = breakEven.toFixed(1) + " Weeks";
 
-document.getElementById("breakEven").innerHTML=breakEven.toFixed(1);
+    document.getElementById("portfolio").textContent = money(portfolio);
 
-document.getElementById("portfolio").innerHTML=money(portfolio);
+    document.getElementById("weeklyCash").textContent = money(weeklyRevenue);
 
-document.getElementById("weeklyCash").innerHTML=money(weeklyRevenue);
-
-document.getElementById("monthlyCash").innerHTML=money(monthlyRevenue);
-
+    document.getElementById("monthlyCash").textContent = money(monthlyRevenue);
 
 
-updateCharts(
-weeklyRevenue,
-investorProfit,
-companyProfit,
-breakEven
-);
 
+    // Update Charts
+
+    cashChart.data.datasets[0].data = [
+        weeklyRevenue * .7,
+        weeklyRevenue * .85,
+        weeklyRevenue,
+        weeklyRevenue * 1.15
+    ];
+
+    cashChart.update();
+
+
+
+    investorChart.data.datasets[0].data = [
+        investorProfit
+    ];
+
+    investorChart.update();
+
+
+
+    companyChart.data.datasets[0].data = [
+        companyProfit
+    ];
+
+    companyChart.update();
+
+
+
+    breakChart.data.datasets[0].data = [
+        0,
+        breakEven * .25,
+        breakEven * .5,
+        breakEven * .75,
+        breakEven
+    ];
+
+    breakChart.update();
 
 }
-
-
-
-
-
-
-let charts={};
-
-
-function updateCharts(
-cash,
-investor,
-company,
-breakEven
-){
-
-
-let data=[
-
-cash,
-cash*2,
-cash*3,
-cash*4
-
-];
-
-
-
-if(!charts.cash){
-
-
-charts.cash=new Chart(
-document.getElementById("cashChart"),
-{
-type:"line",
-data:{
-labels:["Week 1","Week 2","Week 3","Week 4"],
-datasets:[{
-label:"Revenue",
-data:data
-}]
-}
-});
-
-
-charts.investor=new Chart(
-document.getElementById("investorChart"),
-{
-type:"bar",
-data:{
-labels:["Investor"],
-datasets:[{
-label:"Profit",
-data:[investor]
-}]
-}
-});
-
-
-charts.company=new Chart(
-document.getElementById("companyChart"),
-{
-type:"bar",
-data:{
-labels:["Company"],
-datasets:[{
-label:"Profit",
-data:[company]
-}]
-}
-});
-
-
-charts.break=new Chart(
-document.getElementById("breakChart"),
-{
-type:"line",
-data:{
-labels:["Investment","Recovery"],
-datasets:[{
-label:"Weeks",
-data:[0,breakEven]
-}]
-}
-});
-
-
-}
-
-else{
-
-
-charts.cash.data.datasets[0].data=data;
-charts.cash.update();
-
-
-charts.investor.data.datasets[0].data=[investor];
-charts.investor.update();
-
-
-charts.company.data.datasets[0].data=[company];
-charts.company.update();
-
-
-charts.break.data.datasets[0].data=[0,breakEven];
-charts.break.update();
-
-
-}
-
-
-}
-
-
 
 calculate();
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-
-// ================================
-// Weekly Cash Flow
-// ================================
-
-new Chart(document.getElementById("cashChart"), {
-
-    type: "line",
-
-    data: {
-
-        labels: [
-            "Week 1",
-            "Week 2",
-            "Week 3",
-            "Week 4",
-            "Week 5",
-            "Week 6",
-            "Week 7",
-            "Week 8"
-        ],
-
-        datasets: [{
-            label: "Cash Flow (RWF)",
-            data: [
-                1500000,
-                1750000,
-                2100000,
-                2350000,
-                2600000,
-                2850000,
-                3200000,
-                3500000
-            ],
-            borderColor: "#2563eb",
-            backgroundColor: "rgba(37,99,235,0.15)",
-            fill: true,
-            tension: 0.4
-        }]
-
-    }
-
-});
-
-
-// ================================
-// Investor Returns
-// ================================
-
-new Chart(document.getElementById("investorChart"), {
-
-    type: "bar",
-
-    data: {
-
-        labels: [
-            "Investor A",
-            "Investor B",
-            "Investor C",
-            "Investor D"
-        ],
-
-        datasets: [{
-
-            label: "Profit (RWF)",
-
-            data: [
-                2500000,
-                1800000,
-                3200000,
-                2100000
-            ],
-
-            backgroundColor: [
-                "#2563eb",
-                "#3b82f6",
-                "#60a5fa",
-                "#93c5fd"
-            ]
-
-        }]
-
-    }
-
-});
-
-
-// ================================
-// Company Returns
-// ================================
-
-new Chart(document.getElementById("companyChart"), {
-
-    type: "doughnut",
-
-    data: {
-
-        labels: [
-            "Operations",
-            "Profit",
-            "Maintenance",
-            "Reserve"
-        ],
-
-        datasets: [{
-
-            data: [
-                40,
-                30,
-                20,
-                10
-            ],
-
-            backgroundColor: [
-                "#2563eb",
-                "#16a34a",
-                "#f59e0b",
-                "#dc2626"
-            ]
-
-        }]
-
-    }
-
-});
-
-
-// ================================
-// Break-even Analysis
-// ================================
-
-new Chart(document.getElementById("breakChart"), {
-
-    type: "line",
-
-    data: {
-
-        labels: [
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40"
-        ],
-
-        datasets: [
-
-            {
-                label: "Investment Recovery",
-
-                data: [
-                    0,
-                    15,
-                    28,
-                    42,
-                    58,
-                    72,
-                    86,
-                    95,
-                    100
-                ],
-
-                borderColor: "#16a34a",
-
-                backgroundColor: "rgba(22,163,74,.15)",
-
-                fill: true,
-
-                tension: 0.4
-            }
-
-        ]
-
-    }
-
-});
-
-</script>
-    
 
 </script>
 
