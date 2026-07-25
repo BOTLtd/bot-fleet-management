@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Borrowers | Kings Fleet Management System</title>
+<title>Borrowers | King Fleet Management System</title>
 
 
 <style>
@@ -878,6 +878,181 @@ grid-column:auto;
 }
 
 
+
+
+/* ===========================
+BULK UPLOAD POPUP
+=========================== */
+
+
+.upload-modal{
+
+display:none;
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(15,23,42,.65);
+
+z-index:1000;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+
+.upload-box{
+
+background:white;
+
+width:500px;
+
+max-width:90%;
+
+border-radius:15px;
+
+padding:30px;
+
+box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+}
+
+
+
+.upload-box h2{
+
+color:#111827;
+
+margin-bottom:10px;
+
+}
+
+
+
+.upload-description{
+
+color:#64748b;
+
+font-size:14px;
+
+margin-bottom:20px;
+
+}
+
+
+
+.file-area{
+
+border:2px dashed #cbd5e1;
+
+padding:35px;
+
+border-radius:10px;
+
+text-align:center;
+
+color:#64748b;
+
+margin-bottom:20px;
+
+}
+
+
+
+.file-area input{
+
+margin-top:15px;
+
+}
+
+
+
+.template-btn{
+
+background:#2563eb;
+
+color:white;
+
+border:none;
+
+padding:10px 15px;
+
+border-radius:7px;
+
+cursor:pointer;
+
+font-size:14px;
+
+}
+
+
+
+.upload-actions{
+
+display:flex;
+
+justify-content:flex-end;
+
+gap:12px;
+
+margin-top:20px;
+
+}
+
+
+
+.cancel-upload{
+
+background:#e5e7eb;
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+
+
+.confirm-upload{
+
+background:#16a34a;
+
+color:white;
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+
+@media(max-width:600px){
+
+.upload-box{
+
+padding:20px;
+
+}
+
+}
     
 
 </style>
@@ -909,7 +1084,7 @@ King Fleet Management
 
 
 <p>
-King Services and Transport Ltd
+King Services & Transport Ltd
 </p>
 
 </a>
@@ -1095,12 +1270,11 @@ Manage all borrowers registered in King Fleet Management System
 <div class="borrow-actions">
 
 
-<button class="bulk-btn">
+<button class="bulk-btn" onclick="openBulkUpload()">
 
 ⬆ Bulk Upload
 
 </button>
-
 
 
 <button class="add-btn" onclick="openBorrowerForm()">
@@ -1629,7 +1803,7 @@ Add New Borrower
 
 
 
-<div class="form-group">
+<div class="form-group" full>
 
 <label>
 Full Name
@@ -1639,11 +1813,7 @@ Full Name
 
 </div>
 
-
-
-
-
-<div class="form-group">
+<div class="form-group" full>
 
 <label>
 National ID
@@ -1654,11 +1824,7 @@ National ID
 </div>
 
 
-
-
-
-
-<div class="form-group">
+<div class="form-group" full>
 
 <label>
 Phone Number
@@ -1669,24 +1835,15 @@ Phone Number
 </div>
 
 
-
-
-
-
-<div class="form-group">
+<div class="form-group" full>
 
 <label>
-Date Added
+Date of Birth
 </label>
 
 <input type="date">
 
 </div>
-
-
-
-
-
 
 
 <div class="form-group full">
@@ -1701,14 +1858,10 @@ Address
 
 
 
-
-
-
-
 <div class="form-group full">
 
 <label>
-Photo Upload
+Profile Picture
 </label>
 
 <input type="file">
@@ -1716,6 +1869,17 @@ Photo Upload
 </div>
 
 
+<div class="form-group full">
+
+<label>
+National ID Document
+</label>
+
+<input type="file">
+
+</div>
+
+    
 
 </div>
 
@@ -1780,6 +1944,136 @@ document.getElementById("borrowerModal").style.display="none";
 </script>
 
 
+
+
+<!-- =========================
+BULK UPLOAD POPUP
+========================= -->
+
+
+<div class="upload-modal" id="bulkModal">
+
+
+<div class="upload-box">
+
+
+<h2>
+Bulk Upload Borrowers
+</h2>
+
+
+
+<p class="upload-description">
+
+Upload an Excel or CSV file containing borrower details.
+
+</p>
+
+
+
+
+
+<button class="template-btn">
+
+⬇ Download Template
+
+</button>
+
+
+
+
+
+
+<div class="file-area">
+
+
+<p>
+
+Drag and drop your file here
+
+</p>
+
+
+<p>
+or
+</p>
+
+
+
+<input 
+type="file"
+accept=".csv,.xlsx"
+>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="upload-actions">
+
+
+<button 
+class="cancel-upload"
+onclick="closeBulkUpload()">
+
+Cancel
+
+</button>
+
+
+
+
+<button class="confirm-upload">
+
+Upload Borrowers
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+
+function openBulkUpload(){
+
+document.getElementById("bulkModal").style.display="flex";
+
+}
+
+
+
+
+function closeBulkUpload(){
+
+document.getElementById("bulkModal").style.display="none";
+
+}
+
+
+</script>
+
+    
 </body>
 
 </html>
