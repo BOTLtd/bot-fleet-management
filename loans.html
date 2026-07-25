@@ -1457,7 +1457,7 @@ Manage loan applications and agreements
 
 
 <!-- =========================
-ASSETS PANEL
+Loans PANEL
 ========================= -->
 
 
@@ -1600,7 +1600,7 @@ Next
 
 
 <!-- =========================
-ADD ASSET POPUP FORM
+ADD LOAN POPUP FORM
 ========================= -->
 
 
@@ -1611,9 +1611,12 @@ ADD ASSET POPUP FORM
 
 
 <h2>
-Add New Asset
+Create New Loan
 </h2>
 
+<p>
+Set up a new loan agreement
+</p>
 
 
 
@@ -1623,21 +1626,38 @@ Add New Asset
 
 <div class="form-group" full>
 
-<label>
-Asset Name
-</label>
+<label>Borrower</label>
 
-<input type="text" placeholder="e.g AMP ALPHA RM602K">
+<select>
+
+<option>Select borrower</option>
+
+</select>
 
 </div>
 
 <div class="form-group" full>
 
+<label>Collateral Asset (Optional) </label>
+
+<select>
+
+<option>Select asset or leave empty</option>
+
+</select>
+    
+<p>Leave enpty for unsecured loans or supplementary costs</p>
+    
+</div>
+
+    
+<div class="form-group" full>
+
 <label>
-VIN/Serial Number
+Loan Purpose/Name
 </label>
 
-<input type="text" placeholder="Vehicle identification or serial number">
+<input type="text" placeholder="e.g, Mechanic repairs, spare parts, etc..">
 
 </div>
 
@@ -1645,66 +1665,66 @@ VIN/Serial Number
 <div class="form-group" full>
 
 <label>
-Notes
+Principal Amount (RWF)
 </label>
 
 <input type="text">
 
 </div>
 
-<div class="form-group full">
+<div class="form-group" full>
 
 <label>
-Yellow Card Copy (PDF,JPG,PNG)
+Annual Interest Rate (%)
 </label>
 
-<input type="file">
+<input type="text">
 
 </div>
 
-<div class="subtitle">
+<div class="form-group" full>
 
-Asset Documents
+<label>
+Term (Weeks)
+</label>
+
+<input type="text">
+
+</div>
+
+<div class="form-group" full>
+
+<label>
+Start Date
+</label>
+
+<input type="date">
+
+</div>
+
+<div class="form-group" full>
+
+<label>
+Penalty Rate Per Day (%)
+</label>
+
+<input type="text" placeholder="0.02">
+
+</div>
+
+<div class="form-group" full>
+
+<label>
+Grace Period (Days)
+</label>
+
+<input type="text" placeholder="5">
+
+</div>
 
 </div>
 
     
-<div class="form-group full">
-
-<label>
-Yellow Card Copy (PDF,JPG,PNG)
-</label>
-
-<input type="file">
-
-</div>
-
-<div class="form-group full">
-
-<label>
-Insurance Document (PDF,JPG,PNG)
-</label>
-
-<input type="file">
-
-</div>
-
-<div class="form-group full">
-
-<label>
-Authorisation File (PDF,JPG,PNG)
-</label>
-
-<input type="file">
-
-</div>
-
-</div>
-
-
-
-
-
 <div class="form-actions">
 
 
@@ -1718,7 +1738,7 @@ Cancel
 
 <button class="save-btn">
 
-Create
+Create Loan
 
 </button>
 
