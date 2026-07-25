@@ -1603,127 +1603,75 @@ Next
 ADD LOAN POPUP FORM
 ========================= -->
 
-
 <div class="modal-overlay" id="borrowerModal">
 
+    <div class="borrow-form">
 
-<div class="borrow-form">
+        <h2>Create New Loan</h2>
 
+        <p>Set up a new loan agreement</p>
 
-<h2>
-Create New Loan
-</h2>
+        <div class="form-grid">
 
-<p>
-Set up a new loan agreement
-</p>
+            <!-- Full Width -->
+            <div class="form-group full">
+                <label>Borrower</label>
+                <select>
+                    <option>Select borrower</option>
+                </select>
+            </div>
 
+            <!-- Full Width -->
+            <div class="form-group full">
+                <label>Collateral Asset (Optional)</label>
+                <select>
+                    <option>Select asset or leave empty</option>
+                </select>
+                <p>Leave empty for unsecured loans or supplementary costs.</p>
+            </div>
 
+            <!-- Two Columns -->
+            <div class="form-group" full>
+                <label>Loan Purpose/Name</label>
+                <input type="text" placeholder="e.g. Mechanic repairs, spare parts">
+            </div>
 
-<div class="form-grid">
+            <div class="form-group" full>
+                <label>Principal Amount (RWF)</label>
+                <input type="number" placeholder="0">
+            </div>
 
+            <div class="form-group" full>
+                <label>Annual Interest Rate (%)</label>
+                <input type="number" placeholder="12">
+            </div>
 
+            <div class="form-group" full>
+                <label>Term (Weeks)</label>
+                <input type="number" placeholder="52">
+            </div>
 
-<div class="form-group" full>
+            <div class="form-group" full>
+                <label>Start Date</label>
+                <input type="date">
+            </div>
 
-<label>Borrower</label>
+            <div class="form-group" full>
+                <label>Penalty Rate Per Day (%)</label>
+                <input type="number" step="0.01" placeholder="0.02">
+            </div>
 
-<select>
+            <div class="form-group" full>
+                <label>Grace Period (Days)</label>
+                <input type="number" placeholder="5">
+            </div>
 
-<option>Select borrower</option>
+        </div>
 
-</select>
+    </div>
 
 </div>
-
-<div class="form-group" full>
-
-<label>Collateral Asset (Optional) </label>
-
-<select>
-
-<option>Select asset or leave empty</option>
-
-</select>
     
-<p>Leave enpty for unsecured loans or supplementary costs</p>
-    
-</div>
-
-    
-<div class="form-group" full>
-
-<label>
-Loan Purpose/Name
-</label>
-
-<input type="text" placeholder="e.g, Mechanic repairs, spare parts, etc..">
-
-</div>
-
-
-<div class="form-group" full>
-
-<label>
-Principal Amount (RWF)
-</label>
-
-<input type="text">
-
-</div>
-
-<div class="form-group" full>
-
-<label>
-Annual Interest Rate (%)
-</label>
-
-<input type="text">
-
-</div>
-
-<div class="form-group" full>
-
-<label>
-Term (Weeks)
-</label>
-
-<input type="text">
-
-</div>
-
-<div class="form-group" full>
-
-<label>
-Start Date
-</label>
-
-<input type="date">
-
-</div>
-
-<div class="form-group" full>
-
-<label>
-Penalty Rate Per Day (%)
-</label>
-
-<input type="text" placeholder="0.02">
-
-</div>
-
-<div class="form-group" full>
-
-<label>
-Grace Period (Days)
-</label>
-
-<input type="text" placeholder="5">
-
-</div>
-
-</div>
-
     
 <div class="form-actions">
 
