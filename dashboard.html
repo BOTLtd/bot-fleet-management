@@ -420,6 +420,402 @@ grid-template-columns:1fr;
 
 }
 
+
+/* ================= DASHBOARD STYLE ================= */
+
+
+.topbar{
+
+height:60px;
+
+background:white;
+
+border-bottom:1px solid #e5e7eb;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 25px;
+
+margin:-35px -35px 30px -35px;
+
+}
+
+
+
+.brand-left{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+font-weight:600;
+
+}
+
+
+
+.loan-logo{
+
+width:34px;
+
+height:34px;
+
+background:#22c55e;
+
+border-radius:50%;
+
+color:white;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-weight:bold;
+
+}
+
+
+
+.loan-name{
+
+font-size:16px;
+
+}
+
+
+
+.divider{
+
+height:30px;
+
+width:1px;
+
+background:#ddd;
+
+margin:0 15px;
+
+}
+
+
+
+.transport{
+
+display:flex;
+
+gap:8px;
+
+align-items:center;
+
+color:#334155;
+
+}
+
+
+
+.signout{
+
+display:flex;
+
+gap:10px;
+
+align-items:center;
+
+font-size:15px;
+
+cursor:pointer;
+
+}
+
+
+
+.header h1{
+
+font-size:32px;
+
+color:#111827;
+
+margin-bottom:5px;
+
+}
+
+
+
+.subtitle{
+
+color:#64748b;
+
+font-size:15px;
+
+}
+
+
+
+
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:18px;
+
+margin-top:30px;
+
+}
+
+
+
+.card{
+
+background:white;
+
+border:1px solid #e5e7eb;
+
+border-radius:12px;
+
+padding:25px;
+
+position:relative;
+
+}
+
+
+
+.card:first-child{
+
+border-color:#86efac;
+
+}
+
+
+
+.card-title{
+
+font-size:14px;
+
+font-weight:600;
+
+color:#334155;
+
+}
+
+
+
+.card .icon{
+
+position:absolute;
+
+right:20px;
+
+top:20px;
+
+width:32px;
+
+height:32px;
+
+border-radius:50%;
+
+background:#dcfce7;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+
+.value{
+
+font-size:25px;
+
+font-weight:700;
+
+margin-top:20px;
+
+color:#111827;
+
+}
+
+
+
+.card p{
+
+font-size:13px;
+
+color:#64748b;
+
+margin-top:5px;
+
+}
+
+
+
+
+
+.grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:18px;
+
+margin-top:25px;
+
+}
+
+
+
+
+.panel{
+
+background:white;
+
+border:1px solid #e5e7eb;
+
+border-radius:12px;
+
+padding:25px;
+
+min-height:230px;
+
+}
+
+
+
+.panel h2{
+
+font-size:22px;
+
+color:#111827;
+
+}
+
+
+
+.panel-sub{
+
+color:#64748b;
+
+font-size:14px;
+
+margin-top:5px;
+
+}
+
+
+
+.empty{
+
+text-align:center;
+
+margin-top:60px;
+
+color:#64748b;
+
+font-size:15px;
+
+}
+
+
+
+
+.payment-row{
+
+display:flex;
+
+justify-content:space-between;
+
+margin-top:25px;
+
+color:#334155;
+
+}
+
+
+
+.badge{
+
+background:#f1f5f9;
+
+padding:5px 12px;
+
+border-radius:20px;
+
+font-size:13px;
+
+}
+
+
+
+.badge.danger{
+
+background:#fee2e2;
+
+color:#dc2626;
+
+}
+
+
+
+.badge.success{
+
+background:#dcfce7;
+
+color:#16a34a;
+
+}
+
+
+
+
+
+@media(max-width:1000px){
+
+.stats{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+
+.grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+@media(max-width:600px){
+
+.stats{
+
+grid-template-columns:1fr;
+
+}
+
+.topbar{
+
+margin:-15px;
+
+}
+
+}
+
+    
 </style>
 
 </head>
@@ -498,113 +894,225 @@ grid-template-columns:1fr;
 
 <!-- MAIN -->
 
-<main class="content">
+<main >
+
+<div class="content">
+
+<!-- TOP BAR -->
+<div class="topbar">
+
+    <div class="brand-left">
+
+        <div class="loan-logo">
+            L
+        </div>
+
+        <div class="loan-name">
+            Loan
+        </div>
 
 
-<h1>🏠 Dashboard</h1>
+        <div class="divider"></div>
 
-<p class="subtitle">
-Investment calculator and profitability analysis
+
+        <div class="transport">
+
+            🏢
+
+            <span>
+                King Transport
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="signout">
+
+        ⇥
+
+        <span>
+            Sign Out
+        </span>
+
+    </div>
+
+
+</div>
+
+
+
+
+<!-- PAGE HEADER -->
+
+<div class="header">
+
+<h1>
+Dashboard
+</h1>
+
+<div class="subtitle">
+Overview of your loan management system
+</div>
+
+</div>
+
+
+
+
+
+<!-- KPI CARDS -->
+
+<div class="stats">
+
+
+<div class="card">
+
+<div class="card-title">
+Total Borrowers
+</div>
+
+
+<div class="icon green">
+👥
+</div>
+
+
+<div class="value">
+10
+</div>
+
+
+<p>
+Active borrowers in system
 </p>
 
 
-
-<section class="calculator">
-
-<h2>💰 Financing Calculator</h2>
+</div>
 
 
-<br>
 
+
+
+<div class="card">
+
+<div class="card-title">
+Assets
+</div>
+
+
+<div class="icon green">
+🏍
+</div>
+
+
+<div class="value">
+10
+</div>
+
+
+<p>
+Motorcycles and assets
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="card">
+
+<div class="card-title">
+Active Loans
+</div>
+
+
+<div class="icon green">
+💳
+</div>
+
+
+<div class="value">
+10
+</div>
+
+
+<p>
+Loans currently active
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+<div class="card-title">
+Total Outstanding
+</div>
+
+
+<div class="icon green">
+📈
+</div>
+
+
+<div class="value">
+RWF 25,740,000
+</div>
+
+
+<p>
+Outstanding principal
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- LOWER PANELS -->
 
 <div class="grid">
 
 
-<div>
-
-<label>Number of Bikes</label>
-
-<input id="bikes" value="100">
-
-</div>
+<div class="panel">
 
 
+<h2>
+Recent Loans
+</h2>
 
-<div>
 
-<label>Cost per Bike (RWF)</label>
-
-<input id="cost" value="1200000">
-
-</div>
+<p class="panel-sub">
+Latest loan applications and updates
+</p>
 
 
 
-<div>
+<div class="empty">
 
-<label>Down Payment (RWF)</label>
-
-<input id="down" value="20000000">
-
-</div>
-
-
-
-<div>
-
-<label>Financed Amount (RWF)</label>
-
-<input id="finance" value="100000000">
-
-</div>
-
-
-
-<div>
-
-<label>Interest Rate (%)</label>
-
-<input id="interest" value="15">
-
-</div>
-
-
-
-<div>
-
-<label>Loan Term (Months)</label>
-
-<input id="months" value="36">
-
-</div>
-
-
-
-<div>
-
-<label>Investor Profit Share (%)</label>
-
-<input id="investorShare" value="60">
-
-</div>
-
-
-
-<div>
-
-<label>Company Profit Share (%)</label>
-
-<input id="companyShare" value="40">
-
-</div>
-
-
-
-<div>
-
-<label>Weekly Revenue per Bike (RWF)</label>
-
-<input id="weeklyRevenue" value="50000">
+No loans created yet. Start by adding borrowers and creating loans.
 
 </div>
 
@@ -613,171 +1121,81 @@ Investment calculator and profitability analysis
 </div>
 
 
-</section>
 
 
 
-<!-- RESULTS -->
 
-<section class="cards">
-
-
-<div class="card">
-
-<h3>APR</h3>
-
-<h2 id="apr">0%</h2>
-
-</div>
+<div class="panel">
 
 
-<div class="card">
-
-<h3>Weekly Payment</h3>
-
-<h2 id="weeklyPayment">0</h2>
-
-</div>
+<h2>
+Payment Status
+</h2>
 
 
-<div class="card">
-
-<h3>Total Repayment</h3>
-
-<h2 id="repayment">0</h2>
-
-</div>
+<p class="panel-sub">
+Current week payment overview
+</p>
 
 
-<div class="card">
 
-<h3>Total Interest</h3>
+<div class="payment-row">
 
-<h2 id="interestPaid">0</h2>
+<span>
+Due Today
+</span>
+
+
+<b class="badge">
+0
+</b>
+
 
 </div>
 
 
 
-<div class="card">
 
-<h3>Investor ROI</h3>
+<div class="payment-row">
 
-<h2 id="roi">0%</h2>
+<span>
+Overdue
+</span>
+
+
+<b class="badge danger">
+1
+</b>
+
 
 </div>
 
 
 
-<div class="card">
 
-<h3>Investor Profit</h3>
+<div class="payment-row">
 
-<h2 id="investorProfit">0</h2>
+<span>
+Paid This Week
+</span>
+
+
+<b class="badge success">
+6
+</b>
+
 
 </div>
 
 
 
-<div class="card">
+</div>
 
-<h3>Company Profit</h3>
-
-<h2 id="companyProfit">0</h2>
 
 </div>
 
 
-
-<div class="card">
-
-<h3>Break-even Weeks</h3>
-
-<h2 id="breakEven">0</h2>
-
 </div>
-
-
-
-<div class="card">
-
-<h3>Total Portfolio Value</h3>
-
-<h2 id="portfolio">0</h2>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>Weekly Revenue</h3>
-
-<h2 id="weeklyCash">0</h2>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>Monthly Revenue</h3>
-
-<h2 id="monthlyCash">0</h2>
-
-</div>
-
-
-</section>
-
-
-
-<!-- CHARTS AND TRENDLINE -->
-
-<section class="charts">
-
-
-<div class="chart-box">
-
-<h3>📈 Weekly Cash Flow</h3>
-
-<canvas id="cashChart"></canvas>
-
-</div>
-
-
-
-<div class="chart-box">
-
-<h3>💰 Investor Returns</h3>
-
-<canvas id="investorChart"></canvas>
-
-</div>
-
-
-
-<div class="chart-box">
-
-<h3>🏢 Company Returns</h3>
-
-<canvas id="companyChart"></canvas>
-
-</div>
-
-
-
-<div class="chart-box">
-
-<h3>⏳ Break-even Analysis</h3>
-
-<canvas id="breakChart"></canvas>
-
-</div>
-
-
-</section>
-
 
 
 
