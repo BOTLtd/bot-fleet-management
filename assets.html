@@ -4,9 +4,10 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Assets | Vehicle Management Tool v1.0</title>
+<title>Assets | King Fleet Management System</title>
 
 
 <style>
@@ -15,83 +16,96 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Segoe UI, Arial, sans-serif;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+
+html,body{
+
+    width:100%;
+    min-height:100%;
+
 }
 
 
 body{
-    background:#f4f6f9;
+
+    background:#c99700;
+    overflow-x:hidden;
+
 }
+
+
+
+
+/* ===========================
+MAIN LAYOUT
+=========================== */
 
 
 .container{
+
     display:flex;
     min-height:100vh;
+    width:100%;
+
 }
 
 
 
-/* LEFT SIDEBAR */
+
+
+/* ===========================
+SIDEBAR
+=========================== */
+
 
 .sidebar{
 
     width:260px;
+    min-width:260px;
     background:#0f172a;
     color:white;
 
 }
 
 
-/* ================= LOGO ================= */
 
 .logo{
-    text-align:center;
+
     padding:30px 15px;
+    text-align:center;
     border-bottom:1px solid #334155;
+
 }
 
-/* Make the whole logo clickable */
 
-.logo-link{
-    display:block;
+
+.logo a{
+
     text-decoration:none;
-    color:inherit;
-    cursor:pointer;
+    color:white;
+
 }
 
-.logo-link:link,
-.logo-link:visited,
-.logo-link:hover,
-.logo-link:active{
-    text-decoration:none;
-    color:inherit;
-}
 
-/* Title */
+.logo h3{
 
-.logo-link h3{
-    margin:0;
     color:#38bdf8;
     font-size:22px;
-    font-weight:700;
-    text-decoration:none;
-    transition:color .3s ease;
+
 }
 
-/* Subtitle */
 
-.logo-link p{
-    margin-top:6px;
+.logo p{
+
+    margin-top:8px;
     color:#cbd5e1;
     font-size:13px;
-    text-decoration:none;
+
 }
 
-/* Hover effect */
 
-.logo-link:hover h3{
-    color:#60a5fa;
-}
 
 
 
@@ -101,19 +115,13 @@ body{
     padding:16px 25px;
     color:white;
     text-decoration:none;
+    font-size:15px;
 
 }
 
 
 
-.menu a:hover{
-
-    background:#1e293b;
-
-}
-
-
-
+.menu a:hover,
 .menu .active{
 
     background:#2563eb;
@@ -122,184 +130,20 @@ body{
 
 
 
-/* =============================
-   RESPONSIVE DESIGN
-============================= */
 
-/* Tablets */
 
-@media (max-width: 992px){
 
-    .sidebar{
-        width:220px;
-    }
 
-    .content{
-        padding:20px;
-    }
-
-    .features{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-}
-
-
-/* Phones */
-
-@media (max-width:768px){
-
-    .container{
-        flex-direction:column;
-    }
-
-    .sidebar{
-
-        width:100%;
-        height:auto;
-
-    }
-
-    .logo{
-
-        padding:20px;
-
-    }
-
-    .logo-link h3{
-
-        font-size:20px;
-
-    }
-
-    .logo-link p{
-
-        font-size:12px;
-
-    }
-
-    .menu{
-
-        display:flex;
-        flex-wrap:wrap;
-        justify-content:center;
-        margin:0;
-    }
-
-    .menu a{
-
-        flex:1 1 45%;
-        text-align:center;
-        padding:15px;
-        font-size:15px;
-
-    }
-
-    .content{
-
-        padding:15px;
-
-    }
-
-    .welcome-banner{
-
-        padding:25px;
-
-    }
-
-    .welcome-banner h2{
-
-        font-size:22px;
-
-    }
-
-    .welcome-banner p{
-
-        font-size:14px;
-
-    }
-
-    .features{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .cards{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-}
-
-
-/* Small Phones */
-
-@media (max-width:480px){
-
-    .menu{
-
-        display:block;
-
-    }
-
-    .menu a{
-
-        width:100%;
-        text-align:left;
-        padding:15px 20px;
-        font-size:14px;
-
-    }
-
-    .logo-link h3{
-
-        font-size:18px;
-
-    }
-
-    .welcome-banner h2{
-
-        font-size:20px;
-
-    }
-
-} 
-
-/* CONTENT */
+/* ===========================
+CONTENT AREA
+=========================== */
 
 
 .content{
 
     flex:1;
-    padding:35px;
-
-}
-
-
-.content h1{
-
-    color:#1e293b;
-
-}
-
-
-
-.content p{
-
-    color:#64748b;
-    margin:10px 0 25px;
+    min-width:0;
+    padding:25px;
 
 }
 
@@ -307,24 +151,610 @@ body{
 
 
 
-/* FORM */
+
+/* ===========================
+TOP BAR
+=========================== */
 
 
-.form-container{
+.topbar{
+
+    width:100%;
+    height:60px;
+    background:white;
+    border-radius:10px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 20px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.brand-left{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+}
+
+
+
+.loan-logo{
+
+    width:38px;
+    height:38px;
+
+    background:#22c55e;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+    font-weight:bold;
+
+}
+
+
+
+.loan-name{
+
+    font-weight:700;
+
+}
+
+
+.divider{
+
+    height:30px;
+    width:1px;
+    background:#ddd;
+
+}
+
+
+
+.transport{
+
+    color:#334155;
+    display:flex;
+    gap:8px;
+    align-items:center;
+
+}
+
+
+
+.signout{
+
+    cursor:pointer;
+    color:#334155;
+
+}
+
+
+
+
+
+
+
+/* ===========================
+PAGE HEADER
+=========================== */
+
+
+.header{
 
     background:white;
-    padding:30px;
+
     border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+    padding:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
 
 }
 
 
 
-h2.section-title{
+.header h1{
+
+    color:#111827;
+    font-size:32px;
+
+}
+
+
+
+.subtitle{
+
+    color:#64748b;
+    margin-top:8px;
+    font-size:15px;
+
+}
+
+
+
+
+
+/* ===========================
+BUTTONS
+=========================== */
+
+
+.borrow-actions{
+
+    display:flex;
+    gap:12px;
+
+}
+
+
+
+.borrow-actions button{
+
+    padding:12px 20px;
+
+    border-radius:8px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+
+
+.bulk-btn{
+
+    background:white;
+
+    color:#334155;
+
+    border:1px solid #cbd5e1;
+
+}
+
+
+
+.add-btn{
+
+    background:#16a34a;
+
+    color:white;
+
+    border:none;
+
+}
+
+
+
+
+
+
+/* ===========================
+PANEL
+=========================== */
+
+
+.panel{
+
+    background:white;
+
+    margin-top:25px;
+
+    border-radius:12px;
+
+    padding:25px;
+
+    width:100%;
+
+    overflow:hidden;
+
+}
+
+
+
+.panel h2{
+
+    color:#111827;
+    font-size:24px;
+
+}
+
+
+
+.panel-sub{
+
+    margin-top:8px;
+
+    color:#64748b;
+
+    font-size:14px;
+
+}
+
+
+
+
+
+/* ===========================
+SEARCH
+=========================== */
+
+
+.search-area{
 
     margin:25px 0;
+
+}
+
+
+.search-box{
+
+    width:100%;
+
+    max-width:450px;
+
+    padding:13px;
+
+    border-radius:8px;
+
+    border:1px solid #cbd5e1;
+
+    outline:none;
+
+}
+
+
+
+
+.total-users{
+
+    margin-bottom:15px;
+
+    color:#334155;
+
+}
+
+
+
+
+
+
+/* ===========================
+TABLE
+=========================== */
+
+
+.table-wrapper{
+
+    width:100%;
+
+    overflow-x:auto;
+
+}
+
+
+
+.borrow-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+
+.borrow-table th{
+
+    background:#f8fafc;
+
+    padding:15px;
+
+    text-align:left;
+
+    color:#334155;
+
+    font-size:14px;
+
+}
+
+
+
+.borrow-table td{
+
+    padding:15px;
+
+    border-bottom:1px solid #e5e7eb;
+
+    color:#475569;
+
+}
+
+
+
+
+
+.profile-img{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+
+
+
+
+.edit-btn,
+.delete-btn{
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+}
+
+
+
+.edit-btn{
+
     color:#2563eb;
+
+}
+
+
+
+.delete-btn{
+
+    color:#dc2626;
+
+}
+
+
+
+
+
+
+/* ===========================
+PAGINATION
+=========================== */
+
+
+.pagination{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:20px;
+
+    margin-top:25px;
+
+}
+
+
+
+.pagination button{
+
+    background:white;
+
+    border:1px solid #cbd5e1;
+
+    padding:8px 18px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+
+/* ===========================
+RESPONSIVE
+=========================== */
+
+
+@media(max-width:900px){
+
+
+.container{
+
+    flex-direction:column;
+
+}
+
+
+
+.sidebar{
+
+    width:100%;
+
+}
+
+
+
+.content{
+
+    padding:15px;
+
+}
+
+
+
+.topbar{
+
+    flex-wrap:wrap;
+
+    height:auto;
+
+    padding:15px;
+
+    gap:15px;
+
+}
+
+
+
+.header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+}
+
+
+
+.borrow-actions{
+
+    width:100%;
+
+}
+
+
+
+.borrow-actions button{
+
+    flex:1;
+
+}
+
+
+}
+
+
+
+@media(max-width:500px){
+
+
+.menu a{
+
+    text-align:center;
+
+}
+
+
+
+.header h1{
+
+    font-size:25px;
+
+}
+
+
+.brand-left{
+
+    flex-wrap:wrap;
+
+}
+
+
+
+.borrow-actions{
+
+    flex-direction:column;
+
+}
+
+
+
+}
+
+
+
+
+/* ===========================
+ADD BORROWER POPUP
+=========================== */
+
+
+.modal-overlay{
+
+display:none;
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(15,23,42,.65);
+
+z-index:999;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+
+.borrow-form{
+
+background:white;
+
+width:500px;
+
+max-width:90%;
+
+border-radius:15px;
+
+padding:25px;
+
+box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+}
+
+
+
+.borrow-form h2{
+
+color:#111827;
+
+margin-bottom:20px;
 
 }
 
@@ -332,68 +762,116 @@ h2.section-title{
 
 .form-grid{
 
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:15px;
 
 }
 
 
 
-label{
+.form-group label{
 
-    display:block;
-    font-weight:600;
-    margin-bottom:7px;
+display:block;
 
-}
+font-weight:600;
 
+font-size:14px;
 
+margin-bottom:6px;
 
-input,
-select,
-textarea{
-
-    width:100%;
-    padding:12px;
-    border:1px solid #cbd5e1;
-    border-radius:6px;
+color:#334155;
 
 }
 
 
 
-button{
+.form-group input{
 
-    margin-top:25px;
-    padding:12px 25px;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
+width:100%;
 
-}
+padding:11px;
 
+border:1px solid #cbd5e1;
 
-
-.save{
-
-    background:#2563eb;
-    color:white;
+border-radius:7px;
 
 }
 
 
 
-.reset{
+.full{
 
-    background:#64748b;
-    color:white;
+grid-column:1/3;
 
 }
 
 
 
-@media(max-width:900px){
+.form-actions{
+
+margin-top:25px;
+
+display:flex;
+
+justify-content:flex-end;
+
+gap:12px;
+
+}
+
+
+.form-group select{
+
+width:100%;
+
+padding:11px;
+
+border:1px solid #cbd5e1;
+
+border-radius:7px;
+
+}
+
+
+.close-btn{
+
+background:#e5e7eb;
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+
+
+.save-btn{
+
+background:#16a34a;
+
+color:white;
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+
+
+@media(max-width:600px){
+
 
 .form-grid{
 
@@ -401,16 +879,344 @@ grid-template-columns:1fr;
 
 }
 
+
+.full{
+
+grid-column:auto;
+
+}
+
+
+}
+
+
+/* ===========================
+BULK UPLOAD MODAL
+=========================== */
+
+
+.upload-modal{
+
+display:none;
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(15,23,42,.55);
+
+z-index:2000;
+
+align-items:center;
+
+justify-content:center;
+
 }
 
 
 
+.upload-box{
+
+background:white;
+
+width:680px;
+
+max-width:95%;
+
+max-height:90vh;
+
+overflow-y:auto;
+
+border-radius:12px;
+
+padding:25px;
+
+position:relative;
+
+box-shadow:0 20px 50px rgba(0,0,0,.25);
+
+}
+
+
+
+.upload-close{
+
+position:absolute;
+
+right:25px;
+
+top:18px;
+
+font-size:25px;
+
+color:#64748b;
+
+cursor:pointer;
+
+}
+
+
+
+
+.upload-box h2{
+
+font-size:22px;
+
+color:#111827;
+
+margin-bottom:5px;
+
+}
+
+
+
+.upload-description{
+
+color:#64748b;
+
+font-size:14px;
+
+margin-bottom:25px;
+
+}
+
+
+
+
+
+/* STEP CARDS */
+
+
+.upload-step{
+
+border:1px solid #e2e8f0;
+
+border-radius:12px;
+
+padding:25px;
+
+margin-bottom:25px;
+
+}
+
+
+
+.upload-step h3{
+
+font-size:16px;
+
+color:#111827;
+
+margin-bottom:8px;
+
+}
+
+
+
+.step-text{
+
+color:#64748b;
+
+font-size:14px;
+
+margin-bottom:20px;
+
+}
+
+
+
+
+
+.csv-btn{
+
+background:white;
+
+border:1px solid #cbd5e1;
+
+padding:12px 20px;
+
+border-radius:8px;
+
+font-weight:600;
+
+cursor:pointer;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+
+
+
+
+.csv-btn:hover{
+
+background:#f8fafc;
+
+}
+
+
+
+
+
+
+.file-label{
+
+display:block;
+
+font-size:14px;
+
+font-weight:600;
+
+margin-bottom:8px;
+
+}
+
+
+
+.file-input{
+
+width:100%;
+
+padding:12px;
+
+border:1px solid #cbd5e1;
+
+border-radius:10px;
+
+background:white;
+
+}
+
+
+
+
+
+
+
+.requirements{
+
+margin-top:18px;
+
+border:1px solid #e2e8f0;
+
+border-radius:10px;
+
+padding:18px;
+
+background:#ffffff;
+
+}
+
+
+
+.requirements-title{
+
+font-weight:700;
+
+color:#111827;
+
+margin-bottom:8px;
+
+}
+
+
+
+.requirements ul{
+
+padding-left:20px;
+
+color:#475569;
+
+font-size:14px;
+
+line-height:1.7;
+
+}
+
+
+
+
+
+
+
+.upload-footer{
+
+display:flex;
+
+justify-content:flex-end;
+
+gap:12px;
+
+margin-top:20px;
+
+}
+
+
+
+.cancel-upload{
+
+background:#f1f5f9;
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+
+
+.upload-confirm{
+
+background:#16a34a;
+
+color:white;
+
+border:none;
+
+padding:12px 22px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-weight:600;
+
+}
+
+
+
+@media(max-width:600px){
+
+.upload-box{
+
+width:95%;
+
+padding:20px;
+
+}
+
+}
+    
+
+
 </style>
 
-
 </head>
-
-
 
 <body>
 
@@ -419,17 +1225,32 @@ grid-template-columns:1fr;
 
 
 
-<!-- LEFT SIDEBAR -->
+<!-- =========================
+SIDEBAR
+========================= -->
+
 
 <aside class="sidebar">
 
 
 <div class="logo">
-    <a href="index.html" class="logo-link">
-        <h3>Mobility App</h3>
-        <p>Vehicle Management Tool v1.0</p>
-    </a>
+
+<a href="index.html">
+
+<h3>
+King Fleet Management
+</h3>
+
+
+<p>
+King Services & Transport Ltd
+</p>
+
+</a>
+
 </div>
+
+
 
 
 
@@ -441,14 +1262,17 @@ grid-template-columns:1fr;
 </a>
 
 
-<a href="borrowers.html">
+
+<a href="borrowers.html" class="active">
 👤 Borrowers
 </a>
 
 
-<a href="assets.html" class="active">
+
+<a href="assets.html">
 🚚 Assets
 </a>
+
 
 
 <a href="loans.html">
@@ -456,9 +1280,11 @@ grid-template-columns:1fr;
 </a>
 
 
+
 <a href="payments.html">
 💰 Payments
 </a>
+
 
 
 <a href="reports.html">
@@ -466,14 +1292,17 @@ grid-template-columns:1fr;
 </a>
 
 
+
 <a href="admin.html">
 ⚙️ Admin
 </a>
 
 
+
 <a href="api-docs.html">
 📘 API Docs
 </a>
+
 
 
 </nav>
@@ -486,515 +1315,209 @@ grid-template-columns:1fr;
 
 
 
-<!-- RIGHT CONTENT -->
 
+
+<!-- =========================
+MAIN CONTENT
+========================= -->
 
 
 <main class="content">
 
 
-<h1>🚚 Vehicle Registration</h1>
 
-<p>
-Register vehicles using this form
+
+
+<!-- TOP BAR -->
+
+
+<div class="topbar">
+
+
+
+<div class="brand-left">
+
+
+<div class="loan-logo">
+L
+</div>
+
+
+
+<div class="loan-name">
+Loan
+</div>
+
+
+
+
+<div class="divider"></div>
+
+
+
+
+<div class="transport">
+
+🏢
+
+<span>
+King Services & Transport Ltd
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="signout">
+
+⇥ Sign Out
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+PAGE HEADER
+========================= -->
+
+
+<div class="header">
+
+
+
+<div>
+
+
+<h1>
+Borrowers
+</h1>
+
+
+<div class="subtitle">
+
+Manage all borrowers registered in King Fleet Management System
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="borrow-actions">
+
+
+<!-- <button class="bulk-btn" onclick="openBulkUpload()">
+
+⬆ Bulk Upload
+
+</button> -->
+
+
+<button class="add-btn" onclick="openBorrowerForm()">
+
++ Add Asset
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+ASSETS PANEL
+========================= -->
+
+
+<div class="panel">
+
+
+
+<h2>
+All Assets
+</h2>
+
+
+
+
+<p class="panel-sub">
+
+ <b>
+10
+</b> in inventory.
+
 </p>
 
 
 
-<form class="form-container">
-
-<h2 class="section-title">
-🚛 Vehicle Information
-</h2>
 
 
 
-<div class="form-grid">
 
 
 
-<div>
-
-<label>Vehicle Brand</label>
-
-<select>
-
-<option>Wylex</option>
-<option>Spiro</option>
-<!-- <option>Gorilla</option> -->
-<!-- <option>Motorcycle</option> -->
-<!-- <option>Trailer</option> -->
-
-</select>
-
-</div>
+<!-- SEARCH -->
 
 
-
-<div>
-
-<label>Vehicle Make</label>
-
-<input type="text" placeholder="Ampersand, Spiro">
-
-</div>
+<div class="search-area">
 
 
-<!-- 
-<div>
-
-<label>Vehicle Model</label>
-
-<input type="text">
-
-</div> -->
-
-
-
-<div>
-
-<label>Manufacturing Year</label>
-
-<input type="number">
-
-</div>
-
-
-
-<div>
-
-<label>Color</label>
-
-<input type="text">
-
-</div>
-
-
-
-<!-- <div>
-
-<label>Vehicle Type</label>
-
-<select>
-
-<option>Electric</option>
-<option>Diesel</option>
-<option>Petrol</option>
-
-</select>
-
-</div> -->
+<input 
+class="search-box"
+type="text"
+placeholder="Search assets..."
+>
 
 
 </div>
 
 
 
-<h2 class="section-title">
-🔢 Identification Details
-</h2>
 
 
-<div class="form-grid">
 
 
+<div class="total-users">
 
-<div>
+Total Borrowers Registered:
 
-<label>Plate Number</label>
-
-<input type="text" placeholder="RB 123 A">
-
-</div>
-
-
-
-<div>
-
-<label>Chassis Number / VIN</label>
-
-<input type="text">
-
-</div>
-
-
-
-<!-- <div>
-
-<label>Engine Number</label>
-
-<input type="text">
-
-</div> -->
-
-
-
-<!-- <div>
-
-<label>Engine Capacity</label>
-
-<input type="text">
-
-</div> -->
-
-
-
-<!-- <div>
-
-<label>Number of Seats</label>
-
-<input type="number">
-
-</div> -->
-
-
-
-<!-- <div>
-
-<label>Load Capacity (Tonnes)</label>
-
-<input type="number">
-
-</div> -->
-
-
-</div>
-
-
-
-
-<h2 class="section-title">
-🟨 Yellow Card Registration
-</h2>
-
-
-<div class="form-grid">
-
-
-
-<div>
-
-<label>Yellow Card Number</label>
-
-<input type="text">
-
-</div>
-
-
-
-<div>
-
-<label>Issue Date</label>
-
-<input type="date">
-
-</div>
-
-
-
-<div>
-
-<label>Expiry Date</label>
-
-<input type="date">
-
-</div>
-
-<div>
-
-<label>Yellow Card Copy</label>
-
-<input type="file">
-
-</div>
-
-<!-- <div>
-
-<label>Issuing Authority</label>
-
-<input type="text">
-
-</div> -->
-
-
-</div>
-
-
-<h2 class="section-title">
-👤 Driver Assignment
-</h2>
-
-
-<div class="form-grid">
-
-
-
-<div>
-
-<label>Assigned Driver Name</label>
-<div>
-
-<!-- <label>Driver name</label> -->
-
-<input type="text">
-
-</div>
-
-<!-- <select>
-
-<option>Select Driver</option>
-
-<option>Berbason Peters</option>
-
-<option>John Smith</option>
-
-</select> -->
-
-</div>
-
-
-
-<div>
-
-<label>Driving License Number</label>
-
-<input type="text">
-
-</div>
-
-
-
-<div>
-
-<label>Driver Phone Number</label>
-
-<input type="tel">
-
-</div>
-
-
-
-<div>
-
-<label>Assignment Date</label>
-
-<input type="date">
-
-</div>
-
-
-</div>
-
-
-
-
-<h2 class="section-title">
-🛡 Insurance Information
-</h2>
-
-
-<div class="form-grid">
-
-
-
-<div>
-
-<label>Insurance Company</label>
-
-<input type="text">
-
-</div>
-
-
-
-<!-- <div>
-
-<label>Policy Number</label>
-
-<input type="text">
-
-</div> -->
-
-
-
-<div>
-
-<label>Insurance Start Date</label>
-
-<input type="date">
-
-</div>
-
-
-
-<div>
-
-<label>Insurance Expiry Date</label>
-
-<input type="date">
-
-</div>
-
-<div>
-
-<label>Insurance Certificate</label>
-
-<input type="file">
-
-</div>
-
-</div>
-
-
-<!-- <h2 class="section-title">
-📍 Location & Tracking
-</h2>
-
-
-<div class="form-grid">
-
-
-<div>
-
-<label>Current Location</label>
-
-<input type="text">
-
-</div>
-
-
-
-<div>
-
-<label>GPS Device ID</label>
-
-<input type="text">
-
-</div>
-
-
-
-<div>
-
-<label>Operating Route</label>
-
-<input type="text">
-
-</div>
-
-
-
-<div>
-
-<label>Fleet Status</label>
-
-<select>
-
-<option>Active</option>
-
-<option>Maintenance</option>
-
-<option>Inactive</option>
-
-</select>
-
-
-</div>
-
-
-</div> -->
-
-
-
-
-
-<!-- <h2 class="section-title">
-💰 Financial Information
-</h2>
-
-
-<div class="form-grid">
-
-
-
-<div>
-
-<label>Purchase Value</label>
-
-<input type="number">
-
-</div>
-
-
-
-<div>
-
-<label>Current Market Value</label>
-
-<input type="number">
-
-</div>
-
-
-
-<div>
-
-<label>Financed Amount</label>
-
-<input type="number">
-
-</div> -->
-
-
-
-<!-- <div>
-
-<label>Loan Reference</label>
-
-<input type="text">
-
-</div> -->
-
-
-<!-- </div> -->
-
-
-
-
-<h2 class="section-title">
-📂 Documents Upload
-</h2>
-
-
-<div class="form-grid">
-
-<!-- <div>
-
-<label>Vehicle photo</label>
-
-<input type="file">
-
-</div> -->
-
-
-
-<div>
-
-<label>Inspection Certificate</label>
-
-<input type="file">
-
-</div>
-
-
-
-<div>
-
-<label>Driver Contract</label>
-
-<input type="file">
-
-</div>
+<b>
+10
+</b>
 
 
 </div>
@@ -1003,24 +1526,410 @@ Register vehicles using this form
 
 
 
-<button class="save">
-
-💾 Add Vehicle
-
-</button>
 
 
 
-<button class="reset">
 
-🔄 Reset
+<!-- TABLE -->
+
+
+<div class="table-wrapper">
+
+
+<table class="borrow-table">
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Photo
+</th>
+
+
+
+<th>
+Name
+</th>
+
+
+
+
+<th>
+ID
+</th>
+
+
+
+
+<th>
+Phone
+</th>
+
+
+
+
+<th>
+Outstanding
+</th>
+
+
+
+
+<th>
+Date Added
+</th>
+
+
+
+
+<th>
+Action
+</th>
+
+
+
+</tr>
+
+
+
+</thead>
+
+
+
+
+
+
+
+
+
+<tbody>
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+
+<img 
+src="https://via.placeholder.com/45"
+class="profile-img"
+>
+
+
+</td>
+
+
+
+
+<td>
+Jean Claude
+</td>
+
+
+
+
+<td>
+BRW001
+</td>
+
+
+
+
+<td>
+0780000000
+</td>
+
+
+
+
+<td>
+RWF 250,000
+</td>
+
+
+
+
+<td>
+25 July 2026
+</td>
+
+
+
+
+<td>
+
+
+<button class="edit-btn">
+
+✏
 
 </button>
 
 
 
 
-</form>
+<button class="delete-btn">
+
+🗑
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+
+<img 
+src="https://via.placeholder.com/45"
+class="profile-img"
+>
+
+
+</td>
+
+
+
+
+<td>
+Eric Niyonzima
+</td>
+
+
+
+
+<td>
+BRW002
+</td>
+
+
+
+
+<td>
+0720000000
+</td>
+
+
+
+
+<td>
+RWF 500,000
+</td>
+
+
+
+
+<td>
+25 July 2026
+</td>
+
+
+
+
+<td>
+
+
+<button class="edit-btn">
+
+✏
+
+</button>
+
+
+
+
+<button class="delete-btn">
+
+🗑
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+
+<img 
+src="https://via.placeholder.com/45"
+class="profile-img"
+>
+
+
+</td>
+
+
+
+
+<td>
+Patrick Mugisha
+</td>
+
+
+
+
+<td>
+BRW003
+</td>
+
+
+
+
+<td>
+0730000000
+</td>
+
+
+
+
+<td>
+RWF 150,000
+</td>
+
+
+
+
+<td>
+25 July 2026
+</td>
+
+
+
+
+<td>
+
+
+<button class="edit-btn">
+
+✏
+
+</button>
+
+
+
+
+<button class="delete-btn">
+
+🗑
+
+</button>
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- PAGINATION -->
+
+
+<div class="pagination">
+
+
+
+<button>
+
+Previous
+
+</button>
+
+
+
+
+<span>
+
+Page 1 of 1
+
+</span>
+
+
+
+
+<button>
+
+Next
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
 
 
 
@@ -1028,11 +1937,416 @@ Register vehicles using this form
 
 
 
+
 </div>
 
 
 
-</body>
+<!-- =========================
+ADD BORROWER POPUP FORM
+========================= -->
 
+
+<div class="modal-overlay" id="borrowerModal">
+
+
+<div class="borrow-form">
+
+
+<h2>
+Add New Borrower
+</h2>
+
+
+
+
+<div class="form-grid">
+
+
+
+<div class="form-group" full>
+
+<label>
+Full Name
+</label>
+
+<input type="text" placeholder="Enter borrower name">
+
+</div>
+
+<div class="form-group" full>
+
+<label>
+National ID
+</label>
+
+<input type="text" placeholder="ID Number">
+
+</div>
+
+
+<div class="form-group" full>
+
+<label>
+Phone Number
+</label>
+
+<input type="text" placeholder="07xxxxxxxx">
+
+</div>
+
+
+<div class="form-group" full>
+
+<label>
+Date of Birth
+</label>
+
+<input type="date">
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>Gender</label>
+
+<select>
+
+<option>Male</option>
+
+<option>Female</option>
+
+<option>Other</option>
+
+<option>Prefer not to Say</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Address
+</label>
+
+<input type="text" placeholder="Borrower address">
+
+</div>
+
+
+
+<div class="form-group full">
+
+<label>
+Profile Picture
+</label>
+
+<input type="file">
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+National ID Document
+</label>
+
+<input type="file">
+
+</div>
+
+    
+
+</div>
+
+
+
+
+
+<div class="form-actions">
+
+
+<button class="close-btn" onclick="closeBorrowerForm()">
+
+Cancel
+
+</button>
+
+
+
+<button class="save-btn">
+
+Save Borrower
+
+</button>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+
+function openBorrowerForm(){
+
+document.getElementById("borrowerModal").style.display="flex";
+
+}
+
+
+
+
+function closeBorrowerForm(){
+
+document.getElementById("borrowerModal").style.display="none";
+
+}
+
+
+
+</script>
+
+
+
+
+<!-- =========================
+BULK UPLOAD POPUP
+========================= -->
+
+<div class="upload-modal" id="bulkModal">
+
+
+<div class="upload-box">
+
+
+<div class="upload-close" onclick="closeBulkUpload()">
+
+×
+
+</div>
+
+
+
+<h2>
+Bulk Upload Borrowers
+</h2>
+
+
+<p class="upload-description">
+
+Upload multiple borrowers using a CSV file. Download the template to get started.
+
+</p>
+
+
+
+
+
+<!-- STEP 1 -->
+
+
+<div class="upload-step">
+
+
+<h3>
+
+Step 1: Download Template
+
+</h3>
+
+
+
+<p class="step-text">
+
+Download the CSV template with the correct column format
+
+</p>
+
+
+
+
+<button class="csv-btn">
+
+⬇
+
+Download CSV Template
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- STEP 2 -->
+
+
+<div class="upload-step">
+
+
+<h3>
+
+Step 2: Upload Your CSV
+
+</h3>
+
+
+
+
+<p class="step-text">
+
+Select your filled CSV file to upload borrowers
+
+</p>
+
+
+
+
+
+<label class="file-label">
+
+CSV File
+
+</label>
+
+
+
+<input 
+type="file"
+class="file-input"
+accept=".csv"
+>
+
+
+
+
+
+
+<div class="requirements">
+
+
+<div class="requirements-title">
+
+ⓘ CSV Format Requirements:
+
+</div>
+
+
+
+<ul>
+
+<li>
+Columns: full_name, national_id, phone, date_of_birth, gender, address
+</li>
+
+
+<li>
+Gender values: male, female, other, prefer_not_to_say
+</li>
+
+
+<li>
+Date format: YYYY-MM-DD
+</li>
+
+
+</ul>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="upload-footer">
+
+
+<button 
+class="cancel-upload"
+onclick="closeBulkUpload()">
+
+Cancel
+
+</button>
+
+
+
+
+<button class="upload-confirm">
+
+Upload Borrowers
+
+</button>
+
+
+
+</div>
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+<script>
+
+
+function openBulkUpload(){
+
+document.getElementById("bulkModal").style.display="flex";
+
+}
+
+
+
+
+function closeBulkUpload(){
+
+document.getElementById("bulkModal").style.display="none";
+
+}
+
+
+</script>
+
+    
+</body>
 
 </html>
