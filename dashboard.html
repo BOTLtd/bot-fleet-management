@@ -13,101 +13,115 @@
 
 <style>
 
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Segoe UI, Arial, sans-serif;
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI",Arial,sans-serif;
+
 }
+
 
 
 body{
-    background:#f4f6f9;
+
+background:#f4f6f9;
+overflow-x:hidden;
+
 }
+
+
+
+/* ===============================
+MAIN LAYOUT
+================================ */
 
 
 .container{
-    display:flex;
-    min-height:100vh;
+
+display:flex;
+min-height:100vh;
+width:100%;
+
 }
 
 
 
-/* SIDEBAR */
+/* ===============================
+SIDEBAR
+================================ */
+
 
 .sidebar{
 
-    width:260px;
-    background:#0f172a;
-    color:white;
+width:260px;
+min-height:100vh;
+background:#0f172a;
+color:white;
+flex-shrink:0;
+
 }
 
-/* ================= LOGO ================= */
+
 
 .logo{
-    text-align:center;
-    padding:30px 15px;
-    border-bottom:1px solid #334155;
+
+text-align:center;
+padding:30px 15px;
+border-bottom:1px solid #334155;
+
 }
 
-/* Make the whole logo clickable */
+
 
 .logo-link{
-    display:block;
-    text-decoration:none;
-    color:inherit;
-    cursor:pointer;
+
+text-decoration:none;
+color:white;
+display:block;
+
 }
 
-.logo-link:link,
-.logo-link:visited,
-.logo-link:hover,
-.logo-link:active{
-    text-decoration:none;
-    color:inherit;
-}
 
-/* Title */
 
 .logo-link h3{
-    margin:0;
-    color:#38bdf8;
-    font-size:22px;
-    font-weight:700;
-    text-decoration:none;
-    transition:color .3s ease;
+
+color:#38bdf8;
+font-size:22px;
+font-weight:700;
+
 }
 
-/* Subtitle */
+
 
 .logo-link p{
-    margin-top:6px;
-    color:#cbd5e1;
-    font-size:13px;
-    text-decoration:none;
+
+margin-top:6px;
+font-size:13px;
+color:#cbd5e1;
+
 }
 
-/* Hover effect */
-
-.logo-link:hover h3{
-    color:#60a5fa;
-}
 
 
 .menu a{
 
-    display:block;
-    padding:16px 25px;
-    color:white;
-    text-decoration:none;
+display:block;
+padding:16px 25px;
+color:white;
+text-decoration:none;
+font-size:15px;
 
 }
+
 
 
 .menu a:hover,
 .menu .active{
 
-    background:#2563eb;
+background:#2563eb;
 
 }
 
@@ -115,313 +129,35 @@ body{
 
 
 
-/* CONTENT */
+/* ===============================
+RIGHT CONTENT AREA
+================================ */
+
+
+main{
+
+flex:1;
+width:calc(100% - 260px);
+min-width:0;
+
+}
+
+
 
 .content{
 
-    flex:1;
-    padding:30px;
-
-}
-
-h1{
-
-    color:#0f172a;
-
-}
-
-.subtitle{
-
-    color:#64748b;
-    margin:10px 0 25px;
-
-}
-
-/* =============================
-   RESPONSIVE DESIGN
-============================= */
-
-/* Tablets */
-
-@media (max-width: 992px){
-
-    .sidebar{
-        width:220px;
-    }
-
-    .content{
-        padding:20px;
-    }
-
-    .features{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-    }
+width:100%;
+padding:30px;
 
 }
 
 
-/* Phones */
 
-@media (max-width:768px){
 
-    .container{
-        flex-direction:column;
-    }
 
-    .sidebar{
-
-        width:100%;
-        height:auto;
-
-    }
-
-    .logo{
-
-        padding:20px;
-
-    }
-
-    .logo-link h3{
-
-        font-size:20px;
-
-    }
-
-    .logo-link p{
-
-        font-size:12px;
-
-    }
-
-    .menu{
-
-        display:flex;
-        flex-wrap:wrap;
-        justify-content:center;
-        margin:0;
-    }
-
-    .menu a{
-
-        flex:1 1 45%;
-        text-align:center;
-        padding:15px;
-        font-size:15px;
-
-    }
-
-    .content{
-
-        padding:15px;
-
-    }
-
-    .welcome-banner{
-
-        padding:25px;
-
-    }
-
-    .welcome-banner h2{
-
-        font-size:22px;
-
-    }
-
-    .welcome-banner p{
-
-        font-size:14px;
-
-    }
-
-    .features{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .cards{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-}
-
-
-/* Small Phones */
-
-@media (max-width:480px){
-
-    .menu{
-
-        display:block;
-
-    }
-
-    .menu a{
-
-        width:100%;
-        text-align:left;
-        padding:15px 20px;
-        font-size:14px;
-
-    }
-
-    .logo-link h3{
-
-        font-size:18px;
-
-    }
-
-    .welcome-banner h2{
-
-        font-size:20px;
-
-    }
-
-}
-/* CALCULATOR */
-
-
-.calculator{
-
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-
-}
-
-.grid{
-
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-
-}
-
-
-label{
-
-    font-weight:600;
-    display:block;
-    margin-bottom:7px;
-
-}
-
-
-input{
-
-    width:100%;
-    padding:12px;
-    border:1px solid #cbd5e1;
-    border-radius:6px;
-
-}
-
-
-/* CARDS */
-
-
-.cards{
-
-    margin-top:30px;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-
-}
-
-
-
-.card{
-
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-
-}
-
-
-
-.card h3{
-
-    color:#64748b;
-    font-size:14px;
-
-}
-
-
-
-.card h2{
-
-    color:#2563eb;
-    margin-top:10px;
-
-}
-
-
-
-
-
-/* CHARTS */
-
-
-.charts{
-
-    margin-top:30px;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:25px;
-
-}
-
-
-
-.chart-box{
-
-    background:white;
-    padding:25px;
-    border-radius:12px;
-
-}
-
-
-
-canvas{
-
-    max-height:300px;
-
-}
-
-
-
-@media(max-width:1000px){
-
-.grid,
-.cards,
-.charts{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
-
-/* ================= DASHBOARD STYLE ================= */
+/* ===============================
+TOP BAR
+================================ */
 
 
 .topbar{
@@ -440,7 +176,9 @@ justify-content:space-between;
 
 padding:0 25px;
 
-margin:-35px -35px 30px -35px;
+margin:-30px 0 30px 0;
+
+width:100%;
 
 }
 
@@ -449,12 +187,8 @@ margin:-35px -35px 30px -35px;
 .brand-left{
 
 display:flex;
-
 align-items:center;
-
 gap:12px;
-
-font-weight:600;
 
 }
 
@@ -462,22 +196,18 @@ font-weight:600;
 
 .loan-logo{
 
-width:34px;
-
-height:34px;
+width:35px;
+height:35px;
 
 background:#22c55e;
 
 border-radius:50%;
 
-color:white;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
 
+color:white;
 font-weight:bold;
 
 }
@@ -486,7 +216,7 @@ font-weight:bold;
 
 .loan-name{
 
-font-size:16px;
+font-weight:600;
 
 }
 
@@ -495,12 +225,8 @@ font-size:16px;
 .divider{
 
 height:30px;
-
 width:1px;
-
 background:#ddd;
-
-margin:0 15px;
 
 }
 
@@ -509,11 +235,8 @@ margin:0 15px;
 .transport{
 
 display:flex;
-
-gap:8px;
-
 align-items:center;
-
+gap:8px;
 color:#334155;
 
 }
@@ -523,26 +246,25 @@ color:#334155;
 .signout{
 
 display:flex;
-
 gap:10px;
-
 align-items:center;
-
-font-size:15px;
-
 cursor:pointer;
 
 }
 
 
 
+
+
+/* ===============================
+HEADER
+================================ */
+
+
 .header h1{
 
 font-size:32px;
-
 color:#111827;
-
-margin-bottom:5px;
 
 }
 
@@ -551,19 +273,26 @@ margin-bottom:5px;
 .subtitle{
 
 color:#64748b;
-
 font-size:15px;
+margin-top:8px;
 
 }
 
 
 
 
+
+/* ===============================
+STAT CARDS
+================================ */
+
+
 .stats{
 
 display:grid;
 
-grid-template-columns:repeat(4,1fr);
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
 
 gap:18px;
 
@@ -589,14 +318,6 @@ position:relative;
 
 
 
-.card:first-child{
-
-border-color:#86efac;
-
-}
-
-
-
 .card-title{
 
 font-size:14px;
@@ -609,7 +330,7 @@ color:#334155;
 
 
 
-.card .icon{
+.icon{
 
 position:absolute;
 
@@ -663,18 +384,23 @@ margin-top:5px;
 
 
 
+/* ===============================
+BOTTOM PANELS
+================================ */
+
+
 .grid{
 
 display:grid;
 
-grid-template-columns:1fr 1fr;
+grid-template-columns:
+repeat(auto-fit,minmax(350px,1fr));
 
 gap:18px;
 
 margin-top:25px;
 
 }
-
 
 
 
@@ -731,6 +457,12 @@ font-size:15px;
 
 
 
+
+/* ===============================
+PAYMENT STATUS
+================================ */
+
+
 .payment-row{
 
 display:flex;
@@ -762,7 +494,6 @@ font-size:13px;
 .badge.danger{
 
 background:#fee2e2;
-
 color:#dc2626;
 
 }
@@ -772,7 +503,6 @@ color:#dc2626;
 .badge.success{
 
 background:#dcfce7;
-
 color:#16a34a;
 
 }
@@ -781,13 +511,101 @@ color:#16a34a;
 
 
 
+/* ===============================
+RESPONSIVE
+================================ */
+
+
 @media(max-width:1000px){
 
-.stats{
 
-grid-template-columns:repeat(2,1fr);
+.sidebar{
+
+width:220px;
 
 }
+
+
+main{
+
+width:calc(100% - 220px);
+
+}
+
+
+
+}
+
+
+
+@media(max-width:768px){
+
+
+.container{
+
+flex-direction:column;
+
+}
+
+
+
+.sidebar{
+
+width:100%;
+min-height:auto;
+
+}
+
+
+
+main{
+
+width:100%;
+
+}
+
+
+
+.content{
+
+padding:15px;
+
+}
+
+
+
+.menu{
+
+display:flex;
+flex-wrap:wrap;
+
+}
+
+
+
+.menu a{
+
+flex:1 1 45%;
+text-align:center;
+
+}
+
+
+
+.topbar{
+
+height:auto;
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:15px;
+
+padding:15px;
+
+}
+
 
 
 .grid{
@@ -796,10 +614,7 @@ grid-template-columns:1fr;
 
 }
 
-}
 
-
-@media(max-width:600px){
 
 .stats{
 
@@ -807,16 +622,42 @@ grid-template-columns:1fr;
 
 }
 
-.topbar{
 
-margin:-15px;
 
 }
 
+
+
+@media(max-width:480px){
+
+
+.menu{
+
+display:block;
+
 }
 
-    
+
+
+.menu a{
+
+width:100%;
+text-align:left;
+
+}
+
+
+.brand-left{
+
+flex-wrap:wrap;
+
+}
+
+
+}
+
 </style>
+
 
 </head>
 
@@ -827,18 +668,27 @@ margin:-15px;
 <div class="container">
 
 
-
-<!-- LEFT MENU -->
-
+<!-- SIDEBAR -->
 
 <aside class="sidebar">
 
 
 <div class="logo">
-    <a href="index.html" class="logo-link">
-        <h3>King Fleet Management</h3>
-        <p>King Services and Transport Ltd </p>
-    </a>
+
+<a href="index.html" class="logo-link">
+
+<h3>
+King Fleet Management
+</h3>
+
+
+<p>
+King Services and Transport Ltd
+</p>
+
+
+</a>
+
 </div>
 
 
@@ -892,53 +742,71 @@ margin:-15px;
 
 
 
-<!-- MAIN -->
+<!-- RIGHT SIDE -->
 
-<main >
+<main>
+
 
 <div class="content">
 
-<!-- TOP BAR -->
+
+<!-- ===============================
+TOP BAR
+================================ -->
+
+
 <div class="topbar">
 
-    <div class="brand-left">
 
-        <div class="loan-logo">
-            L
-        </div>
-
-        <div class="loan-name">
-            Loan
-        </div>
+<div class="brand-left">
 
 
-        <div class="divider"></div>
+<div class="loan-logo">
+
+L
+
+</div>
 
 
-        <div class="transport">
+<div class="loan-name">
 
-            🏢
+Loan
 
-            <span>
-                King Services & Transport Ltd
-            </span>
-
-        </div>
-
-
-    </div>
+</div>
 
 
 
-    <div class="signout">
+<div class="divider"></div>
 
-        ⇥
 
-        <span>
-            Sign Out
-        </span>
 
-    </div>
+<div class="transport">
+
+🏢
+
+<span>
+King Services & Transport Ltd
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="signout">
+
+⇥
+
+<span>
+Sign Out
+</span>
+
+
+</div>
+
 
 
 </div>
@@ -946,48 +814,72 @@ margin:-15px;
 
 
 
-<!-- PAGE HEADER -->
+
+<!-- ===============================
+PAGE HEADER
+================================ -->
+
 
 <div class="header">
+
 
 <h1>
 Dashboard
 </h1>
 
+
 <div class="subtitle">
+
 Overview of your loan management system
-</div>
 
 </div>
 
 
+</div>
 
 
 
-<!-- KPI CARDS -->
+
+
+
+
+<!-- ===============================
+KPI CARDS
+================================ -->
+
 
 <div class="stats">
 
 
+
 <div class="card">
 
+
 <div class="card-title">
+
 Total Borrowers
+
 </div>
 
 
-<div class="icon green">
+<div class="icon">
+
 👥
+
 </div>
 
 
 <div class="value">
+
 10
+
 </div>
 
 
 <p>
+
 Active borrowers in system
+
 </p>
 
 
@@ -997,25 +889,36 @@ Active borrowers in system
 
 
 
+
+
 <div class="card">
 
+
 <div class="card-title">
+
 Assets
+
 </div>
 
 
-<div class="icon green">
+<div class="icon">
+
 🏍
+
 </div>
 
 
 <div class="value">
+
 10
+
 </div>
 
 
 <p>
+
 Motorcycles and assets
+
 </p>
 
 
@@ -1026,29 +929,40 @@ Motorcycles and assets
 
 
 
+
 <div class="card">
 
+
 <div class="card-title">
+
 Active Loans
+
 </div>
 
 
-<div class="icon green">
+<div class="icon">
+
 💳
+
 </div>
 
 
 <div class="value">
+
 10
+
 </div>
 
 
 <p>
+
 Loans currently active
+
 </p>
 
 
 </div>
+
 
 
 
@@ -1058,23 +972,32 @@ Loans currently active
 
 <div class="card">
 
+
 <div class="card-title">
+
 Total Outstanding
+
 </div>
 
 
-<div class="icon green">
+<div class="icon">
+
 📈
+
 </div>
 
 
 <div class="value">
+
 RWF 20,000,000
+
 </div>
 
 
 <p>
+
 Outstanding principal
+
 </p>
 
 
@@ -1090,29 +1013,49 @@ Outstanding principal
 
 
 
+<!-- ===============================
+LOWER DASHBOARD PANELS
+================================ -->
 
-<!-- LOWER PANELS -->
+
 
 <div class="grid">
+
+
+
+
+
+<!-- RECENT LOANS -->
 
 
 <div class="panel">
 
 
 <h2>
+
 Recent Loans
+
 </h2>
 
 
 <p class="panel-sub">
+
 Latest loan applications and updates
+
 </p>
+
 
 
 
 <div class="empty">
 
-No loans created yet. Start by adding borrowers and creating loans.
+
+No loans created yet.
+
+<br>
+
+Start by adding borrowers and creating loans.
+
 
 </div>
 
@@ -1123,31 +1066,46 @@ No loans created yet. Start by adding borrowers and creating loans.
 
 
 
+
+
+
+<!-- PAYMENT STATUS -->
 
 
 <div class="panel">
 
 
 <h2>
+
 Payment Status
+
 </h2>
 
 
 <p class="panel-sub">
+
 Current week payment overview
+
 </p>
 
 
 
+
+
 <div class="payment-row">
 
+
 <span>
+
 Due Today
+
 </span>
 
 
 <b class="badge">
+
 2
+
 </b>
 
 
@@ -1156,32 +1114,46 @@ Due Today
 
 
 
+
+
 <div class="payment-row">
 
+
 <span>
+
 Overdue
+
 </span>
 
 
 <b class="badge danger">
+
 3
+
 </b>
 
 
 </div>
+
+
 
 
 
 
 <div class="payment-row">
 
+
 <span>
+
 Paid This Week
+
 </span>
 
 
 <b class="badge success">
+
 8
+
 </b>
 
 
@@ -1192,13 +1164,12 @@ Paid This Week
 </div>
 
 
-</div>
 
 
 </div>
 
 
-
+</div>
 
 
 </main>
@@ -1210,234 +1181,123 @@ Paid This Week
 
 <script>
 
-// =============================
-// Fleet Finance Dashboard
-// =============================
 
-const inputs = [
-    "bikes",
-    "cost",
-    "down",
-    "finance",
-    "interest",
-    "months",
-    "investorShare",
-    "companyShare",
-    "weeklyRevenue"
-];
+// ===============================
+// Fleet Dashboard Initialization
+// ===============================
 
-inputs.forEach(id => {
-    document.getElementById(id).addEventListener("input", calculate);
-});
 
-function money(value){
-    return new Intl.NumberFormat("en-RW",{
-        style:"currency",
-        currency:"RWF",
-        maximumFractionDigits:0
-    }).format(value);
-}
+// Future Supabase data loading can be added here
 
-function percent(value){
-    return Number(value).toFixed(2) + "%";
+
+function formatMoney(value){
+
+return new Intl.NumberFormat("en-RW",{
+
+style:"currency",
+
+currency:"RWF",
+
+maximumFractionDigits:0
+
+}).format(value);
+
+
 }
 
 
-// =====================================
-// Create Charts (Only Once)
-// =====================================
 
-const cashChart = new Chart(document.getElementById("cashChart"),{
+// ===============================
+// Example Dashboard Counters
+// ===============================
 
-    type:"line",
 
-    data:{
-        labels:["Week 1","Week 2","Week 3","Week 4"],
-        datasets:[{
-            label:"Weekly Cash Flow",
-            data:[0,0,0,0],
-            borderColor:"#2563eb",
-            backgroundColor:"rgba(37,99,235,.15)",
-            fill:true,
-            tension:.4
-        }]
-    }
+// These can later be replaced by Supabase queries
 
-});
 
+const dashboardData = {
 
-const investorChart = new Chart(document.getElementById("investorChart"),{
 
-    type:"bar",
+borrowers:10,
 
-    data:{
-        labels:["Investor"],
-        datasets:[{
-            label:"Profit",
-            data:[0],
-            backgroundColor:"#16a34a"
-        }]
-    }
+assets:10,
 
-});
+loans:10,
 
+outstanding:20000000
 
-const companyChart = new Chart(document.getElementById("companyChart"),{
 
-    type:"bar",
+};
 
-    data:{
-        labels:["Company"],
-        datasets:[{
-            label:"Profit",
-            data:[0],
-            backgroundColor:"#2563eb"
-        }]
-    }
 
-});
 
 
-const breakChart = new Chart(document.getElementById("breakChart"),{
+// Update cards dynamically
 
-    type:"line",
 
-    data:{
-        labels:["0","25%","50%","75%","100%"],
-        datasets:[{
-            label:"Break-even",
-            data:[0,25,50,75,100],
-            borderColor:"#f59e0b",
-            backgroundColor:"rgba(245,158,11,.15)",
-            fill:true,
-            tension:.4
-        }]
-    }
+document.querySelectorAll(".value")[0].textContent =
+dashboardData.borrowers;
 
-});
 
+document.querySelectorAll(".value")[1].textContent =
+dashboardData.assets;
 
 
-// =====================================
-// Calculator
-// =====================================
+document.querySelectorAll(".value")[2].textContent =
+dashboardData.loans;
 
-function calculate(){
 
-    const bikes = Number(document.getElementById("bikes").value);
+document.querySelectorAll(".value")[3].textContent =
+formatMoney(dashboardData.outstanding);
 
-    const cost = Number(document.getElementById("cost").value);
 
-    const down = Number(document.getElementById("down").value);
 
-    const financed = Number(document.getElementById("finance").value);
 
-    const rate = Number(document.getElementById("interest").value);
 
-    const months = Number(document.getElementById("months").value);
+// ===============================
+// OPTIONAL CHART SUPPORT
+// ===============================
 
-    const investorShare = Number(document.getElementById("investorShare").value);
 
-    const companyShare = Number(document.getElementById("companyShare").value);
+// Add charts later using Chart.js
 
-    const weeklyBikeRevenue = Number(document.getElementById("weeklyRevenue").value);
 
+/*
+Example:
 
 
-    const weeks = months * 4.345;
+new Chart(document.getElementById("loanChart"),{
 
-    const totalInterest = financed * (rate/100) * (months/12);
+type:"line",
 
-    const repayment = financed + totalInterest;
+data:{
 
-    const weeklyPayment = repayment / weeks;
+labels:[
+"Jan",
+"Feb",
+"Mar"
+],
 
-    const totalProfit = totalInterest;
+datasets:[{
 
-    const investorProfit = totalProfit * investorShare / 100;
+label:"Loans",
 
-    const companyProfit = totalProfit * companyShare / 100;
+data:[
+5,
+8,
+12
+]
 
-    const roi = (investorProfit / down) * 100;
-
-    const weeklyRevenue = bikes * weeklyBikeRevenue;
-
-    const monthlyRevenue = weeklyRevenue * 4.345;
-
-    const weeklyNet = weeklyRevenue - weeklyPayment;
-
-    const breakEven = weeklyNet > 0 ? down / weeklyNet : 0;
-
-    const portfolio = bikes * cost;
-
-
-
-    document.getElementById("apr").textContent = percent(rate);
-
-    document.getElementById("weeklyPayment").textContent = money(weeklyPayment);
-
-    document.getElementById("repayment").textContent = money(repayment);
-
-    document.getElementById("interestPaid").textContent = money(totalInterest);
-
-    document.getElementById("roi").textContent = percent(roi);
-
-    document.getElementById("investorProfit").textContent = money(investorProfit);
-
-    document.getElementById("companyProfit").textContent = money(companyProfit);
-
-    document.getElementById("breakEven").textContent = breakEven.toFixed(1) + " Weeks";
-
-    document.getElementById("portfolio").textContent = money(portfolio);
-
-    document.getElementById("weeklyCash").textContent = money(weeklyRevenue);
-
-    document.getElementById("monthlyCash").textContent = money(monthlyRevenue);
-
-
-
-    // Update Charts
-
-    cashChart.data.datasets[0].data = [
-        weeklyRevenue * .7,
-        weeklyRevenue * .85,
-        weeklyRevenue,
-        weeklyRevenue * 1.15
-    ];
-
-    cashChart.update();
-
-
-
-    investorChart.data.datasets[0].data = [
-        investorProfit
-    ];
-
-    investorChart.update();
-
-
-
-    companyChart.data.datasets[0].data = [
-        companyProfit
-    ];
-
-    companyChart.update();
-
-
-
-    breakChart.data.datasets[0].data = [
-        0,
-        breakEven * .25,
-        breakEven * .5,
-        breakEven * .75,
-        breakEven
-    ];
-
-    breakChart.update();
+}]
 
 }
 
-calculate();
+});
+
+
+*/
+
+
 
 </script>
 
@@ -1445,3 +1305,4 @@ calculate();
 </body>
 
 </html>
+
