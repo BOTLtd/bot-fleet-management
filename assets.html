@@ -1318,7 +1318,9 @@ King Services & Transport Ltd
 📘 API Docs
 </a>
 
-
+<button onclick="logout()">
+Logout
+</button>
 
 </nav>
 
@@ -2171,6 +2173,20 @@ document.getElementById("bulkModal").style.display="none";
 
 }
 
+
+</script>
+
+<script>
+
+function logout(){
+
+localStorage.removeItem("isLoggedIn");
+
+localStorage.removeItem("currentUser");
+
+window.location.href="auth.html";
+
+}
 
 </script>
 
