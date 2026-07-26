@@ -491,6 +491,35 @@ grid-template-columns:1fr;
 
 <body>
 
+<script>
+(function () {
+
+    const USERNAME = "admin";
+    const PASSWORD = "admin";
+
+    const username = prompt("Username:");
+
+    if (username === null) {
+        window.location.replace("about:blank");
+        return;
+    }
+
+    const password = prompt("Password:");
+
+    if (password === null) {
+        window.location.replace("about:blank");
+        return;
+    }
+
+    if (username !== USERNAME || password !== PASSWORD) {
+        alert("Invalid username or password.");
+        window.location.reload();
+        return;
+    }
+
+})();
+</script>
+
 
 
 <div class="container">
