@@ -2323,6 +2323,92 @@ document.getElementById("bulkModal").style.display="none";
 
 </script>
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://pblnryiziqxpudeuheas.supabase.co";
+const SUPABASE_KEY = "sb_publishable_mRNJPktH5JZuVDB54x-v0w_hSvDsiZn";
+
+const { createClient } = supabase;
+
+const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const form = document.querySelector(".form-container");
+
+form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.innerHTML = "Saving...";
+
+    const data = {
+
+        full_name: form.querySelector('input[placeholder="Enter full name"]').value,
+
+        date_of_birth: form.querySelectorAll('input[type="date"]')[0].value,
+
+        age: form.querySelector('input[type="number"]').value,
+
+        gender: form.querySelector("select").value,
+
+        phone_number: form.querySelector('input[type="tel"]').value,
+
+        email: form.querySelector('input[type="email"]').value,
+
+        national_id_number: form.querySelectorAll('input[type="text"]')[0].value,
+
+        location: form.querySelector('input[placeholder="District / City"]').value,
+
+        residential_address: form.querySelectorAll('input[type="text"]')[2].value,
+
+        driving_permit_number: form.querySelectorAll('input[type="text"]')[3].value,
+
+        driving_permit_category: form.querySelectorAll("select")[1].value,
+
+        permit_issue_date: form.querySelectorAll('input[type="date"]')[1].value,
+
+        permit_expiry_date: form.querySelectorAll('input[type="date"]')[2].value,
+
+        driving_experience: form.querySelectorAll('input[type="number"]')[1].value,
+
+        requested_loan_amount: form.querySelectorAll('input[type="number"]')[2].value,
+
+        preferred_vehicle_brand: form.querySelectorAll('input[type="text"]')[4].value,
+
+        guarantor_name: form.querySelectorAll('input[type="text"]')[5].value,
+
+        guarantor_phone: form.querySelectorAll('input[type="tel"]')[1].value,
+
+        created_at: new Date().toISOString()
+
+    };
+
+    const { error } = await db
+        .from("drivers")
+        .insert([data]);
+
+    if(error){
+
+        alert("❌ " + error.message);
+
+    }else{
+
+        alert("✅ Driver registered successfully");
+
+        form.reset();
+
+    }
+
+    btn.disabled = false;
+    btn.innerHTML = "💾 Add Driver";
+
+});
+</script>
     
 </body>
 
