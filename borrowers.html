@@ -2439,6 +2439,8 @@ document.getElementById(
 SAVE / UPDATE
 ========================== */
 
+let savingBorrower = false;
+    
 document
 .getElementById("borrowerForm")
 .addEventListener(
@@ -2448,7 +2450,15 @@ async function(e){
 
 e.preventDefault();
 
+if(savingBorrower){
 
+console.log("Duplicate save blocked");
+
+return;
+
+}
+
+savingBorrower=true;
 
 const btn=document.getElementById("saveBtn");
 
