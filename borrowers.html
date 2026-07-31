@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Borrowers | King Fleet Management</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,Arial,sans-serif;
+}
+
+body{
+background:#f4f6f9;
+}
+
+.container{
+display:flex;
+min-height:100vh;
+}
+
+.sidebar{
+width:260px;
+background:#0f172a;
+color:#fff;
+}
+
+.logo{
+padding:30px;
+text-align:center;
+border-bottom:1px solid #334155;
+}
+
+.logo h2{
+color:#38bdf8;
+}
+
+.logo p{
+font-size:13px;
+color:#cbd5e1;
+margin-top:5px;
+}
+
+.menu a{
+display:block;
+padding:15px 25px;
+color:white;
+text-decoration:none;
+}
+
+.menu a:hover,
+.menu .active{
+background:#2563eb;
+}
+
+.content{
+flex:1;
+padding:25px;
+}
+
+.topbar{
+background:white;
+padding:18px 25px;
+border-radius:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.header{
+background:white;
+padding:20px;
+border-radius:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.header h1{
+font-size:32px;
+}
+
+.subtitle{
+color:#64748b;
+margin-top:6px;
+}
+
+.borrow-actions{
+display:flex;
+gap:10px;
+}
+
+.borrow-actions button{
+padding:12px 18px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+}
+
+.bulk-btn{
+background:white;
+border:1px solid #cbd5e1!important;
+}
+
+.add-btn{
+background:#16a34a;
+color:white;
+}
+
+.panel{
+background:white;
+padding:25px;
+border-radius:12px;
+}
+
+.panel h2{
+margin-bottom:5px;
+}
+
+.panel-sub{
+color:#64748b;
+margin-bottom:20px;
+}
+
+.search-box{
+width:100%;
+max-width:450px;
+padding:13px;
+border:1px solid #d1d5db;
+border-radius:8px;
+margin-bottom:20px;
+}
+
+.table-wrapper{
+overflow-x:auto;
+}
+
+.borrow-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.borrow-table th{
+background:#f8fafc;
+padding:14px;
+text-align:left;
+}
+
+.borrow-table td{
+padding:14px;
+border-bottom:1px solid #eee;
+}
+
+.borrow-table tbody tr:hover{
+background:#f9fafb;
+}
+
+.initials{
+width:45px;
+height:45px;
+border-radius:50%;
+background:#2563eb;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+}
+
+.edit-btn,
+.delete-btn{
+background:none;
+border:none;
+cursor:pointer;
+font-size:18px;
+margin-right:8px;
+}
+
+.loading{
+padding:30px;
+text-align:center;
+color:#64748b;
+}
+
+@media(max-width:900px){
+
+.container{
+flex-direction:column;
+}
+
+.sidebar{
+width:100%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<h2>King Fleet</h2>
+
+<p>King Services & Transport Ltd</p>
+
+</div>
+
+<nav class="menu">
+
+<a href="dashboard.html">🏠 Dashboard</a>
+<a class="active">👤 Borrowers</a>
+<a href="assets.html">🚚 Assets</a>
+<a href="loans.html">💳 Loans</a>
+<a href="payments.html">💰 Payments</a>
+<a href="reports.html">📊 Reports</a>
+<a href="admin.html">⚙ Admin</a>
+
+</nav>
+
+</aside>
+
+<main class="content">
+
+<div class="topbar">
+
+<div><strong>King Fleet Management</strong></div>
+
+<div>Sign Out</div>
+
+</div>
+
+<div class="header">
+
+<div>
+
+<h1>Borrowers</h1>
+
+<div class="subtitle">
+Manage customer information
+</div>
+
+</div>
+
+<div class="borrow-actions">
+
+<button class="bulk-btn">
+⬆ Bulk Upload
+</button>
+
+<button class="add-btn" onclick="openBorrowerForm()">
++ Add Borrower
+</button>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<h2>All Borrowers</h2>
+
+<p class="panel-sub">
+<span id="borrowerCount">Loading...</span> borrowers registered
+</p>
+
+<input
+id="searchInput"
+class="search-box"
+placeholder="Search borrowers...">
+
+<div class="table-wrapper">
+
+<table class="borrow-table">
+
+<thead>
+
+<tr>
+
+<th>Photo</th>
+<th>Name</th>
+<th>National ID</th>
+<th>Phone</th>
+<th>Gender</th>
+<th>Date Added</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="borrowerTable">
+
+<tr>
+
+<td colspan="7" class="loading">
+
+Loading borrowers...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+<script>
+
+const SUPABASE_URL="https://pblnryiziqxpudeuheas.supabase.co";
+
+const SUPABASE_KEY="sb_publishable_mRNJPktH5JZuVDB54x-v0w_hSvDsiZn";
+
+const {createClient}=supabase;
+
+const db=createClient(SUPABASE_URL,SUPABASE_KEY);
+
+let borrowers=[];
+
+async function loadBorrowers(){
+
+const tbody=document.getElementById("borrowerTable");
+
+tbody.innerHTML="<tr><td colspan='7' class='loading'>Loading...</td></tr>";
+
+const {data,error}=await db
+.from("borrowers")
+.select("*")
+.order("created_at",{ascending:false});
+
+if(error){
+
+tbody.innerHTML=
+"<tr><td colspan='7'>"+error.message+"</td></tr>";
+
+return;
+
+}
+
+borrowers=data||[];
+
+document.getElementById("borrowerCount").innerHTML=borrowers.length;
+
+renderBorrowers(borrowers);
+
+}
+
+function renderBorrowers(rows){
+
+const tbody=document.getElementById("borrowerTable");
+
+tbody.innerHTML="";
+
+if(rows.length===0){
+
+tbody.innerHTML=
+"<tr><td colspan='7'>No borrowers found.</td></tr>";
+
+return;
+
+}
+
+rows.forEach(b=>{
+
+const initials=(b.full_name||"?")
+.split(" ")
+.map(x=>x[0])
+.join("")
+.substring(0,2)
+.toUpperCase();
+
+tbody.innerHTML+=`
+
+<tr>
+
+<td>
+<div class="initials">${initials}</div>
+</td>
+
+<td>${b.full_name||""}</td>
+
+<td>${b.national_id||""}</td>
+
+<td>${b.phone||""}</td>
+
+<td>${b.gender||""}</td>
+
+<td>${new Date(b.created_at).toLocaleDateString()}</td>
+
+<td>
+
+<button class="edit-btn"
+onclick="editBorrower('${b.id}')">
+
+✏
+
+</button>
+
+<button class="delete-btn"
+onclick="deleteBorrower('${b.id}')">
+
+🗑
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+document
+.getElementById("searchInput")
+.addEventListener("keyup",function(){
+
+const value=this.value.toLowerCase();
+
+const filtered=borrowers.filter(x=>
+
+(x.full_name||"").toLowerCase().includes(value) ||
+
+(x.phone||"").toLowerCase().includes(value) ||
+
+(x.national_id||"").toLowerCase().includes(value)
+
+);
+
+renderBorrowers(filtered);
+
+});
+
+loadBorrowers();
+
+</script>
+
+
+<!-- PART 2 -->
+  <!-- ===========================================================
+PART 2
+ADD BORROWER MODAL + SUPABASE INSERT + EDIT + DELETE
+Place this immediately AFTER Part 1 and BEFORE </body>
+=========================================================== -->
+
+<!-- ===========================
+ADD BORROWER MODAL
+=========================== -->
+
+<div class="modal-overlay" id="borrowerModal">
+
+<div class="borrow-form">
+
+<h2>Add New Borrower</h2>
+
+<form id="borrowerForm">
+
+<input type="hidden" id="borrowerId">
+
+<div class="form-grid">
+
+<div class="form-group full">
+
+<label>Full Name</label>
+
+<input
+type="text"
+id="full_name"
+required
+placeholder="Jean Claude">
+
+</div>
+
+<div class="form-group">
+
+<label>National ID</label>
+
+<input
+type="text"
+id="national_id"
+required
+placeholder="11999800XXXXXXX">
+
+</div>
+
+<div class="form-group">
+
+<label>Phone Number</label>
+
+<input
+type="text"
+id="phone"
+required
+placeholder="07XXXXXXXX">
+
+</div>
+
+<div class="form-group">
+
+<label>Date of Birth</label>
+
+<input
+type="date"
+id="dob">
+
+</div>
+
+<div class="form-group">
+
+<label>Gender</label>
+
+<select id="gender">
+
+<option value="Male">Male</option>
+
+<option value="Female">Female</option>
+
+<option value="Other">Other</option>
+
+</select>
+
+</div>
+
+<div class="form-group full">
+
+<label>Address</label>
+
+<input
+type="text"
+id="address"
+placeholder="Kigali">
+
+</div>
+
+</div>
+
+<div style="margin-top:25px;display:flex;justify-content:flex-end;gap:12px;">
+
+<button
+type="button"
+onclick="closeBorrowerForm()"
+style="padding:12px 20px;border:none;background:#ddd;border-radius:8px;cursor:pointer;">
+
+Cancel
+
+</button>
+
+<button
+id="saveBtn"
+type="submit"
+style="padding:12px 22px;border:none;background:#16a34a;color:white;border-radius:8px;cursor:pointer;">
+
+Save Borrower
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<style>
+
+.modal-overlay{
+
+display:none;
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(0,0,0,.55);
+
+justify-content:center;
+
+align-items:center;
+
+z-index:9999;
+
+}
+
+.borrow-form{
+
+background:white;
+
+width:650px;
+
+max-width:95%;
+
+padding:30px;
+
+border-radius:12px;
+
+}
+
+.form-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:15px;
+
+}
+
+.form-group{
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.form-group label{
+
+font-weight:600;
+
+margin-bottom:5px;
+
+}
+
+.form-group input,
+.form-group select{
+
+padding:12px;
+
+border:1px solid #ddd;
+
+border-radius:8px;
+
+}
+
+.full{
+
+grid-column:1/3;
+
+}
+
+@media(max-width:700px){
+
+.form-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.full{
+
+grid-column:auto;
+
+}
+
+}
+
+</style>
+
+<script>
+
+/* --------------------------
+OPEN/CLOSE MODAL
+-------------------------- */
+
+function openBorrowerForm(){
+
+document.getElementById("borrowerModal").style.display="flex";
+
+}
+
+function closeBorrowerForm(){
+
+document.getElementById("borrowerModal").style.display="none";
+
+document.getElementById("borrowerForm").reset();
+
+document.getElementById("borrowerId").value="";
+
+document.getElementById("saveBtn").innerHTML="Save Borrower";
+
+}
+
+/* --------------------------
+SAVE / UPDATE
+-------------------------- */
+
+document
+.getElementById("borrowerForm")
+.addEventListener("submit",async function(e){
+
+e.preventDefault();
+
+const btn=document.getElementById("saveBtn");
+
+btn.disabled=true;
+
+btn.innerHTML="Saving...";
+
+const id=document.getElementById("borrowerId").value;
+
+const borrower={
+
+full_name:document.getElementById("full_name").value,
+
+national_id:document.getElementById("national_id").value,
+
+phone:document.getElementById("phone").value,
+
+date_of_birth:document.getElementById("dob").value,
+
+gender:document.getElementById("gender").value,
+
+address:document.getElementById("address").value
+
+};
+
+let error;
+
+if(id==""){
+
+const result=await db
+
+.from("borrowers")
+
+.insert([borrower]);
+
+error=result.error;
+
+}else{
+
+const result=await db
+
+.from("borrowers")
+
+.update(borrower)
+
+.eq("id",id);
+
+error=result.error;
+
+}
+
+btn.disabled=false;
+
+btn.innerHTML="Save Borrower";
+
+if(error){
+
+alert(error.message);
+
+return;
+
+}
+
+closeBorrowerForm();
+
+await loadBorrowers();
+
+});
+
+/* --------------------------
+DELETE
+-------------------------- */
+
+async function deleteBorrower(id){
+
+if(!confirm("Delete this borrower?")) return;
+
+const {error}=await db
+
+.from("borrowers")
+
+.delete()
+
+.eq("id",id);
+
+if(error){
+
+alert(error.message);
+
+return;
+
+}
+
+loadBorrowers();
+
+}
+
+/* --------------------------
+EDIT
+-------------------------- */
+
+function editBorrower(id){
+
+const b=borrowers.find(x=>x.id==id);
+
+if(!b) return;
+
+document.getElementById("borrowerId").value=b.id;
+
+document.getElementById("full_name").value=b.full_name||"";
+
+document.getElementById("national_id").value=b.national_id||"";
+
+document.getElementById("phone").value=b.phone||"";
+
+document.getElementById("dob").value=b.date_of_birth||"";
+
+document.getElementById("gender").value=b.gender||"Male";
+
+document.getElementById("address").value=b.address||"";
+
+document.getElementById("saveBtn").innerHTML="Update Borrower";
+
+openBorrowerForm();
+
+}
+
+</script>
+
+  <!-- PART 3 -->
+
+<!-- ===========================================================
+PART 3
+BULK CSV IMPORT + DOWNLOAD TEMPLATE + TOAST NOTIFICATIONS
+Place this BELOW Part 2 and ABOVE </body>
+=========================================================== -->
+
+<!-- ===========================
+BULK UPLOAD MODAL
+=========================== -->
+
+<div class="modal-overlay" id="bulkModal">
+
+<div class="borrow-form" style="max-width:700px;">
+
+<h2>Bulk Upload Borrowers</h2>
+
+<p style="margin-bottom:20px;color:#64748b;">
+
+Upload a CSV file containing borrower information.
+
+</p>
+
+<div class="form-group">
+
+<label>Select CSV File</label>
+
+<input
+type="file"
+id="csvFile"
+accept=".csv">
+
+</div>
+
+<div style="margin-top:15px;">
+
+<button
+type="button"
+onclick="downloadTemplate()"
+style="padding:10px 18px;background:#2563eb;color:white;border:none;border-radius:8px;cursor:pointer;">
+
+⬇ Download CSV Template
+
+</button>
+
+</div>
+
+<div style="margin-top:25px;display:flex;justify-content:flex-end;gap:10px;">
+
+<button
+type="button"
+onclick="closeBulkUpload()"
+style="padding:12px 20px;border:none;background:#ddd;border-radius:8px;">
+
+Cancel
+
+</button>
+
+<button
+id="uploadBtn"
+type="button"
+onclick="uploadCSV()"
+style="padding:12px 20px;border:none;background:#16a34a;color:white;border-radius:8px;">
+
+Upload Borrowers
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===========================
+TOAST
+=========================== -->
+
+<div id="toast"
+
+style="
+
+position:fixed;
+
+right:30px;
+
+bottom:30px;
+
+background:#16a34a;
+
+color:white;
+
+padding:15px 25px;
+
+border-radius:8px;
+
+display:none;
+
+font-weight:600;
+
+z-index:999999;
+
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+">
+
+Saved Successfully
+
+</div>
+
+<script>
+
+/* ======================
+TOAST
+====================== */
+
+function showToast(message,color="#16a34a"){
+
+const toast=document.getElementById("toast");
+
+toast.innerHTML=message;
+
+toast.style.background=color;
+
+toast.style.display="block";
+
+setTimeout(()=>{
+
+toast.style.display="none";
+
+},3000);
+
+}
+
+/* ======================
+OPEN/CLOSE BULK MODAL
+====================== */
+
+function openBulkUpload(){
+
+document.getElementById("bulkModal").style.display="flex";
+
+}
+
+function closeBulkUpload(){
+
+document.getElementById("bulkModal").style.display="none";
+
+}
+
+/* ======================
+DOWNLOAD TEMPLATE
+====================== */
+
+function downloadTemplate(){
+
+const csv=
+
+`full_name,national_id,phone,date_of_birth,gender,address
+John Doe,1199912345678901,0788123456,1995-06-18,Male,Kigali
+Jane Doe,1199988888888888,0789000000,1997-10-20,Female,Musanze`;
+
+const blob=new Blob([csv],{
+
+type:"text/csv"
+
+});
+
+const url=URL.createObjectURL(blob);
+
+const a=document.createElement("a");
+
+a.href=url;
+
+a.download="borrowers_template.csv";
+
+a.click();
+
+URL.revokeObjectURL(url);
+
+}
+
+/* ======================
+CSV PARSER
+====================== */
+
+function csvToObjects(text){
+
+const lines=text.trim().split("\n");
+
+const headers=lines[0].split(",");
+
+const data=[];
+
+for(let i=1;i<lines.length;i++){
+
+const obj={};
+
+const values=lines[i].split(",");
+
+headers.forEach((h,index)=>{
+
+obj[h.trim()]=values[index]?.trim();
+
+});
+
+data.push(obj);
+
+}
+
+return data;
+
+}
+
+/* ======================
+UPLOAD CSV
+====================== */
+
+async function uploadCSV(){
+
+const input=document.getElementById("csvFile");
+
+if(input.files.length===0){
+
+showToast("Please choose a CSV file","#dc2626");
+
+return;
+
+}
+
+const btn=document.getElementById("uploadBtn");
+
+btn.disabled=true;
+
+btn.innerHTML="Uploading...";
+
+const text=await input.files[0].text();
+
+const borrowers=csvToObjects(text);
+
+const rows=borrowers.map(b=>({
+
+full_name:b.full_name,
+
+national_id:b.national_id,
+
+phone:b.phone,
+
+date_of_birth:b.date_of_birth,
+
+gender:b.gender,
+
+address:b.address
+
+}));
+
+const {error}=await db
+
+.from("borrowers")
+
+.insert(rows);
+
+btn.disabled=false;
+
+btn.innerHTML="Upload Borrowers";
+
+if(error){
+
+showToast(error.message,"#dc2626");
+
+return;
+
+}
+
+showToast("Borrowers uploaded successfully.");
+
+closeBulkUpload();
+
+loadBorrowers();
+
+}
+
+/* ======================
+REPLACE ALERTS
+====================== */
+
+const originalLoad=loadBorrowers;
+
+loadBorrowers=async function(){
+
+await originalLoad();
+
+showToast("Borrowers refreshed.");
+
+};
+
+</script>
+
+  <!-- PART 4 -->
+
+<!-- ===========================================================
+PART 4
+FINAL FEATURES
+- Dashboard Statistics
+- Export CSV
+- Pagination
+- Professional Loader
+- Photo Upload to Supabase Storage
+=========================================================== -->
+
+<!-- ===========================
+STATISTICS
+Place ABOVE the table
+=========================== -->
+
+<div style="display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:25px;">
+
+<div class="stat-card">
+<h3 id="totalBorrowers">0</h3>
+<p>Total Borrowers</p>
+</div>
+
+<div class="stat-card">
+<h3 id="maleBorrowers">0</h3>
+<p>Male</p>
+</div>
+
+<div class="stat-card">
+<h3 id="femaleBorrowers">0</h3>
+<p>Female</p>
+</div>
+
+<div class="stat-card">
+<h3 id="todayBorrowers">0</h3>
+<p>Added Today</p>
+</div>
+
+</div>
+
+<style>
+
+.stat-card{
+
+background:white;
+
+padding:20px;
+
+border-radius:12px;
+
+box-shadow:0 4px 15px rgba(0,0,0,.06);
+
+}
+
+.stat-card h3{
+
+font-size:32px;
+
+color:#2563eb;
+
+margin-bottom:8px;
+
+}
+
+.stat-card p{
+
+color:#64748b;
+
+font-size:14px;
+
+}
+
+.spinner{
+
+width:45px;
+
+height:45px;
+
+border:5px solid #ddd;
+
+border-top:5px solid #2563eb;
+
+border-radius:50%;
+
+animation:spin .8s linear infinite;
+
+margin:auto;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+</style>
+
+<script>
+
+/* ===================================
+PAGINATION
+=================================== */
+
+const rowsPerPage=10;
+
+let currentPage=1;
+
+function renderBorrowers(rows){
+
+const tbody=document.getElementById("borrowerTable");
+
+tbody.innerHTML="";
+
+const start=(currentPage-1)*rowsPerPage;
+
+const end=start+rowsPerPage;
+
+rows.slice(start,end).forEach(b=>{
+
+const initials=(b.full_name||"")
+
+.split(" ")
+
+.map(x=>x[0])
+
+.join("")
+
+.substring(0,2)
+
+.toUpperCase();
+
+tbody.innerHTML+=`
+
+<tr>
+
+<td>
+
+${
+b.photo_url
+
+?
+
+`<img src="${b.photo_url}" style="width:45px;height:45px;border-radius:50%;object-fit:cover;">`
+
+:
+
+`<div class="initials">${initials}</div>`
+
+}
+
+</td>
+
+<td>${b.full_name}</td>
+
+<td>${b.national_id}</td>
+
+<td>${b.phone}</td>
+
+<td>${b.gender}</td>
+
+<td>${new Date(b.created_at).toLocaleDateString()}</td>
+
+<td>
+
+<button class="edit-btn"
+onclick="editBorrower('${b.id}')">
+
+✏
+
+</button>
+
+<button class="delete-btn"
+onclick="deleteBorrower('${b.id}')">
+
+🗑
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+updateStatistics(rows);
+
+}
+
+/* ===================================
+STATISTICS
+=================================== */
+
+function updateStatistics(rows){
+
+document.getElementById("totalBorrowers").innerHTML=rows.length;
+
+document.getElementById("maleBorrowers").innerHTML=
+
+rows.filter(x=>x.gender=="Male").length;
+
+document.getElementById("femaleBorrowers").innerHTML=
+
+rows.filter(x=>x.gender=="Female").length;
+
+const today=new Date().toDateString();
+
+document.getElementById("todayBorrowers").innerHTML=
+
+rows.filter(x=>
+
+new Date(x.created_at).toDateString()==today
+
+).length;
+
+}
+
+/* ===================================
+EXPORT CSV
+=================================== */
+
+function exportBorrowers(){
+
+let csv="Full Name,National ID,Phone,Gender,Address\n";
+
+borrowers.forEach(b=>{
+
+csv+=`${b.full_name},
+
+${b.national_id},
+
+${b.phone},
+
+${b.gender},
+
+${b.address}\n`;
+
+});
+
+const blob=new Blob([csv],{
+
+type:"text/csv"
+
+});
+
+const url=URL.createObjectURL(blob);
+
+const a=document.createElement("a");
+
+a.href=url;
+
+a.download="borrowers.csv";
+
+a.click();
+
+URL.revokeObjectURL(url);
+
+}
+
+</script>
+
+<!-- ===========================
+BUTTON
+=========================== -->
+
+<button
+
+onclick="exportBorrowers()"
+
+style="
+
+margin-bottom:20px;
+
+padding:12px 20px;
+
+background:#2563eb;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+">
+
+⬇ Export Borrowers
+
+</button>
+
+<!-- ===================================
+PHOTO FIELD
+Replace existing file input
+=================================== -->
+
+<input
+
+type="file"
+
+id="photo"
+
+accept="image/*">
+
+<script>
+
+/* ===================================
+UPLOAD PHOTO TO STORAGE
+=================================== */
+
+async function uploadPhoto(file){
+
+if(!file) return "";
+
+const filename=Date.now()+"_"+file.name;
+
+const {error}=await db.storage
+
+.from("borrowers")
+
+.upload(filename,file);
+
+if(error){
+
+console.log(error);
+
+return "";
+
+}
+
+const {
+
+data
+
+}=db.storage
+
+.from("borrowers")
+
+.getPublicUrl(filename);
+
+return data.publicUrl;
+
+}
+
+/* ===================================
+MODIFIED SAVE FUNCTION
+Replace borrower.photo_url before insert
+=================================== */
+
+// Add this inside your Save Borrower function before insert:
+//
+// const photo=document.getElementById("photo").files[0];
+//
+// borrower.photo_url=await uploadPhoto(photo);
+
+</script>
+
+<!-- ===========================
+PAGINATION BUTTONS
+Place below table
+=========================== -->
+
+<div style="display:flex;justify-content:center;gap:15px;margin-top:25px;">
+
+<button onclick="previousPage()">
+
+Previous
+
+</button>
+
+<span id="pageLabel">
+
+Page 1
+
+</span>
+
+<button onclick="nextPage()">
+
+Next
+
+</button>
+
+</div>
+
+<script>
+
+function nextPage(){
+
+if(currentPage*rowsPerPage>=borrowers.length)
+
+return;
+
+currentPage++;
+
+renderBorrowers(borrowers);
+
+document.getElementById("pageLabel").innerHTML=
+
+"Page "+currentPage;
+
+}
+
+function previousPage(){
+
+if(currentPage==1)
+
+return;
+
+currentPage--;
+
+renderBorrowers(borrowers);
+
+document.getElementById("pageLabel").innerHTML=
+
+"Page "+currentPage;
+
+}
+
+</script>
+
+<!-- ===========================
+SUPABASE TABLE STRUCTURE
+===========================
+
+Table: borrowers
+
+id uuid primary key default gen_random_uuid()
+
+full_name text
+
+national_id text
+
+phone text
+
+gender text
+
+date_of_birth date
+
+address text
+
+photo_url text
+
+created_at timestamptz default now()
+
+================================ -->
