@@ -73,24 +73,143 @@ TOP BAR STYLE
 
 .topbar {
 
-    height:70px;
-    width:100%;
+    position:fixed;
+
+    top:0;
+
+    left:260px;
+
+    right:0;
+
+    height:64px;
 
     background:#ffffff;
 
+    border-bottom:1px solid #e5e7eb;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
-    padding:0 30px;
-
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
-
-    position:fixed;
-    top:0;
-    left:260;
+    padding:0 28px;
 
     z-index:1000;
+
+}
+
+
+
+/* LEFT SIDE */
+
+.top-left {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+
+
+.menu-icon {
+
+    color:#64748b;
+
+    font-size:18px;
+
+}
+
+
+
+.loan-brand {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+
+
+.logo-circle {
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    background:#20c463;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:700;
+
+}
+
+
+
+.vertical-divider {
+
+    height:34px;
+
+    width:1px;
+
+    background:#e5e7eb;
+
+}
+
+
+
+.company-name {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#374151;
+
+}
+
+
+
+/* RIGHT SIDE */
+
+.top-right {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-weight:600;
+
+    color:#111827;
+
+    cursor:pointer;
 
 }
 
@@ -225,7 +344,24 @@ TOP BAR STYLE
 }
 
 
+.page-title h1 {
 
+font-size:32px;
+margin:0;
+font-weight:700;
+
+}
+
+
+.page-title p {
+
+margin-top:4px;
+
+color:#64748b;
+
+font-size:16px;
+
+}
     
 
 .header{
@@ -396,8 +532,61 @@ width:100%;
 <!-- ===========================
 TOP BAR
 =========================== -->
+<!-- TOP BAR -->
 
 <div class="topbar">
+
+
+    <div class="top-left">
+
+
+        <div class="menu-icon">
+            ◧
+        </div>
+
+
+        <div class="loan-brand">
+
+            <div class="logo-circle">
+                L
+            </div>
+
+            <span>
+                Loanr
+            </span>
+
+        </div>
+
+
+        <div class="vertical-divider"></div>
+
+
+        <div class="company-name">
+
+            🏢
+
+            <span>
+                King Transport
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="top-right">
+
+        ⇥
+
+        <span>
+            Sign Out
+        </span>
+
+    </div>
+
+
 </div>
 
 
@@ -405,58 +594,20 @@ TOP BAR
 <div class="header">
 <!-- BRAND HEADER -->
 
-<div class="page-brand">
+<div class="page-title">
 
+<h1>
+Borrowers
+</h1>
 
-<div class="brand-left">
-
-
-<div class="loan-logo">
-L
-</div>
-
-
-<div class="loan-name">
-Loan
-</div>
-
-
-<div class="divider"></div>
-
-
-<div class="transport">
-
-🏢
-
-<span>
-King Services & Transport Ltd
-</span>
+<p>
+Manage customer information and profiles
+</p>
 
 </div>
 
 
-</div>
-
-
-
-<div class="signout">
-
-⇥ Sign Out
-
-</div>
-
-
-</div>
-<div>
-
-<h1>Borrowers</h1>
-
-<div class="subtitle">
-Manage customer information
-</div>
-
-</div>
-
+    
 <div class="borrow-actions">
 
 <button class="bulk-btn">
