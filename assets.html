@@ -645,7 +645,7 @@ Manage motorcycles and other collateral assets
 <input
 id="searchInput"
 class="search-box"
-placeholder="Search asset...">
+placeholder="Search assets...">
 
 <div class="table-wrapper">
 
@@ -798,9 +798,9 @@ rows.forEach(b=>{
 let initials="?";
 
 
-if(b.full_name){
+if(b.asset_name){
 
-initials=b.full_name
+initials=b.asset_name
 .split(" ")
 .map(x=>x.charAt(0))
 .join("")
@@ -828,17 +828,20 @@ ${initials}
 
 
 
-<td>${b.full_name || "-"}</td>
+<td>${b.asset_name || "-"}</td>
 
 
-<td>${b.national_id || "-"}</td>
+<td>${b.vin_serial || "-"}</td>
 
 
-<td>${b.phone || "-"}</td>
+<td>${b.documents || "-"}</td>
 
 
-<td>${b.gender || "-"}</td>
+<td>${b.notes || "-"}</td>
 
+<td>${b.date_added || "-"}</td>
+
+<td>${b.date_added || "-"}</td>
 
 <td>
 
@@ -891,7 +894,7 @@ const value=this.value.toLowerCase();
 
 const filtered=Assets.filter(x=>
 
-(x.full_name||"").toLowerCase().includes(value) ||
+(x.asset_name||"").toLowerCase().includes(value) ||
 
 (x.phone||"").toLowerCase().includes(value) ||
 
@@ -938,7 +941,7 @@ ADD assetER MODAL
 
 <input
 type="text"
-id="full_name"
+id="asset_name"
 required
 placeholder="Jean Claude">
 
@@ -1286,8 +1289,8 @@ const id=document.getElementById("asseterId").value;
 const asseter={
 
 
-full_name:
-document.getElementById("full_name").value.trim(),
+asset_name:
+document.getElementById("asset_name").value.trim(),
 
 
 national_id:
@@ -1433,8 +1436,8 @@ return;
 document.getElementById("asseterId").value=data.id;
 
 
-document.getElementById("full_name").value=
-data.full_name || "";
+document.getElementById("asset_name").value=
+data.asset_name || "";
 
 
 document.getElementById("national_id").value=
@@ -1695,7 +1698,7 @@ function downloadTemplate(){
 
 const csv=
 
-`full_name,national_id,phone,date_of_birth,gender,address
+`asset_name,national_id,phone,date_of_birth,gender,address
 John Doe,1199912345678901,0788123456,1995-06-18,Male,Kigali
 Jane Doe,1199988888888888,0789000000,1997-10-20,Female,Musanze`;
 
@@ -1779,7 +1782,7 @@ const Assets=csvToObjects(text);
 
 const rows=Assets.map(b=>({
 
-full_name:b.full_name,
+asset_name:b.asset_name,
 
 national_id:b.national_id,
 
@@ -1845,7 +1848,7 @@ Table: Assets
 
 id uuid primary key default gen_random_uuid()
 
-full_name text
+asset_name text
 
 national_id text
 
@@ -1907,7 +1910,7 @@ Full Name
 
 type="text"
 
-id="full_name"
+id="asset_name"
 
 required
 
@@ -2482,8 +2485,8 @@ const {data,error}=await db
 .from("Assets")
 .insert([
 {
-full_name:
-document.getElementById("full_name").value,
+asset_name:
+document.getElementById("asset_name").value,
 
 national_id:
 document.getElementById("national_id").value,
@@ -2541,8 +2544,8 @@ const {error}=await db
 
 .update({
 
-full_name:
-document.getElementById("full_name").value,
+asset_name:
+document.getElementById("asset_name").value,
 
 national_id:
 document.getElementById("national_id").value,
@@ -2827,9 +2830,9 @@ document.getElementById(
 
 
 document.getElementById(
-"full_name"
+"asset_name"
 ).value=
-data.full_name || "";
+data.asset_name || "";
 
 
 
@@ -3305,7 +3308,7 @@ function downloadTemplate(){
 const csv=
 
 
-`full_name,national_id,phone,date_of_birth,gender,address
+`asset_name,national_id,phone,date_of_birth,gender,address
 John Doe,119999999999999,0780000000,1995-01-01,Male,Kigali
 Jane Doe,119888888888888,0781111111,1998-05-10,Female,Musanze`;
 
@@ -3527,8 +3530,8 @@ const rows=data.map(b=>({
 
 
 
-full_name:
-b.full_name,
+asset_name:
+b.asset_name,
 
 
 
