@@ -1471,33 +1471,19 @@ document
 "submit",
 async function(e){
 
-
 e.preventDefault();
 
 
+const btn=document.getElementById("saveBtn");
 
-if(savingAsset){
 
-return;
-
+if(btn.disabled){
+    return;
 }
 
 
-savingAsset=true;
-
-
-
-const btn=document.getElementById(
-"saveBtn"
-);
-
-
-
 btn.disabled=true;
-
-btn.innerHTML=
-"Saving...";
-
+btn.innerHTML="Saving...";
 
 
 
@@ -1507,73 +1493,53 @@ const id=document
 
 
 
-
 const asset={
 
-
 asset_name:
-
-document
-.getElementById("asset_name")
-.value
-.trim(),
-
-
+document.getElementById("asset_name")
+.value.trim(),
 
 vin_serial:
-
-document
-.getElementById("vin_serial")
-.value
-.trim(),
-
-
+document.getElementById("vin_serial")
+.value.trim(),
 
 documents:
-
-document
-.getElementById("documents")
-.value
-.trim(),
-
-
+document.getElementById("documents")
+.value.trim(),
 
 notes:
-
-document
-.getElementById("notes")
-.value
-.trim()
-
+document.getElementById("notes")
+.value.trim()
 
 };
 
 
 
 
-
-
-
-let result;
-
+let response;
 
 
 
 
-/* CREATE */
+try{
+
+
+/* =====================
+ADD NEW ASSET
+===================== */
+
 
 if(id===""){
 
 
-
-result=
-await db
+response = await db
 
 .from("assets")
 
-.insert([
-asset
-]);
+.insert([asset])
+
+.select()
+.single();
 
 
 
@@ -1584,16 +1550,15 @@ asset
 
 
 
+/* =====================
+UPDATE ASSET
+===================== */
 
-/* UPDATE */
 
 else{
 
 
-
-result=
-
-await db
+response = await db
 
 .from("assets")
 
@@ -1602,8 +1567,10 @@ await db
 .eq(
 "id",
 id
-);
+)
 
+.select()
+.single();
 
 
 }
@@ -1612,24 +1579,34 @@ id
 
 
 
-btn.disabled=false;
-
-btn.innerHTML=
-"Save Asset";
-
-savingAsset=false;
+console.log(
+"SUPABASE RESPONSE",
+response
+);
 
 
 
 
 
+if(response.error){
 
-if(result.error){
+
+console.error(
+response.error
+);
+
 
 
 alert(
-result.error.message
+"Save failed: "
++
+response.error.message
 );
+
+
+btn.disabled=false;
+
+btn.innerHTML="Save Asset";
 
 
 return;
@@ -1641,12 +1618,18 @@ return;
 
 
 
+
+/* SUCCESS RESPONSE */
+
+
 alert(
+
 id
 ?
-"Asset updated successfully"
+"✅ Asset updated successfully"
 :
-"Asset added successfully"
+"✅ Asset saved successfully"
+
 );
 
 
@@ -1657,12 +1640,46 @@ closeAssetForm();
 
 
 
+
+
+/*
+Reload latest data
+from Supabase
+*/
+
+
 await loadAssets();
 
 
 
-});
 
+
+}
+
+catch(err){
+
+
+console.error(err);
+
+
+alert(
+"Unexpected error: "
++
+err.message
+);
+
+
+}
+
+
+
+btn.disabled=false;
+
+btn.innerHTML="Save Asset";
+
+
+
+});
 
 
 
@@ -2357,3 +2374,44 @@ await loadAssets();
 
 
 </script>
+
+
+
+<div id="toast"
+style="
+position:fixed;
+bottom:30px;
+right:30px;
+background:#16a34a;
+color:white;
+padding:15px 25px;
+border-radius:8px;
+display:none;
+font-weight:600;
+z-index:99999;">
+</div>
+
+
+<script>
+
+function showToast(message){
+
+const toast=document.getElementById("toast");
+
+toast.innerHTML=message;
+
+toast.style.display="block";
+
+
+setTimeout(()=>{
+
+toast.style.display="none";
+
+},3000);
+
+
+}
+
+</script>
+</body>
+</html>
