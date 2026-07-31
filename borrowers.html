@@ -770,73 +770,121 @@ renderBorrowers(borrowers);
 
 function renderBorrowers(rows){
 
-const tbody=document.getElementById("borrowerTable");
+
+const tbody=document.getElementById(
+"borrowerTable"
+);
+
 
 tbody.innerHTML="";
 
-if(rows.length===0){
+
+
+if(!rows || rows.length===0){
 
 tbody.innerHTML=
-"<tr><td colspan='7'>No borrowers found.</td></tr>";
+`
+<tr>
+<td colspan="7">
+No borrowers found
+</td>
+</tr>
+`;
 
 return;
 
 }
 
+
+
 rows.forEach(b=>{
 
-const initials=(b.full_name||"?")
+
+let initials="?";
+
+
+if(b.full_name){
+
+initials=b.full_name
 .split(" ")
-.map(x=>x[0])
+.map(x=>x.charAt(0))
 .join("")
 .substring(0,2)
 .toUpperCase();
 
-tbody.innerHTML+=`
+}
+
+
+
+tbody.innerHTML += `
 
 <tr>
 
+
 <td>
-<div class="initials">${initials}</div>
+
+<div class="initials">
+
+${initials}
+
+</div>
+
 </td>
 
-<td>${b.full_name||""}</td>
 
-<td>${b.national_id||""}</td>
 
-<td>${b.phone||""}</td>
+<td>${b.full_name || "-"}</td>
 
-<td>${b.gender||""}</td>
 
-<td>${new Date(b.created_at).toLocaleDateString()}</td>
+<td>${b.national_id || "-"}</td>
+
+
+<td>${b.phone || "-"}</td>
+
+
+<td>${b.gender || "-"}</td>
+
 
 <td>
 
-<button class="edit-btn"
+${b.created_at 
+? new Date(b.created_at).toLocaleDateString()
+:"-"}
+
+</td>
+
+
+<td>
+
+
+<button 
+class="edit-btn"
 onclick="editBorrower('${b.id}')">
 
-✏
-
-// </button>
-
-// <button onclick="editBorrower('${borrower.id}')">
-//     🖉 Edit
-// </button>
-
-<button class="delete-btn"
-onclick="deleteBorrower('${b.id}')">
-
-🗑
+✏️
 
 </button>
 
+
+
+<button 
+class="delete-btn"
+onclick="deleteBorrower('${b.id}')">
+
+🗑️
+
+</button>
+
+
 </td>
+
 
 </tr>
 
 `;
 
 });
+
 
 }
 
