@@ -1206,13 +1206,25 @@ function openBorrowerForm(){
 
 function closeBorrowerForm(){
 
-    document.getElementById("borrowerModal").style.display="none";
+document.getElementById(
+"borrowerModal"
+).style.display="none";
 
-    document.getElementById("borrowerForm").reset();
 
-    document.getElementById("borrowerId").value="";
+document.getElementById(
+"borrowerForm"
+).reset();
 
-    document.getElementById("saveBtn").innerHTML="Save Borrower";
+
+document.getElementById(
+"borrowerId"
+).value="";
+
+
+document.getElementById(
+"saveBtn"
+).innerHTML="Save Borrower";
+
 
 }
 
@@ -2165,7 +2177,7 @@ border-radius:8px;
 cursor:pointer;
 ">
 
-Save Borrower
+Add Borrower
 
 </button>
 
@@ -2427,30 +2439,18 @@ document.getElementById(
 SAVE / UPDATE
 ========================== */
 
-
-
 document
-
 .getElementById("borrowerForm")
-
 .addEventListener(
-
 "submit",
-
 async function(e){
-
 
 
 e.preventDefault();
 
 
 
-
-const btn=document.getElementById(
-"saveBtn"
-);
-
-
+const btn=document.getElementById("saveBtn");
 
 btn.disabled=true;
 
@@ -2458,95 +2458,64 @@ btn.innerHTML="Saving...";
 
 
 
-
-const id=document.getElementById(
-"borrowerId"
-).value;
+const id=document.getElementById("borrowerId").value;
 
 
 
+let borrowerId=id;
 
 
 
-const borrower={
-
-
-
-full_name:
-
-document.getElementById(
-"full_name"
-).value,
-
-
-
-national_id:
-
-document.getElementById(
-"national_id"
-).value,
-
-
-
-phone:
-
-document.getElementById(
-"phone"
-).value,
-
-
-
-date_of_birth:
-
-document.getElementById(
-"dob"
-).value,
-
-
-
-gender:
-
-document.getElementById(
-"gender"
-).value,
-
-
-
-address:
-
-document.getElementById(
-"address"
-).value
-
-
-
-};
-
-
-
-
-
-
-let result;
-
-
-
-
-
-
-/* CREATE */
-
+/*
+CREATE BORROWER FIRST
+*/
 
 if(id===""){
 
 
-result=
-
-await db
-
+const {data,error}=await db
 .from("borrowers")
+.insert([
+{
+full_name:
+document.getElementById("full_name").value,
 
-.insert([borrower]);
+national_id:
+document.getElementById("national_id").value,
+
+phone:
+document.getElementById("phone").value,
+
+date_of_birth:
+document.getElementById("dob").value,
+
+gender:
+document.getElementById("gender").value,
+
+address:
+document.getElementById("address").value
+
+}
+])
+.select()
+.single();
+
+
+
+if(error){
+
+alert(error.message);
+
+btn.disabled=false;
+
+return;
+
+}
+
+
+
+borrowerId=data.id;
+
 
 
 }
@@ -2554,22 +2523,39 @@ await db
 
 
 
-
-
-
-/* UPDATE */
-
+/*
+UPDATE EXISTING
+*/
 
 else{
 
 
-result=
-
-await db
+const {error}=await db
 
 .from("borrowers")
 
-.update(borrower)
+.update({
+
+full_name:
+document.getElementById("full_name").value,
+
+national_id:
+document.getElementById("national_id").value,
+
+phone:
+document.getElementById("phone").value,
+
+date_of_birth:
+document.getElementById("dob").value,
+
+gender:
+document.getElementById("gender").value,
+
+address:
+document.getElementById("address").value
+
+
+})
 
 .eq(
 "id",
@@ -2578,7 +2564,34 @@ id
 
 
 
+if(error){
+
+alert(error.message);
+
+btn.disabled=false;
+
+return;
+
 }
+
+
+
+}
+
+
+
+
+
+
+
+/*
+UPLOAD FILES
+*/
+
+
+await uploadBorrowerDocuments(
+borrowerId
+);
 
 
 
@@ -2588,50 +2601,13 @@ id
 
 btn.disabled=false;
 
-
-
-
-
-
-if(result.error){
-
-
-alert(
-result.error.message
-);
-
-
-btn.innerHTML=
-"Update Borrower";
-
-
-return;
-
-
-}
-
-
-
-
+btn.innerHTML="Save Borrower";
 
 
 
 alert(
-
-id===""
-
-?
-
-"Borrower added successfully"
-
-:
-
-"Borrower updated successfully"
-
+"Borrower saved successfully"
 );
-
-
-
 
 
 
@@ -2639,15 +2615,124 @@ closeBorrowerForm();
 
 
 
+/*
+AUTO REFRESH FROM DATABASE
+*/
+
+
 await loadBorrowers();
+
+
+
+});
+
+
+async function uploadBorrowerDocuments(borrowerId){
+
+
+
+const files=[
+
+
+{
+id:"profile_pic",
+folder:"profile-picture"
+},
+
+
+{
+id:"national_id_file",
+folder:"national-id"
+},
+
+
+{
+id:"driving_license_file",
+folder:"driving-license"
+}
+
+
+];
+
+
+
+
+
+for(const item of files){
+
+
+
+const input=document.getElementById(item.id);
+
+
+
+if(
+!input.files ||
+input.files.length===0
+)
+
+continue;
+
+
+
+
+const file=input.files[0];
+
+
+
+const filePath=
+
+`${borrowerId}/${item.folder}/${Date.now()}_${file.name}`;
+
+
+
+
+
+const {error}=await db.storage
+
+.from("borrower-documents")
+
+.upload(
+filePath,
+file,
+{
+upsert:true
+}
+);
+
+
+
+
+
+if(error){
+
+console.log(
+"Upload error:",
+error.message
+);
+
+}
+
+
+
+else{
+
+
+console.log(
+"Uploaded:",
+filePath
+);
+
+
+}
 
 
 
 }
 
-);
 
 
+}
 
 
 
