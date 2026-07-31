@@ -2636,28 +2636,26 @@ await loadBorrowers();
 
 });
 
-
 async function uploadBorrowerDocuments(borrowerId){
-
 
 
 const files=[
 
 
 {
-id:"profile_pic",
+input:"profile_pic",
 folder:"profile-picture"
 },
 
 
 {
-id:"national_id_file",
+input:"national_id_file",
 folder:"national-id"
 },
 
 
 {
-id:"driving_license_file",
+input:"driving_license_file",
 folder:"driving-license"
 }
 
@@ -2666,27 +2664,50 @@ folder:"driving-license"
 
 
 
-
-
 for(const item of files){
 
 
-
-const input=document.getElementById(item.id);
-
+const fileInput=document.getElementById(item.input);
 
 
-if(
-!input.files ||
-input.files.length===0
-)
+
+if(!fileInput){
+
+console.log(
+"Missing input:",
+item.input
+);
 
 continue;
 
+}
 
 
 
-const file=input.files[0];
+
+if(fileInput.files.length===0){
+
+console.log(
+"No file selected:",
+item.input
+);
+
+continue;
+
+}
+
+
+
+const file=fileInput.files[0];
+
+
+
+console.log(
+"Uploading:",
+item.input,
+file.name
+);
+
 
 
 
@@ -2698,7 +2719,7 @@ const filePath=
 
 
 
-const {error}=await db.storage
+const {data,error}=await db.storage
 
 .from("borrower-documents")
 
@@ -2714,23 +2735,25 @@ upsert:true
 
 
 
+
 if(error){
 
-console.log(
-"Upload error:",
+
+console.error(
+"Upload failed:",
+item.input,
 error.message
 );
 
+
 }
-
-
 
 else{
 
 
 console.log(
-"Uploaded:",
-filePath
+"Uploaded successfully:",
+data.path
 );
 
 
@@ -2743,8 +2766,6 @@ filePath
 
 
 }
-
-
 
 
 
