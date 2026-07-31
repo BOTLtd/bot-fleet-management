@@ -712,27 +712,59 @@ async function loadBorrowers(){
 
 const tbody=document.getElementById("borrowerTable");
 
-tbody.innerHTML="<tr><td colspan='7' class='loading'>Loading...</td></tr>";
+
+tbody.innerHTML=
+`
+<tr>
+<td colspan="7" class="loading">
+Loading...
+</td>
+</tr>
+`;
+
+
 
 const {data,error}=await db
 .from("borrowers")
 .select("*")
 .order("created_at",{ascending:false});
 
+
+
+console.log("SUPABASE DATA:",data);
+console.log("SUPABASE ERROR:",error);
+
+
+
 if(error){
 
 tbody.innerHTML=
-"<tr><td colspan='7'>"+error.message+"</td></tr>";
+`
+<tr>
+<td colspan="7">
+${error.message}
+</td>
+</tr>
+`;
 
 return;
 
 }
 
-borrowers=data||[];
 
-document.getElementById("borrowerCount").innerHTML=borrowers.length;
+
+borrowers=data || [];
+
+
+
+document.getElementById(
+"borrowerCount"
+).innerHTML=borrowers.length;
+
+
 
 renderBorrowers(borrowers);
+
 
 }
 
