@@ -1748,6 +1748,34 @@ return data.publicUrl;
 
 }
 
+
+
+const { data, error } = await supabase
+.storage
+.from('borrower-documents')
+.upload(
+  `profile/${borrowerId}.jpg`,
+  profileFile
+);
+
+await supabase
+.storage
+.from('borrower-documents')
+.upload(
+  `national-id/${borrowerId}.pdf`,
+  nationalIdFile
+);
+
+
+await supabase
+.storage
+.from('borrower-documents')
+.upload(
+  `driving-license/${borrowerId}.pdf`,
+  licenceFile
+);
+
+    
 /* ===================================
 MODIFIED SAVE FUNCTION
 Replace borrower.photo_url before insert
