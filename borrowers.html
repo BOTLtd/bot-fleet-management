@@ -1101,39 +1101,83 @@ grid-column:auto;
 
 </style>
 
+
 <script>
 
+/* GLOBAL DATA */
+let borrowers = [];
+
+
 /* --------------------------
-OPEN/CLOSE MODAL
+OPEN / CLOSE MODAL
 -------------------------- */
 
 function openBorrowerForm(){
 
-document.getElementById("borrowerModal").style.display="flex";
+    document.getElementById("borrowerModal").style.display="flex";
 
 }
+
 
 function closeBorrowerForm(){
 
-document.getElementById("borrowerModal").style.display="none";
+    document.getElementById("borrowerModal").style.display="none";
 
-document.getElementById("borrowerForm").reset();
+    document.getElementById("borrowerForm").reset();
 
-document.getElementById("borrowerId").value="";
+    document.getElementById("borrowerId").value="";
 
-document.getElementById("saveBtn").innerHTML="Save Borrower";
+    document.getElementById("saveBtn").innerHTML="Save Borrower";
 
 }
 
+
+
 /* --------------------------
-SAVE / UPDATE
+LOAD BORROWERS FROM SUPABASE
 -------------------------- */
+
+async function loadBorrowers(){
+
+    const {data,error}=await db
+    .from("borrowers")
+    .select("*")
+    .order("created_at",{ascending:false});
+
+
+    if(error){
+
+        console.log(error);
+
+        alert(error.message);
+
+        return;
+
+    }
+
+
+    borrowers=data || [];
+
+
+    displayBorrowers(borrowers);
+
+
+}
+
+
+
+/* --------------------------
+SAVE / UPDATE BORROWER
+-------------------------- */
+
 
 document
 .getElementById("borrowerForm")
 .addEventListener("submit",async function(e){
 
+
 e.preventDefault();
+
 
 const btn=document.getElementById("saveBtn");
 
@@ -1141,53 +1185,148 @@ btn.disabled=true;
 
 btn.innerHTML="Saving...";
 
+
+
 const id=document.getElementById("borrowerId").value;
+
+
 
 const borrower={
 
-full_name:document.getElementById("full_name").value,
 
-national_id:document.getElementById("national_id").value,
+full_name:
+document.getElementById("full_name").value.trim(),
 
-phone:document.getElementById("phone").value,
 
-date_of_birth:document.getElementById("dob").value,
+national_id:
+document.getElementById("national_id").value.trim(),
 
-gender:document.getElementById("gender").value,
 
-address:document.getElementById("address").value
+phone:
+document.getElementById("phone").value.trim(),
+
+
+date_of_birth:
+document.getElementById("dob").value,
+
+
+gender:
+document.getElementById("gender").value,
+
+
+address:
+document.getElementById("address").value.trim()
+
 
 };
 
-let error;
 
-if(id==""){
 
-const result=await db
+let result;
 
+
+
+/* CREATE NEW */
+
+if(id===""){
+
+
+result=await db
 .from("borrowers")
-
 .insert([borrower]);
 
-error=result.error;
-
-}else{
-
-const result=await db
-
-.from("borrowers")
-
-.update(borrower)
-
-.eq("id",id);
-
-error=result.error;
 
 }
 
+
+
+/* UPDATE EXISTING */
+
+else{
+
+
+result=await db
+.from("borrowers")
+.update(borrower)
+.eq("id",id)
+.select();
+
+
+}
+
+
+
 btn.disabled=false;
 
-btn.innerHTML="Save Borrower";
+
+
+if(result.error){
+
+
+alert(result.error.message);
+
+btn.innerHTML="Update Borrower";
+
+return;
+
+
+}
+
+
+
+alert(
+id==="" 
+? "Borrower added successfully"
+: "Borrower updated successfully"
+);
+
+
+
+closeBorrowerForm();
+
+
+
+/*
+IMPORTANT:
+Reload fresh data from Supabase
+*/
+
+await loadBorrowers();
+
+
+
+});
+
+
+
+
+
+/* --------------------------
+EDIT BORROWER
+-------------------------- */
+
+
+async function editBorrower(id){
+
+
+
+/*
+Get latest data directly from database
+instead of depending only on old array
+*/
+
+
+const {data,error}=await db
+
+.from("borrowers")
+
+.select("*")
+
+.eq("id",id)
+
+.single();
+
+
 
 if(error){
 
@@ -1197,19 +1336,62 @@ return;
 
 }
 
-closeBorrowerForm();
 
-await loadBorrowers();
 
-});
+document.getElementById("borrowerId").value=data.id;
+
+
+document.getElementById("full_name").value=
+data.full_name || "";
+
+
+document.getElementById("national_id").value=
+data.national_id || "";
+
+
+document.getElementById("phone").value=
+data.phone || "";
+
+
+document.getElementById("dob").value=
+data.date_of_birth || "";
+
+
+document.getElementById("gender").value=
+data.gender || "Male";
+
+
+document.getElementById("address").value=
+data.address || "";
+
+
+
+document.getElementById("saveBtn").innerHTML=
+"Update Borrower";
+
+
+
+openBorrowerForm();
+
+
+
+}
+
+
+
+
 
 /* --------------------------
-DELETE
+DELETE BORROWER
 -------------------------- */
+
 
 async function deleteBorrower(id){
 
+
 if(!confirm("Delete this borrower?")) return;
+
+
 
 const {error}=await db
 
@@ -1219,6 +1401,8 @@ const {error}=await db
 
 .eq("id",id);
 
+
+
 if(error){
 
 alert(error.message);
@@ -1227,42 +1411,39 @@ return;
 
 }
 
-loadBorrowers();
+
+
+alert("Borrower deleted");
+
+
+await loadBorrowers();
+
+
 
 }
+
+
+
+
 
 /* --------------------------
-EDIT
+INITIAL PAGE LOAD
 -------------------------- */
 
-function editBorrower(id){
 
-const b=borrowers.find(x=>x.id==id);
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
 
-if(!b) return;
+loadBorrowers();
 
-document.getElementById("borrowerId").value=b.id;
+});
 
-document.getElementById("full_name").value=b.full_name||"";
-
-document.getElementById("national_id").value=b.national_id||"";
-
-document.getElementById("phone").value=b.phone||"";
-
-document.getElementById("dob").value=b.date_of_birth||"";
-
-document.getElementById("gender").value=b.gender||"Male";
-
-document.getElementById("address").value=b.address||"";
-
-document.getElementById("saveBtn").innerHTML="Update Borrower";
-
-openBorrowerForm();
-
-}
 
 </script>
 
+
+    
   <!-- PART 3 -->
 
 <!-- ===========================================================
