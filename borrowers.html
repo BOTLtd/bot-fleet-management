@@ -706,6 +706,7 @@ const {createClient}=supabase;
 const db=createClient(SUPABASE_URL,SUPABASE_KEY);
 
 let borrowers=[];
+    
 
 async function loadBorrowers(){
 
@@ -779,16 +780,16 @@ tbody.innerHTML+=`
 
 <td>
 
-// <button class="edit-btn"
-// onclick="editBorrower('${b.id}')">
+<button class="edit-btn"
+onclick="editBorrower('${b.id}')">
 
-// ✏
+✏
 
 // </button>
 
-<button onclick="editBorrower('${borrower.id}')">
-    🖉 Edit
-</button>
+// <button onclick="editBorrower('${borrower.id}')">
+//     🖉 Edit
+// </button>
 
 <button class="delete-btn"
 onclick="deleteBorrower('${b.id}')">
@@ -1109,7 +1110,7 @@ grid-column:auto;
 <script>
 
 /* GLOBAL DATA */
-let borrowers = [];
+// let borrowers = [];
 
 
 /* --------------------------
@@ -1774,5 +1775,1707 @@ photo_url text
 created_at timestamptz default now()
 
 ================================ -->
+
+<!-- PART 2-->
+
+<!-- ==========================
+ADD / EDIT BORROWER MODAL
+========================== -->
+
+
+<div class="modal-overlay" id="borrowerModal">
+
+
+<div class="borrow-form">
+
+
+<h2 id="formTitle">
+
+Add New Borrower
+
+</h2>
+
+
+
+<form id="borrowerForm">
+
+
+
+<input type="hidden" id="borrowerId">
+
+
+
+<div class="form-grid">
+
+
+
+<div class="form-group">
+
+<label>
+Full Name
+</label>
+
+
+<input
+
+type="text"
+
+id="full_name"
+
+required
+
+placeholder="Jean Claude">
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+<label>
+National ID Number
+</label>
+
+
+<input
+
+type="text"
+
+id="national_id"
+
+required
+
+placeholder="119999999999999">
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+<label>
+Phone Number
+</label>
+
+
+<input
+
+type="text"
+
+id="phone"
+
+required
+
+placeholder="078xxxxxxx">
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Date of Birth
+</label>
+
+
+<input
+
+type="date"
+
+id="dob">
+
+</div>
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Gender
+</label>
+
+
+<select id="gender">
+
+
+<option value="Male">
+Male
+</option>
+
+
+<option value="Female">
+Female
+</option>
+
+
+<option value="Other">
+Other
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Address
+</label>
+
+
+<input
+
+type="text"
+
+id="address"
+
+placeholder="Kigali">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group full">
+
+
+<label>
+Profile Picture
+</label>
+
+
+<input
+
+type="file"
+
+id="profile_pic"
+
+accept="image/*">
+
+
+</div>
+
+
+
+
+
+
+<div class="form-group full">
+
+
+<label>
+Upload National ID
+</label>
+
+
+<input
+
+type="file"
+
+id="national_id_file"
+
+accept="image/*,.pdf">
+
+
+</div>
+
+
+
+
+
+
+<div class="form-group full">
+
+
+<label>
+Upload Driving Licence
+</label>
+
+
+<input
+
+type="file"
+
+id="driving_license_file"
+
+accept="image/*,.pdf">
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div style="
+margin-top:25px;
+display:flex;
+justify-content:flex-end;
+gap:12px;
+">
+
+
+<button
+
+type="button"
+
+onclick="closeBorrowerForm()"
+
+style="
+padding:12px 20px;
+border:none;
+background:#ddd;
+border-radius:8px;
+cursor:pointer;
+">
+
+Cancel
+
+</button>
+
+
+
+
+
+
+<button
+
+id="saveBtn"
+
+type="submit"
+
+style="
+padding:12px 22px;
+border:none;
+background:#16a34a;
+color:white;
+border-radius:8px;
+cursor:pointer;
+">
+
+Save Borrower
+
+</button>
+
+
+
+</div>
+
+
+
+</form>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<style>
+
+
+.modal-overlay{
+
+
+display:none;
+
+
+position:fixed;
+
+
+top:0;
+
+
+left:0;
+
+
+width:100%;
+
+
+height:100%;
+
+
+background:rgba(0,0,0,.55);
+
+
+justify-content:center;
+
+
+align-items:center;
+
+
+z-index:9999;
+
+
+}
+
+
+
+
+
+.borrow-form{
+
+
+background:white;
+
+
+width:650px;
+
+
+max-width:95%;
+
+
+padding:30px;
+
+
+border-radius:12px;
+
+
+}
+
+
+
+
+
+.form-grid{
+
+
+display:grid;
+
+
+grid-template-columns:1fr 1fr;
+
+
+gap:15px;
+
+
+}
+
+
+
+
+.form-group{
+
+
+display:flex;
+
+
+flex-direction:column;
+
+
+}
+
+
+
+
+.form-group label{
+
+
+font-weight:600;
+
+
+margin-bottom:5px;
+
+
+}
+
+
+
+
+.form-group input,
+.form-group select{
+
+
+padding:12px;
+
+
+border:1px solid #ddd;
+
+
+border-radius:8px;
+
+
+}
+
+
+
+
+.full{
+
+
+grid-column:1/3;
+
+
+}
+
+
+
+@media(max-width:700px){
+
+
+.form-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+.full{
+
+grid-column:auto;
+
+}
+
+
+}
+
+
+
+</style>
+
+
+
+
+
+
+
+<script>
+
+
+/* ==========================
+OPEN MODAL
+========================== */
+
+
+function openBorrowerForm(){
+
+
+document.getElementById(
+"borrowerModal"
+).style.display="flex";
+
+
+
+document.getElementById(
+"formTitle"
+).innerHTML="Add New Borrower";
+
+
+}
+
+
+
+
+
+
+
+function closeBorrowerForm(){
+
+
+document.getElementById(
+"borrowerModal"
+).style.display="none";
+
+
+
+document
+.getElementById(
+"borrowerForm"
+)
+.reset();
+
+
+
+document.getElementById(
+"borrowerId"
+).value="";
+
+
+
+document.getElementById(
+"saveBtn"
+).innerHTML="Save Borrower";
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================
+SAVE / UPDATE
+========================== */
+
+
+
+document
+
+.getElementById("borrowerForm")
+
+.addEventListener(
+
+"submit",
+
+async function(e){
+
+
+
+e.preventDefault();
+
+
+
+
+const btn=document.getElementById(
+"saveBtn"
+);
+
+
+
+btn.disabled=true;
+
+btn.innerHTML="Saving...";
+
+
+
+
+const id=document.getElementById(
+"borrowerId"
+).value;
+
+
+
+
+
+
+const borrower={
+
+
+
+full_name:
+
+document.getElementById(
+"full_name"
+).value,
+
+
+
+national_id:
+
+document.getElementById(
+"national_id"
+).value,
+
+
+
+phone:
+
+document.getElementById(
+"phone"
+).value,
+
+
+
+date_of_birth:
+
+document.getElementById(
+"dob"
+).value,
+
+
+
+gender:
+
+document.getElementById(
+"gender"
+).value,
+
+
+
+address:
+
+document.getElementById(
+"address"
+).value
+
+
+
+};
+
+
+
+
+
+
+let result;
+
+
+
+
+
+
+/* CREATE */
+
+
+if(id===""){
+
+
+result=
+
+await db
+
+.from("borrowers")
+
+.insert([borrower]);
+
+
+}
+
+
+
+
+
+
+
+/* UPDATE */
+
+
+else{
+
+
+result=
+
+await db
+
+.from("borrowers")
+
+.update(borrower)
+
+.eq(
+"id",
+id
+);
+
+
+
+}
+
+
+
+
+
+
+
+btn.disabled=false;
+
+
+
+
+
+
+if(result.error){
+
+
+alert(
+result.error.message
+);
+
+
+btn.innerHTML=
+"Update Borrower";
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+alert(
+
+id===""
+
+?
+
+"Borrower added successfully"
+
+:
+
+"Borrower updated successfully"
+
+);
+
+
+
+
+
+
+closeBorrowerForm();
+
+
+
+await loadBorrowers();
+
+
+
+}
+
+);
+
+
+
+
+
+
+
+
+
+/* ==========================
+EDIT BORROWER
+========================== */
+
+
+
+async function editBorrower(id){
+
+
+
+const {
+
+data,
+
+error
+
+}=await db
+
+
+
+.from("borrowers")
+
+.select("*")
+
+.eq(
+"id",
+id
+)
+
+.single();
+
+
+
+
+
+
+if(error){
+
+
+alert(error.message);
+
+return;
+
+
+}
+
+
+
+
+
+
+
+document.getElementById(
+"borrowerId"
+).value=data.id;
+
+
+
+
+
+document.getElementById(
+"full_name"
+).value=
+data.full_name || "";
+
+
+
+
+
+document.getElementById(
+"national_id"
+).value=
+data.national_id || "";
+
+
+
+
+
+document.getElementById(
+"phone"
+).value=
+data.phone || "";
+
+
+
+
+
+document.getElementById(
+"dob"
+).value=
+data.date_of_birth || "";
+
+
+
+
+
+document.getElementById(
+"gender"
+).value=
+data.gender || "Male";
+
+
+
+
+
+document.getElementById(
+"address"
+).value=
+data.address || "";
+
+
+
+
+
+
+
+document.getElementById(
+"formTitle"
+).innerHTML=
+"Edit Borrower";
+
+
+
+
+document.getElementById(
+"saveBtn"
+).innerHTML=
+"Update Borrower";
+
+
+
+
+
+openBorrowerForm();
+
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================
+DELETE BORROWER
+========================== */
+
+
+
+async function deleteBorrower(id){
+
+
+
+if(
+!confirm(
+"Delete this borrower?"
+)
+
+)
+
+return;
+
+
+
+
+
+
+const {
+
+error
+
+}=await db
+
+
+
+.from("borrowers")
+
+.delete()
+
+.eq(
+"id",
+id
+);
+
+
+
+
+
+
+
+if(error){
+
+
+alert(
+error.message
+);
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+alert(
+"Borrower deleted"
+);
+
+
+
+
+await loadBorrowers();
+
+
+
+}
+
+
+</script>
+
+<!-- ==========================
+BULK UPLOAD MODAL
+========================== -->
+
+
+<div class="modal-overlay" id="bulkModal">
+
+
+<div class="borrow-form">
+
+
+<h2>
+Bulk Upload Borrowers
+</h2>
+
+
+
+<p style="
+color:#64748b;
+margin-bottom:20px;
+">
+
+Upload CSV file containing borrower information.
+
+</p>
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Select CSV File
+</label>
+
+
+
+<input
+
+type="file"
+
+id="csvFile"
+
+accept=".csv">
+
+
+</div>
+
+
+
+
+
+
+<div style="margin-top:20px;">
+
+
+<button
+
+type="button"
+
+onclick="downloadTemplate()"
+
+style="
+padding:12px 18px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+">
+
+
+⬇ Download CSV Template
+
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<div style="
+margin-top:25px;
+display:flex;
+justify-content:flex-end;
+gap:10px;
+">
+
+
+
+<button
+
+type="button"
+
+onclick="closeBulkUpload()"
+
+style="
+padding:12px 20px;
+border:none;
+background:#ddd;
+border-radius:8px;
+cursor:pointer;
+">
+
+
+Cancel
+
+
+</button>
+
+
+
+
+
+<button
+
+id="uploadBtn"
+
+type="button"
+
+onclick="uploadCSV()"
+
+style="
+padding:12px 20px;
+background:#16a34a;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+">
+
+
+Upload Borrowers
+
+
+</button>
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- TOAST MESSAGE -->
+
+
+<div id="toast"
+
+style="
+
+position:fixed;
+
+right:30px;
+
+bottom:30px;
+
+background:#16a34a;
+
+color:white;
+
+padding:15px 25px;
+
+border-radius:8px;
+
+display:none;
+
+font-weight:600;
+
+z-index:999999;
+
+">
+
+
+Saved Successfully
+
+
+</div>
+
+
+
+
+
+
+
+
+<script>
+
+
+/* ==========================
+TOAST
+========================== */
+
+
+function showToast(message,color="#16a34a"){
+
+
+
+const toast=document.getElementById(
+"toast"
+);
+
+
+
+toast.innerHTML=message;
+
+
+
+toast.style.background=color;
+
+
+
+toast.style.display="block";
+
+
+
+setTimeout(()=>{
+
+
+toast.style.display="none";
+
+
+},3000);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================
+OPEN BULK MODAL
+========================== */
+
+
+
+function openBulkUpload(){
+
+
+
+document.getElementById(
+"bulkModal"
+).style.display="flex";
+
+
+
+}
+
+
+
+
+
+function closeBulkUpload(){
+
+
+
+document.getElementById(
+"bulkModal"
+).style.display="none";
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================
+DOWNLOAD CSV TEMPLATE
+========================== */
+
+
+
+function downloadTemplate(){
+
+
+
+const csv=
+
+
+`full_name,national_id,phone,date_of_birth,gender,address
+John Doe,119999999999999,0780000000,1995-01-01,Male,Kigali
+Jane Doe,119888888888888,0781111111,1998-05-10,Female,Musanze`;
+
+
+
+
+
+
+const blob=new Blob(
+
+[csv],
+
+{
+
+type:"text/csv"
+
+}
+
+);
+
+
+
+
+
+
+const url=
+URL.createObjectURL(blob);
+
+
+
+
+
+
+const link=document.createElement("a");
+
+
+
+link.href=url;
+
+
+
+link.download=
+"borrowers_template.csv";
+
+
+
+link.click();
+
+
+
+
+
+URL.revokeObjectURL(url);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================
+CSV READER
+========================== */
+
+
+
+function csvToObjects(text){
+
+
+
+const rows=text
+.trim()
+.split("\n");
+
+
+
+const headers=
+rows[0]
+.split(",");
+
+
+
+const result=[];
+
+
+
+
+
+for(let i=1;i<rows.length;i++){
+
+
+
+const values=
+rows[i]
+.split(",");
+
+
+
+let obj={};
+
+
+
+
+
+headers.forEach((h,index)=>{
+
+
+obj[h.trim()]=
+values[index]?.trim();
+
+
+});
+
+
+
+result.push(obj);
+
+
+
+}
+
+
+
+return result;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================
+UPLOAD CSV
+========================== */
+
+
+
+async function uploadCSV(){
+
+
+
+const file=
+document.getElementById(
+"csvFile"
+).files[0];
+
+
+
+
+
+
+if(!file){
+
+
+showToast(
+"Please select CSV file",
+"#dc2626"
+);
+
+
+return;
+
+
+}
+
+
+
+
+
+
+const btn=document.getElementById(
+"uploadBtn"
+);
+
+
+
+btn.disabled=true;
+
+
+
+btn.innerHTML="Uploading...";
+
+
+
+
+
+
+
+const text=
+await file.text();
+
+
+
+
+
+
+const data=
+csvToObjects(text);
+
+
+
+
+
+
+
+const rows=data.map(b=>({
+
+
+
+full_name:
+b.full_name,
+
+
+
+national_id:
+b.national_id,
+
+
+
+phone:
+b.phone,
+
+
+
+date_of_birth:
+b.date_of_birth,
+
+
+
+gender:
+b.gender,
+
+
+
+address:
+b.address
+
+
+
+}));
+
+
+
+
+
+
+
+
+const {
+
+error
+
+}=await db
+
+
+
+.from("borrowers")
+
+.insert(rows);
+
+
+
+
+
+
+
+btn.disabled=false;
+
+
+
+btn.innerHTML=
+"Upload Borrowers";
+
+
+
+
+
+
+
+if(error){
+
+
+
+showToast(
+error.message,
+"#dc2626"
+);
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+
+showToast(
+"Borrowers uploaded successfully"
+);
+
+
+
+
+
+closeBulkUpload();
+
+
+
+
+
+await loadBorrowers();
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================
+FINAL PAGE LOAD
+========================== */
+
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+
+loadBorrowers();
+
+
+});
+
+
+
+</script>
+    
 </body>
 </html>
