@@ -10,6 +10,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <style>
 
 *{
@@ -19,654 +20,681 @@ box-sizing:border-box;
 font-family:Segoe UI,Arial,sans-serif;
 }
 
+
 body{
 background:#f4f6f9;
 }
+
 
 .container{
 display:flex;
 min-height:100vh;
 }
 
+
+/* =====================
+SIDEBAR
+===================== */
+
+
 .sidebar{
+
 width:260px;
 background:#0f172a;
-color:#fff;
+color:white;
+flex-shrink:0;
+
 }
 
+
 .logo{
+
 padding:30px;
 text-align:center;
 border-bottom:1px solid #334155;
+
 }
+
 
 .logo h2{
+
 color:#38bdf8;
+
 }
 
+
 .logo p{
+
 font-size:13px;
 color:#cbd5e1;
 margin-top:5px;
+
 }
 
+
+
 .menu a{
+
 display:block;
 padding:15px 25px;
 color:white;
 text-decoration:none;
+
 }
+
+
 
 .menu a:hover,
 .menu .active{
+
 background:#2563eb;
+
 }
+
+
+
+
+/* =====================
+CONTENT
+===================== */
+
 
 .content{
-    flex:1;
-    padding-top:110px;
-    padding-right:25px;
-    padding-bottom:25px;
-    padding-left:25px;
-    box-sizing:border-box;
-    min-width:0;
-}
 
-    
-/* ===========================
-TOP BAR STYLE
-=========================== */
-
-.topbar {
-
-    position:fixed;
-
-    top:0;
-
-    left:260px;
-
-    right:0;
-
-    height:64px;
-
-    background:#ffffff;
-
-    border-bottom:1px solid #e5e7eb;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:0 28px;
-
-    z-index:1000;
+flex:1;
+padding:95px 25px 25px 25px;
 
 }
 
 
 
-/* LEFT SIDE */
-
-.top-left {
-
-    display:flex;
-
-    align-items:center;
-
-    gap:18px;
-
-}
+/* =====================
+TOP BAR
+===================== */
 
 
+.topbar{
 
-.menu-icon {
+position:fixed;
 
-    color:#64748b;
+top:0;
 
-    font-size:18px;
+left:260px;
 
-}
+right:0;
 
+height:64px;
 
+background:white;
 
-.loan-brand {
+border-bottom:1px solid #e5e7eb;
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
-    gap:10px;
+justify-content:space-between;
 
-    font-size:18px;
+padding:0 30px;
 
-    font-weight:700;
+z-index:1000;
 
 }
 
 
 
-.logo-circle {
+.brand{
 
-    width:34px;
+display:flex;
 
-    height:34px;
+align-items:center;
 
-    border-radius:50%;
+gap:12px;
 
-    background:#20c463;
+font-size:20px;
 
-    color:white;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-weight:700;
-
-}
-
-
-
-.vertical-divider {
-
-    height:34px;
-
-    width:1px;
-
-    background:#e5e7eb;
-
-}
-
-
-
-.company-name {
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    font-size:15px;
-
-    font-weight:600;
-
-    color:#374151;
-
-}
-
-
-
-/* RIGHT SIDE */
-
-.top-right {
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    font-weight:600;
-
-    color:#111827;
-
-    cursor:pointer;
-
-}
-
-
-
-/* LEFT BRAND AREA */
-
-.brand-left {
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-}
-
-
-
-/* LOAN LOGO */
-
-.loan-logo {
-
-    width:42px;
-    height:42px;
-
-    border-radius:10px;
-
-    background:#2563eb;
-
-    color:white;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-size:24px;
-
-    font-weight:700;
-
-}
-
-
-
-/* LOAN TEXT */
-
-.loan-name {
-
-    font-size:22px;
-
-    font-weight:700;
-
-    color:#111827;
-
-}
-
-
-
-/* DIVIDER */
-
-.divider {
-
-    height:35px;
-
-    width:1px;
-
-    background:#d1d5db;
-
-    margin:0 15px;
-
-}
-
-
-
-/* COMPANY */
-
-.transport {
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    font-size:15px;
-
-    color:#374151;
-
-    font-weight:600;
-
-}
-
-
-.company-icon {
-
-    font-size:22px;
-
-}
-
-
-
-/* SIGN OUT */
-
-.signout {
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    cursor:pointer;
-
-    color:#ef4444;
-
-    font-weight:600;
-
-    padding:10px 16px;
-
-    border-radius:8px;
-
-    transition:0.3s;
-
-}
-
-
-.signout:hover {
-
-    background:#fee2e2;
-
-}
-
-
-.page-title h1 {
-
-font-size:32px;
-margin:0;
 font-weight:700;
 
 }
 
 
-.page-title p {
 
-margin-top:4px;
+.logo-circle{
 
-color:#64748b;
+width:38px;
 
-font-size:16px;
+height:38px;
+
+border-radius:50%;
+
+background:#2563eb;
+
+color:white;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
 
 }
-    
+
+
+
+.company{
+
+font-size:15px;
+
+color:#475569;
+
+}
+
+
+
+.signout{
+
+color:#ef4444;
+
+font-weight:600;
+
+cursor:pointer;
+
+}
+
+
+
+/* =====================
+HEADER
+===================== */
+
 
 .header{
+
 background:white;
-padding:20px;
+
+padding:22px;
+
 border-radius:12px;
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
+
 margin-bottom:25px;
-flex-wrap:wrap;
-gap:15px;
+
 }
+
+
 
 .header h1{
+
 font-size:32px;
+
 }
 
-.subtitle{
+
+
+.header p{
+
 color:#64748b;
-margin-top:6px;
+
+margin-top:5px;
+
 }
 
-.asset-actions{
-display:flex;
-gap:10px;
-}
 
-.asset-actions button{
-padding:12px 18px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-font-weight:600;
-}
-
-.bulk-btn{
-background:white;
-border:1px solid #cbd5e1!important;
-}
 
 .add-btn{
+
 background:#16a34a;
+
 color:white;
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:8px;
+
+font-weight:600;
+
+cursor:pointer;
+
 }
+
+
+
+/* =====================
+TABLE PANEL
+===================== */
+
 
 .panel{
+
 background:white;
+
 padding:25px;
+
 border-radius:12px;
+
 }
+
+
 
 .panel h2{
+
 margin-bottom:5px;
+
 }
 
-.panel-sub{
+
+.subtitle{
+
 color:#64748b;
+
 margin-bottom:20px;
+
 }
+
+
 
 .search-box{
+
 width:100%;
+
 max-width:450px;
-padding:13px;
+
+padding:12px;
+
 border:1px solid #d1d5db;
+
 border-radius:8px;
+
 margin-bottom:20px;
+
 }
+
+
+
 
 .table-wrapper{
+
 overflow-x:auto;
+
 }
 
-.asset-table{
+
+
+table{
+
 width:100%;
+
 border-collapse:collapse;
+
 }
 
-.asset-table th{
+
+
+th{
+
 background:#f8fafc;
+
 padding:14px;
+
 text-align:left;
+
 }
 
-.asset-table td{
+
+
+td{
+
 padding:14px;
+
 border-bottom:1px solid #eee;
+
 }
 
-.asset-table tbody tr:hover{
-background:#f9fafb;
+
+
+tr:hover{
+
+background:#f8fafc;
+
 }
 
-.initials{
-width:45px;
-height:45px;
+
+
+
+.avatar{
+
+width:40px;
+
+height:40px;
+
 border-radius:50%;
+
 background:#2563eb;
+
 color:white;
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
+
 font-weight:bold;
+
 }
+
+
 
 .edit-btn,
 .delete-btn{
-background:none;
+
 border:none;
-cursor:pointer;
+
+background:none;
+
 font-size:18px;
+
+cursor:pointer;
+
 margin-right:8px;
+
 }
 
+
+
 .loading{
-padding:30px;
+
 text-align:center;
+
+padding:30px;
+
 color:#64748b;
+
 }
+
+
+
+/* MOBILE */
 
 @media(max-width:900px){
 
-.container{
-    flex-direction:column;
+.topbar{
+
+left:0;
+
 }
+
 
 .sidebar{
-    width:100%;
-}
 
-.topbar{
-    left:0;
-}
-
-.content{
-    padding-top:90px;
-    padding-left:20px;
-    padding-right:20px;
-}
+width:100%;
 
 }
+
+
+.container{
+
+flex-direction:column;
+
+}
+
+}
+
 
 </style>
 
 </head>
 
+
+
 <body>
+
 
 <div class="container">
 
+
+
+<!-- SIDEBAR -->
+
 <aside class="sidebar">
+
 
 <div class="logo">
 
-<h2>King Fleet</h2>
+<h2>
+King Fleet
+</h2>
 
-<p>King Services & Transport Ltd</p>
+<p>
+King Services & Transport Ltd
+</p>
 
 </div>
 
+
+
 <nav class="menu">
 
-<a href="dashboard.html">🏠 Dashboard</a>
-<a a href="assets.html">👤 Brorrowers</a>
-<a href="assets.html" class="active">🚚 Assets</a>
-<a href="loans.html">💳 Loans</a>
-<a href="payments.html">💰 Payments</a>
-<a href="reports.html">📊 Reports</a>
-<a href="admin.html">⚙ Admin</a>
+
+<a href="dashboard.html">
+🏠 Dashboard
+</a>
+
+
+<a href="borrowers.html">
+👤 Borrowers
+</a>
+
+
+<a href="assets.html" class="active">
+🚚 Assets
+</a>
+
+
+<a href="loans.html">
+💳 Loans
+</a>
+
+
+<a href="payments.html">
+💰 Payments
+</a>
+
+
+<a href="reports.html">
+📊 Reports
+</a>
+
+
+<a href="admin.html">
+⚙ Admin
+</a>
+
+
 
 </nav>
 
+
 </aside>
+
+
+
+
+
+<!-- MAIN -->
+
 
 <main class="content">
 
-<!-- ===========================
-TOP BAR
-=========================== -->
-<!-- TOP BAR -->
+
 
 <div class="topbar">
 
 
-    <div class="top-left">
+<div class="brand">
+
+<div class="logo-circle">
+L
+</div>
+
+<span>
+Loanr
+</span>
 
 
-        <div class="menu-icon">
-            ◧
-        </div>
+<span class="company">
+
+| 🏢 King Transport
+
+</span>
 
 
-        <div class="loan-brand">
-
-            <div class="logo-circle">
-                L
-            </div>
-
-            <span>
-                Loanr
-            </span>
-
-        </div>
+</div>
 
 
-        <div class="vertical-divider"></div>
+<div class="signout">
 
+⇥ Sign Out
 
-        <div class="company-name">
+</div>
 
-            🏢
-
-            <span>
-                King Transport
-            </span>
-
-        </div>
-
-
-    </div>
-
-
-
-    <div class="top-right">
-
-        ⇥
-
-        <span>
-            Sign Out
-        </span>
-
-    </div>
 
 
 </div>
 
 
 
-<div class="header">
-<!-- BRAND HEADER -->
 
-<div class="page-title">
+
+
+<div class="header">
+
+
+<div>
+
 
 <h1>
 Assets
 </h1>
 
+
 <p>
-Manage motorcycles and other collateral assets
+Manage motorcycles and collateral assets
 </p>
 
+
 </div>
 
 
-    
-<div class="asset-actions">
 
-<button class="add-btn" onclick="openassetForm()">
+<button class="add-btn"
+onclick="openAssetForm()">
+
 + Add Asset
+
 </button>
 
-</div>
+
 
 </div>
+
+
+
+
+
+
 
 <div class="panel">
 
-<h2>All Assets</h2>
 
-<p class="panel-sub">
-<span id="assetCount">Loading...</span> in inventory
+<h2>
+All Assets
+</h2>
+
+
+<p class="subtitle">
+
+<span id="assetCount">
+Loading...
+</span>
+in inventory
+
 </p>
 
+
+
+
 <input
-id="searchInput"
+
 class="search-box"
-placeholder="Search assets...">
+
+id="searchInput"
+
+placeholder="Search assets..."
+
+>
+
+
+
 
 <div class="table-wrapper">
 
-<table class="asset-table">
+
+<table>
+
 
 <thead>
 
 <tr>
 
-<th>Asset name</th>
-<th>VIN/Serial</th>
-<th>Documents</th>
-<th>Notes</th>
-<th>Date Added</th>
-<th>Action</th>
+<th></th>
+
+<th>
+Asset Name
+</th>
+
+
+<th>
+VIN / Serial
+</th>
+
+
+<th>
+Documents
+</th>
+
+
+<th>
+Notes
+</th>
+
+
+<th>
+Date Added
+</th>
+
+
+<th>
+Action
+</th>
+
 
 </tr>
 
+
 </thead>
 
+
+
 <tbody id="assetTable">
+
 
 <tr>
 
@@ -678,92 +706,70 @@ Loading Assets...
 
 </tr>
 
+
+
 </tbody>
+
+
 
 </table>
 
-</div>
+
 
 </div>
+
+
+</div>
+
+
+
 
 </main>
 
+
 </div>
+
+
+
+
 
 <script>
 
-const SUPABASE_URL="https://pblnryiziqxpudeuheas.supabase.co";
 
-const SUPABASE_KEY="sb_publishable_mRNJPktH5JZuVDB54x-v0w_hSvDsiZn";
+/* =========================
+SUPABASE CONFIG
+========================= */
+
+
+const SUPABASE_URL =
+"https://pblnryiziqxpudeuheas.supabase.co";
+
+
+const SUPABASE_KEY =
+"sb_publishable_mRNJPktH5JZuVDB54x-v0w_hSvDsiZn";
+
+
 
 const {createClient}=supabase;
 
-const db=createClient(SUPABASE_URL,SUPABASE_KEY);
 
-let Assets=[];
-    
+const db=createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+
+
+let assets=[];
+
+
+
+/* =========================
+LOAD ASSETS
+========================= */
+
 
 async function loadAssets(){
-
-const tbody=document.getElementById("assetTable");
-
-
-tbody.innerHTML=
-`
-<tr>
-<td colspan="7" class="loading">
-Loading...
-</td>
-</tr>
-`;
-
-
-
-const {data,error}=await db
-.from("Assets")
-.select("*")
-.order("created_at",{ascending:false});
-
-
-
-console.log("SUPABASE DATA:",data);
-console.log("SUPABASE ERROR:",error);
-
-
-
-if(error){
-
-tbody.innerHTML=
-`
-<tr>
-<td colspan="7">
-${error.message}
-</td>
-</tr>
-`;
-
-return;
-
-}
-
-
-
-Assets=data || [];
-
-
-
-document.getElementById(
-"assetCount"
-).innerHTML=Assets.length;
-
-
-
-renderAssets(Assets);
-
-
-}
-
-function renderAssets(rows){
 
 
 const tbody=document.getElementById(
@@ -771,39 +777,149 @@ const tbody=document.getElementById(
 );
 
 
-tbody.innerHTML="";
 
+tbody.innerHTML=`
 
-
-if(!rows || rows.length===0){
-
-tbody.innerHTML=
-`
 <tr>
-<td colspan="7">
-No Assets found
+
+<td colspan="7" class="loading">
+
+Loading Assets...
+
 </td>
+
 </tr>
+
+`;
+
+
+
+
+const {
+
+data,
+
+error
+
+}=await db
+
+.from("assets")
+
+.select("*")
+
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+
+
+
+if(error){
+
+
+tbody.innerHTML=`
+
+<tr>
+
+<td colspan="7">
+
+${error.message}
+
+</td>
+
+</tr>
+
 `;
 
 return;
+
 
 }
 
 
 
-rows.forEach(b=>{
+
+assets=data || [];
+
+
+
+document.getElementById(
+"assetCount"
+).innerHTML=
+assets.length;
+
+
+
+renderAssets(
+assets
+);
+
+
+
+}
+
+
+
+
+/* =========================
+DISPLAY TABLE
+========================= */
+
+
+function renderAssets(rows){
+
+
+
+const tbody=document.getElementById(
+"assetTable"
+);
+
+
+
+tbody.innerHTML="";
+
+
+
+if(rows.length===0){
+
+
+tbody.innerHTML=`
+
+<tr>
+
+<td colspan="7" class="loading">
+
+No Assets Found
+
+</td>
+
+</tr>
+
+`;
+
+return;
+
+
+}
+
+
+
+
+
+rows.forEach(asset=>{
+
 
 
 let initials="?";
 
 
-if(b.asset_name){
+if(asset.asset_name){
 
-initials=b.asset_name
-.split(" ")
-.map(x=>x.charAt(0))
-.join("")
+initials=
+asset.asset_name
 .substring(0,2)
 .toUpperCase();
 
@@ -811,14 +927,16 @@ initials=b.asset_name
 
 
 
+
 tbody.innerHTML += `
+
 
 <tr>
 
 
 <td>
 
-<div class="initials">
+<div class="avatar">
 
 ${initials}
 
@@ -828,36 +946,59 @@ ${initials}
 
 
 
-<td>${b.asset_name || "-"}</td>
-
-
-<td>${b.vin_serial || "-"}</td>
-
-
-<td>${b.documents || "-"}</td>
-
-
-<td>${b.notes || "-"}</td>
-
-<td>${b.date_added || "-"}</td>
-
-<td>${b.date_added || "-"}</td>
-
 <td>
 
-${b.created_at 
-? new Date(b.created_at).toLocaleDateString()
-:"-"}
+${asset.asset_name || "-"}
 
 </td>
 
 
+
+<td>
+
+${asset.vin_serial || "-"}
+
+</td>
+
+
+
+<td>
+
+${asset.documents || "-"}
+
+</td>
+
+
+
+<td>
+
+${asset.notes || "-"}
+
+</td>
+
+
+
+<td>
+
+${
+asset.created_at
+?
+new Date(asset.created_at)
+.toLocaleDateString()
+:
+"-"
+}
+
+</td>
+
+
+
 <td>
 
 
-<button 
-class="edit-btn"
-onclick="editasset('${b.id}')">
+<button class="edit-btn"
+
+onclick="editAsset('${asset.id}')">
 
 ✏️
 
@@ -865,962 +1006,91 @@ onclick="editasset('${b.id}')">
 
 
 
-<button 
-class="delete-btn"
-onclick="deleteasset('${b.id}')">
+<button class="delete-btn"
+
+onclick="deleteAsset('${asset.id}')">
 
 🗑️
 
 </button>
 
 
+
 </td>
+
 
 
 </tr>
 
+
 `;
+
+
 
 });
 
 
+
 }
+
+
+
+
+/* =========================
+SEARCH
+========================= */
+
 
 document
 .getElementById("searchInput")
-.addEventListener("keyup",function(){
+.addEventListener(
+"keyup",
+function(){
 
-const value=this.value.toLowerCase();
 
-const filtered=Assets.filter(x=>
+let value=this.value.toLowerCase();
 
-(x.asset_name||"").toLowerCase().includes(value) ||
 
-(x.phone||"").toLowerCase().includes(value) ||
 
-(x.national_id||"").toLowerCase().includes(value)
+let filtered=assets.filter(a=>
+
+
+(a.asset_name||"")
+.toLowerCase()
+.includes(value)
+
+
+||
+(a.vin_serial||"")
+.toLowerCase()
+.includes(value)
+
 
 );
+
+
 
 renderAssets(filtered);
 
+
+
 });
+
+
+
+
+/* INITIAL LOAD */
 
 loadAssets();
 
-</script>
-
-
-<!-- PART 2 -->
-  <!-- ===========================================================
-PART 2
-ADD asset MODAL + SUPABASE INSERT + EDIT + DELETE
-Place this immediately AFTER Part 1 and BEFORE </body>
-=========================================================== -->
-
-<!-- ===========================
-ADD asset MODAL
-=========================== -->
-
-<div class="modal-overlay" id="assetModal">
-
-<div class="asset-form">
-
-<h2>Add New asset</h2>
-
-<form id="assetForm">
-
-<input type="hidden" id="assetId">
-
-<div class="form-grid">
-
-
-<div class="form-group" full>
-
-<label>Asset Name</label>
-
-<input
-type="text"
-id="asset_name"
-required
-placeholder="e.g AMP ALPHA RM602K">
-
-</div>
-
-
-<div class="form-group" full>
-
-<label>VIN/Serial</label>
-
-<input
-type="text"
-id="vin_serial"
-required
-placeholder="Vehicle identification or serial number">
-
-</div>
-
-
-<div class="form-group" full>
-
-<label>Notes</label>
-
-<input
-type="text">
-
-</div>
-
-<div class="form-group full">
-
-<label>
-Yellow Card Copy (PDF,JPG,PNG)
-</label>
-
-<input type="file">
-
-</div>
-
-<div class="subtitle">
-
-Asset Documents
-
-</div>
-
-    
-<div class="form-group full">
-
-<label>
-Yellow Card Copy (PDF,JPG,PNG)
-</label>
-
-<input type="file">
-
-</div>
-
-<div class="form-group full">
-
-<label>
-Insurance Document (PDF,JPG,PNG)
-</label>
-
-<input type="file">
-
-</div>
-
-<div class="form-group full">
-
-<label>
-Authorisation File (PDF,JPG,PNG)
-</label>
-
-<input type="file">
-
-</div>
-
-</div>
-
-  
-<div style="margin-top:25px;display:flex;justify-content:flex-end;gap:12px;">
-
-<button
-type="button"
-onclick="closeassetForm()"
-style="padding:12px 20px;border:none;background:#ddd;border-radius:8px;cursor:pointer;">
-
-Cancel
-
-</button>
-
-<button
-id="saveBtn"
-type="submit"
-style="padding:12px 22px;border:none;background:#16a34a;color:white;border-radius:8px;cursor:pointer;">
-
-Add Asset
-
-</button>
-
-</div>
-
-</form>
-
-</div>
-
-</div>
-
-<style>
-
-.modal-overlay{
-
-display:none;
-
-position:fixed;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-height:100%;
-
-background:rgba(0,0,0,.55);
-
-justify-content:center;
-
-align-items:center;
-
-z-index:9999;
-
-}
-
-.asset-form{
-
-background:white;
-
-width:650px;
-
-max-width:95%;
-
-padding:30px;
-
-border-radius:12px;
-
-}
-
-.form-grid{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:15px;
-
-}
-
-.form-group{
-
-display:flex;
-
-flex-direction:column;
-
-}
-
-.form-group label{
-
-font-weight:600;
-
-margin-bottom:5px;
-
-}
-
-.form-group input,
-.form-group select{
-
-padding:12px;
-
-border:1px solid #ddd;
-
-border-radius:8px;
-
-}
-
-.full{
-
-grid-column:1/3;
-
-}
-
-@media(max-width:700px){
-
-.form-grid{
-
-grid-template-columns:1fr;
-
-}
-
-.full{
-
-grid-column:auto;
-
-}
-
-}
-
-</style>
-
-
-<script>
-
-/* GLOBAL DATA */
-// let Assets = [];
-
-
-/* --------------------------
-OPEN / CLOSE MODAL
--------------------------- */
-
-function openassetForm(){
-
-    document.getElementById("assetModal").style.display="flex";
-
-}
-
-
-function closeassetForm(){
-
-document.getElementById(
-"assetModal"
-).style.display="none";
-
-
-document.getElementById(
-"assetForm"
-).reset();
-
-
-document.getElementById(
-"assetId"
-).value="";
-
-
-document.getElementById(
-"saveBtn"
-).innerHTML="Save asset";
-
-
-}
-
-
-
-/* --------------------------
-LOAD Assets FROM SUPABASE
--------------------------- */
-
-async function loadAssets(){
-
-    const {data,error}=await db
-    .from("Assets")
-    .select("*")
-    .order("created_at",{ascending:false});
-
-
-    if(error){
-
-        console.log(error);
-
-        alert(error.message);
-
-        return;
-
-    }
-
-
-    Assets=data || [];
-
-
-    displayAssets(Assets);
-
-
-}
-
-
-
-/* --------------------------
-SAVE / UPDATE asset
--------------------------- */
-
-
-document
-.getElementById("assetForm")
-.addEventListener("submit",async function(e){
-
-
-e.preventDefault();
-
-
-const btn=document.getElementById("saveBtn");
-
-btn.disabled=true;
-
-btn.innerHTML="Saving...";
-
-
-
-const id=document.getElementById("assetId").value;
-
-
-
-const asset={
-
-
-asset_name:
-document.getElementById("asset_name").value.trim(),
-
-
-national_id:
-document.getElementById("national_id").value.trim(),
-
-
-phone:
-document.getElementById("phone").value.trim(),
-
-
-date_of_birth:
-document.getElementById("dob").value,
-
-
-gender:
-document.getElementById("gender").value,
-
-
-address:
-document.getElementById("address").value.trim()
-
-
-};
-
-
-
-let result;
-
-
-
-/* CREATE NEW */
-
-if(id===""){
-
-
-result=await db
-.from("Assets")
-.insert([asset]);
-
-
-}
-
-
-
-/* UPDATE EXISTING */
-
-else{
-
-
-result=await db
-.from("Assets")
-.update(asset)
-.eq("id",id)
-.select();
-
-
-}
-
-
-
-btn.disabled=false;
-
-
-
-if(result.error){
-
-
-alert(result.error.message);
-
-btn.innerHTML="Update asset";
-
-return;
-
-
-}
-
-
-
-alert(
-id==="" 
-? "asset added successfully"
-: "asset updated successfully"
-);
-
-
-
-closeassetForm();
-
-
-
-/*
-IMPORTANT:
-Reload fresh data from Supabase
-*/
-
-await loadAssets();
-
-
-
-});
-
-
-
-
-
-/* --------------------------
-EDIT asset
--------------------------- */
-
-
-async function editasset(id){
-
-
-
-/*
-Get latest data directly from database
-instead of depending only on old array
-*/
-
-
-const {data,error}=await db
-
-.from("Assets")
-
-.select("*")
-
-.eq("id",id)
-
-.single();
-
-
-
-if(error){
-
-alert(error.message);
-
-return;
-
-}
-
-
-
-document.getElementById("assetId").value=data.id;
-
-
-document.getElementById("asset_name").value=
-data.asset_name || "";
-
-
-document.getElementById("vin_serial").value=
-data.national_id || "";
-
-
-document.getElementById("notes").value=
-data.phone || "";
-
-
-document.getElementById("saveBtn").innerHTML=
-"Update asset";
-
-
-
-openassetForm();
-
-
-
-}
-
-
-
-
-
-/* --------------------------
-DELETE asset
--------------------------- */
-
-
-async function deleteasset(id){
-
-
-if(!confirm("Delete this asset?")) return;
-
-
-
-const {error}=await db
-
-.from("Assets")
-
-.delete()
-
-.eq("id",id);
-
-
-
-if(error){
-
-alert(error.message);
-
-return;
-
-}
-
-
-
-alert("asset deleted");
-
-
-await loadAssets();
-
-
-
-}
-
-
-
-
-
-/* --------------------------
-INITIAL PAGE LOAD
--------------------------- */
-
-
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
-
-loadAssets();
-
-});
 
 
 </script>
 
-
-    
-  <!-- PART 3 -->
-
-<!-- ===========================================================
-PART 3
-BULK CSV IMPORT + DOWNLOAD TEMPLATE + TOAST NOTIFICATIONS
-Place this BELOW Part 2 and ABOVE </body>
-=========================================================== -->
-
-<!-- ===========================
-BULK UPLOAD MODAL
-=========================== -->
-
-<div class="modal-overlay" id="bulkModal">
-
-<div class="asset-form" style="max-width:700px;">
-
-<h2>Bulk Upload Assets</h2>
-
-<p style="margin-bottom:20px;color:#64748b;">
-
-Upload a CSV file containing asset information.
-
-</p>
-
-<div class="form-group">
-
-<label>Select CSV File</label>
-
-<input
-type="file"
-id="csvFile"
-accept=".csv">
-
-</div>
-
-<div style="margin-top:15px;">
-
-<button
-type="button"
-onclick="downloadTemplate()"
-style="padding:10px 18px;background:#2563eb;color:white;border:none;border-radius:8px;cursor:pointer;">
-
-⬇ Download CSV Template
-
-</button>
-
-</div>
-
-<div style="margin-top:25px;display:flex;justify-content:flex-end;gap:10px;">
-
-<button
-type="button"
-onclick="closeBulkUpload()"
-style="padding:12px 20px;border:none;background:#ddd;border-radius:8px;">
-
-Cancel
-
-</button>
-
-<button
-id="uploadBtn"
-type="button"
-onclick="uploadCSV()"
-style="padding:12px 20px;border:none;background:#16a34a;color:white;border-radius:8px;">
-
-Upload Assets
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ===========================
-TOAST
-=========================== -->
-
-<div id="toast"
-
-style="
-
-position:fixed;
-
-right:30px;
-
-bottom:30px;
-
-background:#16a34a;
-
-color:white;
-
-padding:15px 25px;
-
-border-radius:8px;
-
-display:none;
-
-font-weight:600;
-
-z-index:999999;
-
-box-shadow:0 10px 30px rgba(0,0,0,.25);
-
-">
-
-Saved Successfully
-
-</div>
-
-<script>
-
-/* ======================
-TOAST
-====================== */
-
-function showToast(message,color="#16a34a"){
-
-const toast=document.getElementById("toast");
-
-toast.innerHTML=message;
-
-toast.style.background=color;
-
-toast.style.display="block";
-
-setTimeout(()=>{
-
-toast.style.display="none";
-
-},3000);
-
-}
-
-/* ======================
-OPEN/CLOSE BULK MODAL
-====================== */
-
-function openBulkUpload(){
-
-document.getElementById("bulkModal").style.display="flex";
-
-}
-
-function closeBulkUpload(){
-
-document.getElementById("bulkModal").style.display="none";
-
-}
-
-/* ======================
-DOWNLOAD TEMPLATE
-====================== */
-
-function downloadTemplate(){
-
-const csv=
-
-`asset_name,national_id,phone,date_of_birth,gender,address
-John Doe,1199912345678901,0788123456,1995-06-18,Male,Kigali
-Jane Doe,1199988888888888,0789000000,1997-10-20,Female,Musanze`;
-
-const blob=new Blob([csv],{
-
-type:"text/csv"
-
-});
-
-const url=URL.createObjectURL(blob);
-
-const a=document.createElement("a");
-
-a.href=url;
-
-a.download="Assets_template.csv";
-
-a.click();
-
-URL.revokeObjectURL(url);
-
-}
-
-/* ======================
-CSV PARSER
-====================== */
-
-function csvToObjects(text){
-
-const lines=text.trim().split("\n");
-
-const headers=lines[0].split(",");
-
-const data=[];
-
-for(let i=1;i<lines.length;i++){
-
-const obj={};
-
-const values=lines[i].split(",");
-
-headers.forEach((h,index)=>{
-
-obj[h.trim()]=values[index]?.trim();
-
-});
-
-data.push(obj);
-
-}
-
-return data;
-
-}
-
-/* ======================
-UPLOAD CSV
-====================== */
-
-async function uploadCSV(){
-
-const input=document.getElementById("csvFile");
-
-if(input.files.length===0){
-
-showToast("Please choose a CSV file","#dc2626");
-
-return;
-
-}
-
-const btn=document.getElementById("uploadBtn");
-
-btn.disabled=true;
-
-btn.innerHTML="Uploading...";
-
-const text=await input.files[0].text();
-
-const Assets=csvToObjects(text);
-
-const rows=Assets.map(b=>({
-
-asset_name:b.asset_name,
-
-vin_serial:b.vin_serial,
-
-notes:b.notes,
-
-yellow_card_url:b.yellow_card_url,
-
-insurance_url:b.insurance_url,
-
-authorisation_url:b.authorisation_url
-
-}));
-
-const {error}=await db
-
-.from("Assets")
-
-.insert(rows);
-
-btn.disabled=false;
-
-btn.innerHTML="Upload Assets";
-
-if(error){
-
-showToast(error.message,"#dc2626");
-
-return;
-
-}
-
-showToast("Assets uploaded successfully.");
-
-closeBulkUpload();
-
-loadAssets();
-
-}
-
-/* ======================
-REPLACE ALERTS
-====================== */
-
-const originalLoad=loadAssets;
-
-loadAssets=async function(){
-
-await originalLoad();
-
-showToast("Assets refreshed.");
-
-};
-
-</script>
-
-
-
-<!-- ===========================
-SUPABASE TABLE STRUCTURE
-===========================
-
-Table: Assets
-
-id uuid primary key default gen_random_uuid()
-
-asset_name text
-
-vin_serial text
-
-notes text
-
-yellow_card_url text
-
-insurance_url text
-
-authorisation_url text
-
-created_at timestamptz default now()
-
-================================ -->
-
-<!-- PART 2-->
-
-<!-- ==========================
-ADD / EDIT asset MODAL
-========================== -->
+<!-- part 2 -->
+<!-- =========================
+ADD / EDIT ASSET MODAL
+========================= -->
 
 
 <div class="modal-overlay" id="assetModal">
@@ -1830,15 +1100,12 @@ ADD / EDIT asset MODAL
 
 
 <h2 id="formTitle">
-
-Add New asset
-
+Add New Asset
 </h2>
 
 
 
 <form id="assetForm">
-
 
 
 <input type="hidden" id="assetId">
@@ -1849,87 +1116,75 @@ Add New asset
 
 
 
-<div class="form-group" full>
+<div class="form-group full">
 
 <label>
 Asset Name
 </label>
 
-<input type="text" placeholder="e.g AMP ALPHA RM602K">
+<input 
+type="text"
+id="asset_name"
+placeholder="e.g AMP Alpha RM602K"
+required>
 
 </div>
 
-<div class="form-group" full>
+
+
+
+
+<div class="form-group full">
 
 <label>
-VIN/Serial Number
+VIN / Serial Number
 </label>
 
-<input type="text" placeholder="Vehicle identification or serial number">
+<input 
+type="text"
+id="vin_serial"
+placeholder="Vehicle identification number">
 
 </div>
 
 
-<div class="form-group" full>
+
+
+
+<div class="form-group full">
+
+<label>
+Documents
+</label>
+
+<input 
+type="text"
+id="documents"
+placeholder="Document links or description">
+
+</div>
+
+
+
+
+
+<div class="form-group full">
 
 <label>
 Notes
 </label>
 
-<input type="text">
-
-</div>
-
-<div class="form-group full">
-
-<label>
-Yellow Card Copy (PDF,JPG,PNG)
-</label>
-
-<input type="file">
-
-</div>
-
-<div class="subtitle">
-
-Asset Documents
-
-</div>
-
-    
-<div class="form-group full">
-
-<label>
-Yellow Card Copy (PDF,JPG,PNG)
-</label>
-
-<input type="file">
-
-</div>
-
-<div class="form-group full">
-
-<label>
-Insurance Document (PDF,JPG,PNG)
-</label>
-
-<input type="file">
-
-</div>
-
-<div class="form-group full">
-
-<label>
-Authorisation File (PDF,JPG,PNG)
-</label>
-
-<input type="file">
-
-</div>
+<textarea
+id="notes"
+rows="3"
+placeholder="Additional notes">
+</textarea>
 
 </div>
 
 
+
+</div>
 
 
 
@@ -1947,7 +1202,7 @@ gap:12px;
 
 type="button"
 
-onclick="closeassetForm()"
+onclick="closeAssetForm()"
 
 style="
 padding:12px 20px;
@@ -1960,8 +1215,6 @@ cursor:pointer;
 Cancel
 
 </button>
-
-
 
 
 
@@ -1981,7 +1234,7 @@ border-radius:8px;
 cursor:pointer;
 ">
 
-Add asset
+Save Asset
 
 </button>
 
@@ -2009,142 +1262,100 @@ Add asset
 
 .modal-overlay{
 
-
 display:none;
-
 
 position:fixed;
 
-
 top:0;
-
 
 left:0;
 
-
 width:100%;
-
 
 height:100%;
 
-
 background:rgba(0,0,0,.55);
-
 
 justify-content:center;
 
-
 align-items:center;
-
 
 z-index:9999;
 
-
 }
-
-
 
 
 
 .asset-form{
 
-
 background:white;
 
-
-width:650px;
-
+width:600px;
 
 max-width:95%;
 
-
 padding:30px;
-
 
 border-radius:12px;
 
-
 }
-
-
 
 
 
 .form-grid{
 
-
 display:grid;
-
 
 grid-template-columns:1fr 1fr;
 
-
 gap:15px;
 
-
 }
-
 
 
 
 .form-group{
 
-
 display:flex;
-
 
 flex-direction:column;
 
-
 }
-
 
 
 
 .form-group label{
 
-
 font-weight:600;
 
-
-margin-bottom:5px;
-
+margin-bottom:6px;
 
 }
-
 
 
 
 .form-group input,
-.form-group select{
-
+.form-group textarea{
 
 padding:12px;
 
-
-border:1px solid #ddd;
-
+border:1px solid #d1d5db;
 
 border-radius:8px;
 
-
 }
-
 
 
 
 .full{
 
-
 grid-column:1/3;
-
 
 }
 
 
 
 @media(max-width:700px){
-
 
 .form-grid{
 
@@ -2159,9 +1370,7 @@ grid-column:auto;
 
 }
 
-
 }
-
 
 
 </style>
@@ -2171,16 +1380,16 @@ grid-column:auto;
 
 
 
-
 <script>
 
 
-/* ==========================
+
+/* =========================
 OPEN MODAL
-========================== */
+========================= */
 
 
-function openassetForm(){
+function openAssetForm(){
 
 
 document.getElementById(
@@ -2191,7 +1400,9 @@ document.getElementById(
 
 document.getElementById(
 "formTitle"
-).innerHTML="Add New asset";
+).innerHTML=
+"Add New Asset";
+
 
 
 }
@@ -2200,9 +1411,12 @@ document.getElementById(
 
 
 
+/* =========================
+CLOSE MODAL
+========================= */
 
 
-function closeassetForm(){
+function closeAssetForm(){
 
 
 document.getElementById(
@@ -2227,7 +1441,9 @@ document.getElementById(
 
 document.getElementById(
 "saveBtn"
-).innerHTML="Save asset";
+).innerHTML=
+"Save Asset";
+
 
 
 }
@@ -2236,102 +1452,124 @@ document.getElementById(
 
 
 
-
-
-
-/* ==========================
+/* =========================
 SAVE / UPDATE
-========================== */
+========================= */
 
-let savingasset = false;
-    
-// document
-// .getElementById("assetForm")
-// .addEventListener(
-// "submit",
-// async function(e){
+
+let savingAsset=false;
+
+
+
+document
+.getElementById("assetForm")
+.addEventListener(
+"submit",
+async function(e){
 
 
 e.preventDefault();
 
-if(savingasset){
 
-console.log("Duplicate save blocked");
+
+if(savingAsset){
 
 return;
 
 }
 
-savingasset=true;
 
-const btn=document.getElementById("saveBtn");
+savingAsset=true;
+
+
+
+const btn=document.getElementById(
+"saveBtn"
+);
+
+
 
 btn.disabled=true;
 
-btn.innerHTML="Saving...";
+btn.innerHTML=
+"Saving...";
 
 
 
-const id=document.getElementById("assetId").value;
+
+const id=document
+.getElementById("assetId")
+.value;
 
 
 
-let assetId=id;
+
+const asset={
+
+
+asset_name:
+
+document
+.getElementById("asset_name")
+.value
+.trim(),
 
 
 
-/*
-CREATE asset FIRST
-*/
+vin_serial:
+
+document
+.getElementById("vin_serial")
+.value
+.trim(),
+
+
+
+documents:
+
+document
+.getElementById("documents")
+.value
+.trim(),
+
+
+
+notes:
+
+document
+.getElementById("notes")
+.value
+.trim()
+
+
+};
+
+
+
+
+
+
+
+let result;
+
+
+
+
+
+/* CREATE */
 
 if(id===""){
 
 
-const {data,error}=await db
-.from("Assets")
+
+result=
+await db
+
+.from("assets")
+
 .insert([
-{
-asset_name:
-document.getElementById("asset_name").value,
-
-vin_serial:
-document.getElementById("vin_serial").value,
-
-notes:
-document.getElementById("notes").value,
-
-documents:
-document.getElementById("documents").value,
-
-yellow_card_url:
-document.getElementById("yellow_card_url").value,
-
-insurance_url:
-document.getElementById("insurance_url").value,
-
-authorisation_url:
-document.getElementById("authorisation_url").value
-
-}
-])
-.select()
-.single();
-
-
-
-if(error){
-
-alert(error.message);
-
-btn.disabled=false;
-
-return;
-
-}
-
-
-
-assetId=data.id;
+asset
+]);
 
 
 
@@ -2340,42 +1578,22 @@ assetId=data.id;
 
 
 
-/*
-UPDATE EXISTING
-*/
+
+
+
+/* UPDATE */
 
 else{
 
 
-const {error}=await db
 
-.from("Assets")
+result=
 
-.update({
+await db
 
-asset_name:
-document.getElementById("asset_name").value,
+.from("assets")
 
-vin_serial:
-document.getElementById("vin_serial").value,
-
-notes:
-document.getElementById("notes").value,
-
-documents:
-document.getElementById("documents").value,
-
-yellow_card_url:
-document.getElementById("yellow_card_url").value,
-
-insurance_url:
-document.getElementById("insurance_url").value,
-
-authorisation_url:
-document.getElementById("authorisation_url").value
-
-
-})
+.update(asset)
 
 .eq(
 "id",
@@ -2384,60 +1602,55 @@ id
 
 
 
-if(error){
+}
 
-alert(error.message);
+
+
+
 
 btn.disabled=false;
 
-return;
+btn.innerHTML=
+"Save Asset";
 
-}
-
-
-
-}
+savingAsset=false;
 
 
 
 
 
 
-
-/*
-UPLOAD FILES
-*/
+if(result.error){
 
 
-await uploadassetDocuments(
-assetId
+alert(
+result.error.message
 );
 
 
+return;
 
 
+}
 
 
-
-btn.disabled=false;
-
-btn.innerHTML="Save asset";
 
 
 
 alert(
-"asset saved successfully"
+id
+?
+"Asset updated successfully"
+:
+"Asset added successfully"
 );
 
 
 
-closeassetForm();
 
 
+closeAssetForm();
 
-/*
-AUTO REFRESH FROM DATABASE
-*/
 
 
 await loadAssets();
@@ -2446,148 +1659,19 @@ await loadAssets();
 
 });
 
-async function uploadassetDocuments(assetId){
 
 
-const files=[
 
 
-{
-input:"yellow_card",
-folder:"yellow-card"
-},
 
 
-{
-input:"isurance",
-folder:"insurance"
-},
 
+/* =========================
+EDIT ASSET
+========================= */
 
-{
-input:"authorisation",
-folder:"authorisation"
-}
 
-
-];
-
-
-
-for(const item of files){
-
-
-const fileInput=document.getElementById(item.input);
-
-
-
-if(!fileInput){
-
-console.log(
-"Missing input:",
-item.input
-);
-
-continue;
-
-}
-
-
-
-
-if(fileInput.files.length===0){
-
-console.log(
-"No file selected:",
-item.input
-);
-
-continue;
-
-}
-
-
-
-const file=fileInput.files[0];
-
-
-
-console.log(
-"Uploading:",
-item.input,
-file.name
-);
-
-
-
-
-const filePath=
-
-`${assetId}/${item.folder}/${Date.now()}_${file.name}`;
-
-
-
-
-
-const {data,error}=await db.storage
-
-.from("asset-documents")
-
-.upload(
-filePath,
-file,
-{
-upsert:true
-}
-);
-
-
-
-
-
-
-if(error){
-
-
-console.error(
-"Upload failed:",
-item.input,
-error.message
-);
-
-
-}
-
-else{
-
-
-console.log(
-"Uploaded successfully:",
-data.path
-);
-
-
-}
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-/* ==========================
-EDIT asset
-========================== */
-
-
-
-async function editasset(id){
+async function editAsset(id){
 
 
 
@@ -2600,8 +1684,7 @@ error
 }=await db
 
 
-
-.from("Assets")
+.from("assets")
 
 .select("*")
 
@@ -2620,7 +1703,10 @@ id
 if(error){
 
 
-alert(error.message);
+alert(
+error.message
+);
+
 
 return;
 
@@ -2631,11 +1717,10 @@ return;
 
 
 
-
-
 document.getElementById(
 "assetId"
-).value=data.id;
+).value=
+data.id;
 
 
 
@@ -2660,15 +1745,6 @@ data.vin_serial || "";
 
 
 document.getElementById(
-"notes"
-).value=
-data.notes || "";
-
-
-
-
-
-document.getElementById(
 "documents"
 ).value=
 data.documents || "";
@@ -2678,32 +1754,19 @@ data.documents || "";
 
 
 document.getElementById(
-"yellow_card"
+"notes"
 ).value=
-data.yellow_card || "Male";
+data.notes || "";
 
 
-
-
-
-document.getElementById(
-"insurance"
-).value=
-data.insurance || "";
-
-
-
-document.getElementById(
-"authorisation"
-).value=
-data.authorisation || "";
 
 
 
 document.getElementById(
 "formTitle"
 ).innerHTML=
-"Edit asset";
+"Edit Asset";
+
 
 
 
@@ -2711,13 +1774,13 @@ document.getElementById(
 document.getElementById(
 "saveBtn"
 ).innerHTML=
-"Update asset";
+"Update Asset";
 
 
 
 
 
-openassetForm();
+openAssetForm();
 
 
 
@@ -2730,19 +1793,19 @@ openassetForm();
 
 
 
-/* ==========================
-DELETE asset
-========================== */
+
+/* =========================
+DELETE ASSET
+========================= */
 
 
-
-async function deleteasset(id){
+async function deleteAsset(id){
 
 
 
 if(
 !confirm(
-"Delete this asset?"
+"Are you sure you want to delete this asset?"
 )
 
 )
@@ -2761,8 +1824,7 @@ error
 }=await db
 
 
-
-.from("Assets")
+.from("assets")
 
 .delete()
 
@@ -2770,6 +1832,7 @@ error
 "id",
 id
 );
+
 
 
 
@@ -2795,9 +1858,8 @@ return;
 
 
 
-
 alert(
-"asset deleted"
+"Asset deleted successfully"
 );
 
 
@@ -2810,11 +1872,14 @@ await loadAssets();
 }
 
 
+
+
+
 </script>
 
-<!-- ==========================
+<!-- =========================
 BULK UPLOAD MODAL
-========================== -->
+========================= -->
 
 
 <div class="modal-overlay" id="bulkModal">
@@ -2834,29 +1899,23 @@ color:#64748b;
 margin-bottom:20px;
 ">
 
-Upload CSV file containing asset information.
+Upload CSV file containing asset details.
 
 </p>
 
 
 
 
-
 <div class="form-group">
 
-
 <label>
-Select CSV File
+CSV File
 </label>
 
 
-
-<input
-
+<input 
 type="file"
-
 id="csvFile"
-
 accept=".csv">
 
 
@@ -2866,15 +1925,16 @@ accept=".csv">
 
 
 
-
-<div style="margin-top:20px;">
+<div style="
+margin-top:20px;
+">
 
 
 <button
 
 type="button"
 
-onclick="downloadTemplate()"
+onclick="downloadAssetTemplate()"
 
 style="
 padding:12px 18px;
@@ -2885,15 +1945,12 @@ border-radius:8px;
 cursor:pointer;
 ">
 
-
-⬇ Download CSV Template
-
+⬇ Download Template
 
 </button>
 
 
 </div>
-
 
 
 
@@ -2908,10 +1965,7 @@ gap:10px;
 ">
 
 
-
 <button
-
-type="button"
 
 onclick="closeBulkUpload()"
 
@@ -2923,9 +1977,7 @@ border-radius:8px;
 cursor:pointer;
 ">
 
-
 Cancel
-
 
 </button>
 
@@ -2935,31 +1987,26 @@ Cancel
 
 <button
 
-id="uploadBtn"
+id="bulkUploadBtn"
 
-type="button"
-
-onclick="uploadCSV()"
+onclick="uploadAssetsCSV()"
 
 style="
 padding:12px 20px;
+border:none;
 background:#16a34a;
 color:white;
-border:none;
 border-radius:8px;
 cursor:pointer;
 ">
 
-
 Upload Assets
-
 
 </button>
 
 
 
 
-
 </div>
 
 
@@ -2969,50 +2016,6 @@ Upload Assets
 
 
 </div>
-
-
-
-
-
-
-
-<!-- TOAST MESSAGE -->
-
-
-<div id="toast"
-
-style="
-
-position:fixed;
-
-right:30px;
-
-bottom:30px;
-
-background:#16a34a;
-
-color:white;
-
-padding:15px 25px;
-
-border-radius:8px;
-
-display:none;
-
-font-weight:600;
-
-z-index:999999;
-
-">
-
-
-Saved Successfully
-
-
-</div>
-
-
-
 
 
 
@@ -3021,67 +2024,18 @@ Saved Successfully
 <script>
 
 
-/* ==========================
-TOAST
-========================== */
 
-
-function showToast(message,color="#16a34a"){
-
-
-
-const toast=document.getElementById(
-"toast"
-);
-
-
-
-toast.innerHTML=message;
-
-
-
-toast.style.background=color;
-
-
-
-toast.style.display="block";
-
-
-
-setTimeout(()=>{
-
-
-toast.style.display="none";
-
-
-},3000);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ==========================
+/* =========================
 OPEN BULK MODAL
-========================== */
-
+========================= */
 
 
 function openBulkUpload(){
 
 
-
 document.getElementById(
 "bulkModal"
 ).style.display="flex";
-
 
 
 }
@@ -3093,11 +2047,9 @@ document.getElementById(
 function closeBulkUpload(){
 
 
-
 document.getElementById(
 "bulkModal"
 ).style.display="none";
-
 
 
 }
@@ -3107,44 +2059,31 @@ document.getElementById(
 
 
 
+/* =========================
+CSV TEMPLATE
+========================= */
 
 
-
-/* ==========================
-DOWNLOAD CSV TEMPLATE
-========================== */
-
-
-
-function downloadTemplate(){
+function downloadAssetTemplate(){
 
 
 
 const csv=
 
-
-`asset_name,national_id,phone,date_of_birth,gender,address
-John Doe,119999999999999,0780000000,1995-01-01,Male,Kigali
-Jane Doe,119888888888888,0781111111,1998-05-10,Female,Musanze`;
-
+`asset_name,vin_serial,documents,notes
+AMP Alpha RM602K,ABC12345,Yellow Card,Good condition
+AMP Beta RM700K,XYZ98765,Insurance Pending,Needs inspection`;
 
 
 
 
 
 const blob=new Blob(
-
 [csv],
-
 {
-
 type:"text/csv"
-
 }
-
 );
-
-
 
 
 
@@ -3155,24 +2094,13 @@ URL.createObjectURL(blob);
 
 
 
+const a=document.createElement("a");
 
+a.href=url;
 
-const link=document.createElement("a");
+a.download="assets_template.csv";
 
-
-
-link.href=url;
-
-
-
-link.download=
-"Assets_template.csv";
-
-
-
-link.click();
-
-
+a.click();
 
 
 
@@ -3188,73 +2116,65 @@ URL.revokeObjectURL(url);
 
 
 
+/* =========================
+CSV PARSER
+========================= */
 
 
-/* ==========================
-CSV READER
-========================== */
-
-
-
-function csvToObjects(text){
+function parseCSV(text){
 
 
 
-const rows=text
+const lines=
+text
 .trim()
 .split("\n");
 
 
 
 const headers=
-rows[0]
+lines[0]
 .split(",");
 
 
 
-const result=[];
+
+let rows=[];
 
 
 
+for(let i=1;i<lines.length;i++){
 
 
-for(let i=1;i<rows.length;i++){
-
-
-
-const values=
-rows[i]
+let values=
+lines[i]
 .split(",");
 
 
 
-let obj={};
+let row={};
 
 
 
+headers.forEach(
+(h,index)=>{
 
 
-headers.forEach((h,index)=>{
-
-
-obj[h.trim()]=
-values[index]?.trim();
+row[
+h.trim()
+]=
+values[index]
+?
+values[index].trim()
+:
+"";
 
 
 });
 
 
 
-result.push(obj);
-
-
-
-}
-
-
-
-return result;
-
+rows.push(row);
 
 
 }
@@ -3262,27 +2182,33 @@ return result;
 
 
 
+return rows;
+
+
+
+}
 
 
 
 
 
-/* ==========================
+
+
+
+
+/* =========================
 UPLOAD CSV
-========================== */
+========================= */
 
 
-
-async function uploadCSV(){
+async function uploadAssetsCSV(){
 
 
 
 const file=
-document.getElementById(
-"csvFile"
-).files[0];
-
-
+document
+.getElementById("csvFile")
+.files[0];
 
 
 
@@ -3290,9 +2216,8 @@ document.getElementById(
 if(!file){
 
 
-showToast(
-"Please select CSV file",
-"#dc2626"
+alert(
+"Please select CSV file"
 );
 
 
@@ -3304,20 +2229,17 @@ return;
 
 
 
-
-
-const btn=document.getElementById(
-"uploadBtn"
+const btn=
+document.getElementById(
+"bulkUploadBtn"
 );
 
 
 
 btn.disabled=true;
 
-
-
-btn.innerHTML="Uploading...";
-
+btn.innerHTML=
+"Uploading...";
 
 
 
@@ -3330,10 +2252,8 @@ await file.text();
 
 
 
-
-
 const data=
-csvToObjects(text);
+parseCSV(text);
 
 
 
@@ -3341,45 +2261,28 @@ csvToObjects(text);
 
 
 
-const rows=data.map(b=>({
-
+const rows=
+data.map(asset=>({
 
 
 asset_name:
-b.asset_name,
-
+asset.asset_name,
 
 
 vin_serial:
-b.vin_serial,
-
-
-
-notes:
-b.notes,
+asset.vin_serial,
 
 
 documents:
-b.documents,
-
-yellow_card:
-b.yellow_card,
+asset.documents,
 
 
-
-insuarnce:
-b.insuarnce,
-
-
-
-authorisation:
-b.address
+notes:
+asset.notes
 
 
 
 }));
-
-
 
 
 
@@ -3392,9 +2295,7 @@ error
 
 }=await db
 
-
-
-.from("Assets")
+.from("assets")
 
 .insert(rows);
 
@@ -3403,10 +2304,7 @@ error
 
 
 
-
 btn.disabled=false;
-
-
 
 btn.innerHTML=
 "Upload Assets";
@@ -3416,14 +2314,11 @@ btn.innerHTML=
 
 
 
-
 if(error){
 
 
-
-showToast(
-error.message,
-"#dc2626"
+alert(
+error.message
 );
 
 
@@ -3436,14 +2331,9 @@ return;
 
 
 
-
-
-
-showToast(
+alert(
 "Assets uploaded successfully"
 );
-
-
 
 
 
@@ -3451,11 +2341,7 @@ closeBulkUpload();
 
 
 
-
-
 await loadAssets();
-
-
 
 
 
@@ -3466,27 +2352,4 @@ await loadAssets();
 
 
 
-
-
-
-/* ==========================
-FINAL PAGE LOAD
-========================== */
-
-
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
-
-
-loadAssets();
-
-
-});
-
-
-
 </script>
-    
-</body>
-</html>
